@@ -1,0 +1,36 @@
+module inst_mem(Adr, opcode,func, Rs, Rt, Rd, shamt, imm16);
+    input [31:0] Adr;
+    output wire [5:0] opcode;
+    output wire [5:0] func;
+    output wire [4:0] Rs;
+    output wire [4:0] Rt;
+    output wire [4:0] Rd;
+    output wire [4:0] shamt;
+    output wire [15:0] imm16;
+    
+    
+    wire [31:0] zero;
+    wire [31:0] inst;
+    wire output_en;
+    wire write_en;
+    
+    
+    assign zero = 32'h00000000;
+    assign output_en = 1'b1;
+    assign write_en = 1'b0;
+    
+    //sram #(.mem_file("unsigned_sum.dat")) sram_map(.cs(1'b1), .oe(output_en), .we(write_en), .addr(Adr), .din(zero), .dout(inst));
+    //sram #(.mem_file("sort_corrected_branch.dat")) sram_map(.cs(1'b1), .oe(output_en), .we(write_en), .addr(Adr), .din(zero), .dout(inst));
+    sram #(.mem_file("bills_branch.dat")) sram_map(.cs(1'b1), .oe(output_en), .we(write_en), .addr(Adr), .din(zero), .dout(inst));
+    
+    assign opcode = inst[31:26];
+    assign func = inst[5:0];
+    assign Rs = inst[25:21];
+    assign Rt = inst[20:16];
+    assign Rd = inst[15:11];
+    assign shamt = inst[10:6];
+    assign imm16 = inst[15:0];
+    
+endmodule
+    
+    

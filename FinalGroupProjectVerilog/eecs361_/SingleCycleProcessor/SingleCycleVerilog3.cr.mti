@@ -1,0 +1,379 @@
+/home/iep499/demo/SingleCycleProcessor/full_adder_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/full_adder_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module full_adder_32bit
+
+Top level modules:
+	full_adder_32bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux8_1_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux8_1_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux8_1_32bit
+
+Top level modules:
+	mux8_1_32bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nand_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nand_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nand_gate_32
+
+Top level modules:
+	nand_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/not_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/not_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module not_gate_32
+
+Top level modules:
+	not_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/or_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/or_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module or_gate_n
+
+Top level modules:
+	or_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dffr_32bit_PC.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dffr_32bit_PC.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dffr_32bit_PC
+
+Top level modules:
+	dffr_32bit_PC
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nor_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nor_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nor_gate
+
+Top level modules:
+	nor_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nand_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nand_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nand_gate_n
+
+Top level modules:
+	nand_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/not_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/not_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module not_gate_n
+
+Top level modules:
+	not_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/sram.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/sram.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module sram
+
+Top level modules:
+	sram
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xnor_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xnor_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xnor_gate_32
+
+Top level modules:
+	xnor_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/pc.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/pc.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/adder_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/adder_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module adder_32
+
+Top level modules:
+	adder_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/DataPath.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/DataPath.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module DataPath
+
+Top level modules:
+	DataPath
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/full_adder_1bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/full_adder_1bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module full_adder_1bit
+
+Top level modules:
+	full_adder_1bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux8_1_1bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux8_1_1bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux8_1_1bit
+
+Top level modules:
+	mux8_1_1bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/next_address_logic.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/next_address_logic.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module next_address_logic
+
+Top level modules:
+	next_address_logic
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/syncram.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/syncram.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module syncram
+
+Top level modules:
+	syncram
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/SUB_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/SUB_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module SUB_32bit
+
+Top level modules:
+	SUB_32bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux_32
+
+Top level modules:
+	mux_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/Extender.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/Extender.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module Extender
+
+Top level modules:
+	Extender
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux_n
+
+Top level modules:
+	mux_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xor_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xor_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xor_gate
+
+Top level modules:
+	xor_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dec_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dec_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dec_n
+
+Top level modules:
+	dec_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux_32to1.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux_32to1.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux_32to1
+
+Top level modules:
+	mux_32to1
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nor_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nor_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nor_gate_32
+
+Top level modules:
+	nor_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dff.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dff.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dff
+
+Top level modules:
+	dff
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/and_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/and_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module and_gate_n
+
+Top level modules:
+	and_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xnor_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xnor_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xnor_gate_n
+
+Top level modules:
+	xnor_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/SLT_signed.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/SLT_signed.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module SLT_signed
+
+Top level modules:
+	SLT_signed
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xor_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xor_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xor_gate_32
+
+Top level modules:
+	xor_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dffr_a_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dffr_a_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dffr_a_32bit
+
+Top level modules:
+	dffr_a_32bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/RegFile.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/RegFile.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module RegFile
+
+Top level modules:
+	RegFile
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/and_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/and_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module and_gate_32
+
+Top level modules:
+	and_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/or_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/or_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module or_gate
+
+Top level modules:
+	or_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dffr.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dffr.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dffr
+
+Top level modules:
+	dffr
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/Full_adder.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/Full_adder.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module Full_adder
+
+Top level modules:
+	Full_adder
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/and_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/and_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module and_gate
+
+Top level modules:
+	and_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/sll_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/sll_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module sll_32bit
+
+Top level modules:
+	sll_32bit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xor_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xor_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xor_gate_n
+
+Top level modules:
+	xor_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/xnor_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/xnor_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module xnor_gate
+
+Top level modules:
+	xnor_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/ControlUnit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/ControlUnit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module ControlUnit
+
+Top level modules:
+	ControlUnit
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nand_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nand_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nand_gate
+
+Top level modules:
+	nand_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/not_gate.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/not_gate.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module not_gate
+
+Top level modules:
+	not_gate
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/sign_ext.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/sign_ext.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module sign_ext
+
+Top level modules:
+	sign_ext
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/ALUCU.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/ALUCU.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module ALUCU
+
+Top level modules:
+	ALUCU
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/ALU.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/ALU.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/mux.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/mux.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module mux
+
+Top level modules:
+	mux
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/dffr_a.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/dffr_a.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module dffr_a
+
+Top level modules:
+	dffr_a
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/SLT.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/SLT.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module SLT
+
+Top level modules:
+	SLT
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nor_gate_n.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nor_gate_n.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nor_gate_n
+
+Top level modules:
+	nor_gate_n
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/or_gate_32.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/or_gate_32.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module or_gate_32
+
+Top level modules:
+	or_gate_32
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/instruction_decoder.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/instruction_decoder.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module instruction_decoder
+
+Top level modules:
+	instruction_decoder
+
+} {} {}} /home/iep499/demo/SingleCycleProcessor/nor_32bit.v {1 {vlog -work work -vopt -nocovercells /home/iep499/demo/SingleCycleProcessor/nor_32bit.v
+Model Technology ModelSim SE-64 vlog 6.3c Compiler 2007.09 Sep 11 2007
+-- Compiling module nor_32bit
+
+Top level modules:
+	nor_32bit
+
+} {} {}}

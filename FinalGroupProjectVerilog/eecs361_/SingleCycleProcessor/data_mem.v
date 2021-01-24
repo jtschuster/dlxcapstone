@@ -1,0 +1,14 @@
+module data_mem(clk, MemWr, output_en, data_in, address, data_out);
+    input clk;
+    input MemWr;
+    input output_en;
+    input [31:0] data_in;
+    input [31:0] address;
+    output wire [31:0] data_out;
+    
+    // clk,cs,oe,we,addr,din,dout
+    syncram #(.mem_file("bills_branch.dat")) mem(.clk(clk), .cs(1'b1), .oe(output_en), .we(MemWr), .addr(address), .din(data_in), .dout(data_out));
+    //syncram #(.mem_file("sort_corrected_branch.dat")) mem(.clk(clk), .cs(1'b1), .oe(output_en), .we(MemWr), .addr(address), .din(data_in), .dout(data_out));
+    //syncram #(.mem_file("unsigned_sum.dat")) mem(.clk(clk), .cs(1'b1), .oe(output_en), .we(MemWr), .addr(address), .din(data_in), .dout(data_out));
+    
+endmodule

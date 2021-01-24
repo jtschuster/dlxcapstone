@@ -1,0 +1,7 @@
+xor
+addi
+lw
+addu
+addi
+bnez
+sw

@@ -1,0 +1,41 @@
+//test for mux
+xrun -64bit -gui -access r mux_n_tb.v ../lib/mux_n.v
+
+//test for one-bit full_adder
+xrun -64bit -gui -access r full_adder_tb.v ../lib/full_adder.v ../lib/xor_gate.v ../lib/and_gate.v ../lib/or_gate.v
+
+//test for bit-slice alu
+xrun -64bit -gui -access r alu_bit_slice_tb.v ../lib/alu_bit_slice.v ../lib/mux.v ../lib/full_adder.v ../lib/xor_gate.v ../lib/and_gate.v ../lib/or_gate.v
+
+//test for shifter
+xrun -64bit -gui -access r shifter_tb.v ../lib/left_shift_32.v ../lib/right_shift_32.v ../lib/mux.v 
+
+//test for ALU_32bit
+xrun -64bit -gui -access r ALU_32bit_tb.v ../lib/ALU_32bit.v ../lib/slt_sltu.v ../lib/mux_32.v ../lib/input32_nor_gate.v ../lib/full_adder.v ../lib/left_shift_32.v ../lib/right_shift_32.v ../lib/mux.v ../lib/alu_bit_slice.v ../lib/xor_gate.v ../lib/and_gate.v ../lib/or_gate.v ../lib/nor_gate.v
+
+//test for Decoder_n
+xrun -64bit -gui -access r dec_n_tb.v ../lib/dec_n.v
+
+//test for Extender
+xrun -64bit -gui -access r Extender_tb.v ../lib/Extender.v
+
+//test for sram
+xrun -64bit -gui -access r sram_tb.v ../lib/sram.v
+
+//test for synram
+xrun -64bit -gui -access r syncram_tb.v ../lib/syncram.v
+
+//test for ifetch
+xrun -64bit -gui -access r ifetch_tb.v ../lib/ifetch.v ../lib/sram.v
+
+//test for Register file
+xrun -64bit -gui -access r RegisterFiles_tb.v ../lib/RegisterFiles.v ../lib/writeReg.v ../lib/readReg.v ../lib/write_32.v ../lib/mux_32.v ../lib/and_gate.v ../lib/dec_n.v ../lib/dff.v
+
+//test for control unit
+xrun -64bit -gui -access r Control_signal_tb.v ../lib/Control_signal.v ../lib/not_gate_n.v ../lib/and_6.v ../lib/mux_n.v
+
+//test for single cycle CPU
+xrun -64bit -gui -access r CPU_tb.v ../lib/CPU.v ../lib/PC.v ../lib/ifetch.v ../lib/sram.v ../lib/Control_signal.v ../lib/not_gate_n.v ../lib/and_6.v ../lib/mux_n.v ../lib/mux_32.v ../lib/Extender.v ../lib/syncram.v ../lib/full_alu.v ../lib/alu_msb.v ../lib/alu_32.v ../lib/alu_unit.v ../lib/sll.v ../lib/srl.v ../lib/ALU_Ctrl.v ../lib/xor_gate.v ../lib/xnor_gate.v ../lib/and_gate.v ../lib/or_gate.v ../lib/nor_gate.v ../lib/or_gate_32.v ../lib/not_gate.v ../lib/mux.v ../lib/RegisterFiles.v ../lib/readReg.v ../lib/dec_n.v ../lib/writeReg.v ../lib/write_32.v ../lib/dff.v
+
+//test for pipeline CPU
+xrun -64bit -gui -access r CPU_tb.v ../lib/CPU.v ../lib/PC.v ../lib/IF_stage.v ../lib/ID_stage.v ../lib/EX_stage.v ../lib/WB_stage.v ../lib/Mem_stage.v ../lib/alu_32.v ../lib/dec_n.v ../lib/srl.v ../lib/ALUctrl.v ../lib/alu_msb.v ../lib/Extender.v ../lib/alu_unit.v ../lib/forwarding_ex.v ../lib/readReg.v ../lib/write32.v ../lib/and_6.v ../lib/full_alu.v ../lib/RegisterFiles.v ../lib/writeReg.v ../lib/Control_signal.v ../lib/sll.v ../lib/ifecth.v ../lib/slt_sltu.v ../lib/sram.v ../lib/syncram.v ../lib/mux.v ../lib/mux_32.v ../lib/mux_n.v ../lib/not_gate.v ../lib/not_gate_n.v ../lib/xor_gate.v ../lib/xnor_gate.v ../lib/and_gate.v ../lib/or_gate.v ../lib/nor_gate.v ../lib/or_gate_32.v ../lib/dff.v ../lib/dffr.v

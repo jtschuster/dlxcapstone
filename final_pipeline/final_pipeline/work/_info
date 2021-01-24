@@ -1,0 +1,1037 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/Pipelined_CPU_3
+valu
+Z0 !s110 1607560665
+!i10b 1
+!s100 A=ElI]HSR;3;B^_iJoSMJ2
+I>I[K;?^WLEh3M`T:EX9Id1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline
+w1574057120
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v
+L0 1
+Z3 OP;L;10.4a;61
+r1
+!s85 0
+31
+Z4 !s108 1607560665.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v|
+!s101 -O0
+!i113 1
+Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+valu_32
+Z6 !s110 1607560664
+!i10b 1
+!s100 WU]3e<;4@bQ[<fl@PXjQW1
+I`CXDh8Pg]azGEi=D?5BFO0
+R1
+R2
+w1574057172
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z7 !s108 1607560664.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v|
+!s101 -O0
+!i113 1
+R5
+valu_msb
+R6
+!i10b 1
+!s100 UjN_iKaE3cNA274VY[zRz2
+ISD:H?Lc3c1[JEVQFIeI4R1
+R1
+R2
+w1574055772
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v|
+!s101 -O0
+!i113 1
+R5
+vALU_test_pj1
+Z8 !s110 1607560667
+!i10b 1
+!s100 Soa:cV5K52098`b@:>NF`1
+IOL[LU=k2H;Q1>T=h[b;9T3
+R1
+R2
+w1574052092
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v
+L0 2
+R3
+r1
+!s85 0
+31
+Z9 !s108 1607560667.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v|
+!s101 -O0
+!i113 1
+R5
+n@a@l@u_test_pj1
+valu_unit
+R6
+!i10b 1
+!s100 2LNgM[8gc;X0OdKghk2DK1
+IR=DGH4bZ=]_;:ge9AV?j51
+R1
+R2
+w1573983604
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v|
+!s101 -O0
+!i113 1
+R5
+vALUctrl
+R6
+!i10b 1
+!s100 ?Kf7G2<EN[44]B9A8NgW_2
+I4k_>;gCecD=XZA7bgnJQ>0
+R1
+R2
+w1573824892
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v|
+!s101 -O0
+!i113 1
+R5
+n@a@l@uctrl
+vALUctrl_tb
+Z10 !s110 1607560668
+!i10b 1
+!s100 FXXdSAg9Zl:nVbJjl@P1h1
+I3<HfK>1<5CYQ?SgS5GjJR1
+R1
+R2
+w1573824622
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z11 !s108 1607560668.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v|
+!s101 -O0
+!i113 1
+R5
+n@a@l@uctrl_tb
+vand_6
+R6
+!i10b 1
+!s100 dzTeeK9A`b1z6e:PXNm0z1
+I9k5bID6FJMANdjGiZYcAj3
+R1
+R2
+w1573888768
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v|
+!s101 -O0
+!i113 1
+R5
+vand_gate
+R0
+!i10b 1
+!s100 NLZe9@@iT^HHj]<Q3`I=H2
+Ic79D0^GVEBjhRmGa87G[G1
+R1
+R2
+w1607487858
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v|
+!s101 -O0
+!i113 1
+R5
+vControl
+R0
+!i10b 1
+!s100 5mV[Wb?>jdK?eZgDYSE<A0
+InGIGnKJKc=Ukn`d>KY6Dm2
+R1
+R2
+w1575912554
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v|
+!s101 -O0
+!i113 1
+R5
+n@control
+vControl_tb
+R10
+!i10b 1
+!s100 CkA]7<<mQKLe[681Hl`6<3
+I>I9iLDeSHkTZ1^`OmUU7Y1
+R1
+R2
+w1573891866
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R11
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v|
+!s101 -O0
+!i113 1
+R5
+n@control_tb
+vCPU
+Z12 !s110 1607697427
+!i10b 1
+!s100 N>YU^0g4KF?2PNk>b`^]13
+IlK4IcoRlj^b3Z8NL`F8;P3
+R1
+R2
+w1607697375
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1607697426.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v|
+!s101 -O0
+!i113 1
+R5
+n@c@p@u
+vCPU_tb
+!s110 1607703966
+!i10b 1
+!s100 U7R^>E5n0C8N4TXjghmgG1
+I_G:ZHgZbgcT^NXAk4HaDi0
+R1
+R2
+w1607703963
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1607703966.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v|
+!s101 -O0
+!i113 1
+R5
+n@c@p@u_tb
+vdec_n
+R0
+!i10b 1
+!s100 hDTdbeYeWHzWQfZ@lNk8m2
+I3Ke^^HzV=MP_QOg1B^EnB3
+R1
+R2
+w1607487524
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v|
+!s101 -O0
+!i113 1
+R5
+vdec_n_tb
+R10
+!i10b 1
+!s100 jef5<mF1M0Lh4VhJ@W69O0
+IYPA:IF__eEJDZMiaK1zga1
+R1
+R2
+w1538497884
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R11
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v|
+!s101 -O0
+!i113 1
+R5
+vdff
+R0
+!i10b 1
+!s100 [Q1Gk^UEHoFSid<1lPzU62
+I;g5hTTKh^QRigT2cCc8BK0
+R1
+R2
+w1607487988
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v|
+!s101 -O0
+!i113 1
+R5
+vdffr
+R0
+!i10b 1
+!s100 VF]XPbOgUHJ?B@>WWIboa2
+Ij5<jO2TBBnc2]1a8?Lg<X3
+R1
+R2
+w1607488074
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v|
+!s101 -O0
+!i113 1
+R5
+vEX_stage
+R0
+!i10b 1
+!s100 l?CFmG3QQ?DaR422>G1gU1
+Iz^b^DHfUJ2XRi[e9E@TM01
+R1
+R2
+w1575945530
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v|
+!s101 -O0
+!i113 1
+R5
+n@e@x_stage
+vforwarding_ex
+R0
+!i10b 1
+!s100 iPd^VOO8L2OCbliSe5NWm0
+IQ87ZJdz`C`WPYO`^PRNci3
+R1
+R2
+w1575945674
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v|
+!s101 -O0
+!i113 1
+R5
+vID_stage
+R0
+!i10b 1
+!s100 md1idQ3^Zga4P<G7Tz>gR1
+I9;Ng<HFAiOREN:Y5^Y4Ue3
+R1
+R2
+w1575854722
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v|
+!s101 -O0
+!i113 1
+R5
+n@i@d_stage
+vIF_stage
+Z13 !s110 1607560666
+!i10b 1
+!s100 zGCSO2891_M8VCSA>?1M@3
+I<E7RNfO3l=J`]7X>FIZ5Y2
+R1
+R2
+w1607488728
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v|
+!s101 -O0
+!i113 1
+R5
+n@i@f_stage
+vifetch
+R12
+!i10b 1
+!s100 NEc[O>MmXZKig7e^8LiTL3
+I;jzJaIkdCLV38>z@P_Z4g0
+R1
+R2
+w1607697393
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z14 !s108 1607697427.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v|
+!s101 -O0
+!i113 1
+R5
+vifetch_tb
+R10
+!i10b 1
+!s100 kA0ThXN[:eOYB`Za2dc]R2
+I6VmUj:U4=a`K?`XLZ<JE:0
+R1
+R2
+w1573900392
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R11
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v|
+!s101 -O0
+!i113 1
+R5
+vMem_stage
+!s110 1607567259
+!i10b 1
+!s100 Ii?HXT:_2S;7Fo8zgUgB62
+I]k`PU9`zj5A;?4o;lWSD=0
+R1
+R2
+w1607566852
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1607567259.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v|
+!s101 -O0
+!i113 1
+R5
+n@mem_stage
+vmux
+R13
+!i10b 1
+!s100 0f3Tg3e9AC4j0zgA[7E[]2
+IQDXJnOD0JbC1kFV=z>hPZ1
+R1
+R2
+Z15 w1607487634
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z16 !s108 1607560666.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v|
+!s101 -O0
+!i113 1
+R5
+vmux_32
+R13
+!i10b 1
+!s100 ?693lSfA]TCg`<oO]K;CA1
+I^EMa=KX<Agg4gmmP4lRCZ3
+R1
+R2
+R15
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v|
+!s101 -O0
+!i113 1
+R5
+vmux_n
+R13
+!i10b 1
+!s100 OeZHTSl1M5_`N;FR?_^?V2
+ImlZY1S8Ol3fcT?MGAVdn81
+R1
+R2
+R15
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v|
+!s101 -O0
+!i113 1
+R5
+vnor_gate
+R13
+!i10b 1
+!s100 Gh=JFWmI5OX<XebUfz0?n1
+Ib2]CNlTC6geQkYK=H]a5j3
+R1
+R2
+w1607487920
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v|
+!s101 -O0
+!i113 1
+R5
+vnot_gate
+R13
+!i10b 1
+!s100 @FX]SQ9[SLV5C@AHXzLLB1
+I<F1;L9SK<Tj9aA1mU@IhQ1
+R1
+R2
+w1607487724
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v|
+!s101 -O0
+!i113 1
+R5
+vnot_gate_n
+R13
+!i10b 1
+!s100 UY3ATin2QBe@=N[?`>Wk32
+Iid2Rd:zfcJ0bgn8h3oaFm0
+R1
+R2
+w1607487746
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v|
+!s101 -O0
+!i113 1
+R5
+vor_gate
+R13
+!i10b 1
+!s100 =m;HIk4P2jzbSRL^Rba_90
+IEH^@lL?]k<E?EBoRX=F`h1
+R1
+R2
+w1607487886
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v|
+!s101 -O0
+!i113 1
+R5
+vor_gate_32
+R13
+!i10b 1
+!s100 O;5RWJ2ceGSb^1m9T3S_a0
+IzgP6O>J8mddBe=nCAUgm=1
+R1
+R2
+w1607487948
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v|
+!s101 -O0
+!i113 1
+R5
+vPC
+R13
+!i10b 1
+!s100 5>PNY`0WT`57loi=2_Ynj2
+IW7=j:ZXEeghMI4Tafnfed1
+R1
+R2
+w1607487390
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v|
+!s101 -O0
+!i113 1
+R5
+n@p@c
+vreadReg
+R8
+!i10b 1
+!s100 iO3ROSMVaIE8PWAMNoY=N0
+IbM?MOQEFT8F:Q:C<<5OUJ1
+R1
+R2
+w1573996752
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v
+L0 1
+R3
+r1
+!s85 0
+31
+R16
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v|
+!s101 -O0
+!i113 1
+R5
+nread@reg
+vRegisterFiles
+R8
+!i10b 1
+!s100 Zg:>Z@mY6KzQ:K_:5U2LY1
+IA5dDl@:SXV:``YI2CbbEF3
+R1
+R2
+w1573736728
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v|
+!s101 -O0
+!i113 1
+R5
+n@register@files
+vRegisterFiles_tb
+R10
+!i10b 1
+!s100 JJYYBP:O=@cg=4iBz3Wlf3
+IQeX@IfLB6WDYLOdz^EblG2
+R1
+R2
+w1573900764
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v|
+!s101 -O0
+!i113 1
+R5
+n@register@files_tb
+vSignextend
+R0
+!i10b 1
+!s100 DZi96A52IS5Ed50E<YhGn2
+IXUL6]EOVDhjk:X<939e]H0
+R1
+R2
+w1573799804
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v|
+!s101 -O0
+!i113 1
+R5
+n@signextend
+vSignextend_tb
+R10
+!i10b 1
+!s100 P_RjJ;ed4ak[nKlNzVadD0
+IWhW3efATEnEGo11=56^1j2
+R1
+R2
+w1573900924
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R11
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v|
+!s101 -O0
+!i113 1
+R5
+n@signextend_tb
+vsll
+R8
+!i10b 1
+!s100 JI1;=c:0c`LFzmjBoXdYk0
+IALj^IIAL[kKz<m?jXCaj82
+R1
+R2
+w1574085376
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v|
+!s101 -O0
+!i113 1
+R5
+vslt_sltu
+R8
+!i10b 1
+!s100 ^AKNH3a:S1^ML0cX`aTmm1
+IV=a;QCc6nPRY5dP>PROCh1
+R1
+R2
+w1572367848
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v|
+!s101 -O0
+!i113 1
+R5
+vsram
+R12
+!i10b 1
+!s100 d7ALAa9b2Gn=KJ29`ZgSJ1
+IdK9IJJUKgDZZ0f?MAihXI1
+R1
+R2
+w1607697423
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v
+L0 1
+R3
+r1
+!s85 0
+31
+R14
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v|
+!s101 -O0
+!i113 1
+R5
+vsrl
+R8
+!i10b 1
+!s100 hA>7d2F;nfFf4Q9CA;5V`3
+INhW2NHTEzXVYW1m]M]CF@0
+R1
+R2
+w1573984314
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v|
+!s101 -O0
+!i113 1
+R5
+vsyncram
+!s110 1607697428
+!i10b 1
+!s100 ggXgLED@:;S8l^X[n5zR83
+Ig_zZAPj`;^F@BF2h5j3513
+R1
+R2
+w1607697406
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1607697428.000000
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v|
+!s101 -O0
+!i113 1
+R5
+vWB_stage
+R8
+!i10b 1
+!s100 _XOgW[cI:ggIk^:h=Qn3Q2
+IfWBLDA5l?UkA8iPHFZl@<0
+R1
+R2
+w1575789916
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v|
+!s101 -O0
+!i113 1
+R5
+n@w@b_stage
+vwrite32
+R8
+!i10b 1
+!s100 He0mhdzQ;cD<L]:53FLa@2
+IS42C?NY@7VM2jW3Ck5IEX0
+R1
+R2
+w1573733594
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v|
+!s101 -O0
+!i113 1
+R5
+vwriteReg
+R8
+!i10b 1
+!s100 GdbH31MjCh7fTUlYRE=@[0
+I^K9SU1WHKNn?PFGbd_Bek1
+R1
+R2
+w1573736632
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v|
+!s101 -O0
+!i113 1
+R5
+nwrite@reg
+vxnor_gate
+R8
+!i10b 1
+!s100 eAXgDW6UIj`mIUOcm?Q]z1
+I1oO5N@>a959B>cHL`XJRW3
+R1
+R2
+w1607487828
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v|
+!s101 -O0
+!i113 1
+R5
+vxor_gate
+R6
+!i10b 1
+!s100 lc]@oT^8<6TG2DYGjjPFd1
+II2dh`kWl9TQ`GN1WnBMgU3
+R1
+R2
+w1607487804
+8C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v
+FC:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v|
+!s101 -O0
+!i113 1
+R5

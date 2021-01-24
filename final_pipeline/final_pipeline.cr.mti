@@ -1,0 +1,337 @@
+C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_6.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module and_6
+
+Top level modules:
+	and_6
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate_32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module or_gate_32
+
+Top level modules:
+	or_gate_32
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu_32
+
+Top level modules:
+	alu_32
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/forwarding_ex.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module forwarding_ex
+
+Top level modules:
+	forwarding_ex
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Extender.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Signextend
+
+Top level modules:
+	Signextend
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ifetch_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ifetch_tb
+
+Top level modules:
+	ifetch_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xor_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module xor_gate
+
+Top level modules:
+	xor_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Mem_stage.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Mem_stage
+
+Top level modules:
+	Mem_stage
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ifecth.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ifetch
+
+Top level modules:
+	ifetch
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sll.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module sll
+
+Top level modules:
+	sll
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/ALUctrl_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALUctrl_tb
+
+Top level modules:
+	ALUctrl_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/xnor_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module xnor_gate
+
+Top level modules:
+	xnor_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/EX_stage.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module EX_stage
+
+Top level modules:
+	EX_stage
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/full_alu.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/syncram.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module syncram
+
+Top level modules:
+	syncram
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate_n.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module not_gate_n
+
+Top level modules:
+	not_gate_n
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/CPU.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module CPU
+
+Top level modules:
+	CPU
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/RegisterFiles.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module RegisterFiles
+
+Top level modules:
+	RegisterFiles
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dffr.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module dffr
+
+Top level modules:
+	dffr
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/PC.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module PC
+
+Top level modules:
+	PC
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/and_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module and_gate
+
+Top level modules:
+	and_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/WB_stage.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module WB_stage
+
+Top level modules:
+	WB_stage
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ID_stage.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ID_stage
+
+Top level modules:
+	ID_stage
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dff.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module dff
+
+Top level modules:
+	dff
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/srl.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module srl
+
+Top level modules:
+	srl
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/not_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module not_gate
+
+Top level modules:
+	not_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/IF_stage.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module IF_stage
+
+Top level modules:
+	IF_stage
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Control_signal_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Control_tb
+
+Top level modules:
+	Control_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux_32
+
+Top level modules:
+	mux_32
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/Control_signal.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Control
+
+Top level modules:
+	Control
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/or_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module or_gate
+
+Top level modules:
+	or_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/readReg.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module readReg
+
+Top level modules:
+	readReg
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/Extender_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Signextend_tb
+
+Top level modules:
+	Signextend_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/CPU_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module CPU_tb
+
+Top level modules:
+	CPU_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/nor_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module nor_gate
+
+Top level modules:
+	nor_gate
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/ALUctrl.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALUctrl
+
+Top level modules:
+	ALUctrl
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/test.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALU_test_pj1
+
+Top level modules:
+	ALU_test_pj1
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/writeReg.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module writeReg
+
+Top level modules:
+	writeReg
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/slt_sltu.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module slt_sltu
+
+Top level modules:
+	slt_sltu
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux
+
+Top level modules:
+	mux
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_msb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu_msb
+
+Top level modules:
+	alu_msb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/dec_n_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module dec_n_tb
+
+Top level modules:
+	dec_n_tb
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/mux_n.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux_n
+
+Top level modules:
+	mux_n
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/write32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module write32
+
+Top level modules:
+	write32
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/dec_n.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module dec_n
+
+Top level modules:
+	dec_n
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/alu_unit.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu_unit
+
+Top level modules:
+	alu_unit
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/lib/sram.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module sram
+
+Top level modules:
+	sram
+
+} {} {}} C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v {1 {vlog -work work -stats=none C:/E/Northwestern/Courses/COMP_ENG361/projects/p3/final_pipeline/test/RegisterFiles_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module RegisterFiles_tb
+
+Top level modules:
+	RegisterFiles_tb
+
+} {} {}}
