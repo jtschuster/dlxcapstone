@@ -18,7 +18,7 @@ SYNTH_FOLDER = synthesis
 	syn_map \
 	syn_opt \
 	report timing > timing.rpt \
-	report_are > area.rpt \
+	report_area > area.rpt \
 	write_hdl > _$(@)_syn.v \
 	quit" | genus;
 	cd $(SYNTH_FOLDER) && \
