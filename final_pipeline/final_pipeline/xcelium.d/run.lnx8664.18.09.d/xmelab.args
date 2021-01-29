@@ -1,0 +1,22 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-ACCESS
+r
+-warnmax
+0
+-delay_mode
+zero
+-maxdelays
+-MESSAGES
+-XLMODE
+./xcelium.d/run.lnx8664.18.09.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx8664.18.09.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.18.09.d/hdl.var
+-WORK
+worklib
+-HASXLMODE

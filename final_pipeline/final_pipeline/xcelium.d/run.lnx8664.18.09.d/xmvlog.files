@@ -1,0 +1,9 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+/home/jts6813/362/project/final_pipeline/final_pipeline/lib/syncram.v
+/home/jts6813/362/project/final_pipeline/final_pipeline/lib/sram.v
+/home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
+/home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis/combined_syn.v
+/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v

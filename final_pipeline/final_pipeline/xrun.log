@@ -1,0 +1,160 @@
+xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	18.09-s011: Started on Jan 28, 2021 at 23:28:42 CST
+xrun
+	-64bit
+	-gui
+	-access r
+	-xmelab_args "-warnmax 0 -delay_mode zero -maxdelays"
+	./lib/syncram.v
+	./lib/sram.v
+	./test/CPU_tb.v
+	./lib/synthesis/combined_syn.v
+	/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+Recompiling... reason: file './lib/synthesis/combined_syn.v' is newer than expected.
+	expected: Thu Jan 28 20:10:46 2021
+	actual:   Thu Jan 28 23:19:55 2021
+file: ./lib/syncram.v
+        1'h2 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h3 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h4 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h5 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h6 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h7 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h8 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h9 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'ha : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hb : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hc : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hd : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'he : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hf : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hA : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hB : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hC : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hD : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,64|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hE : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,65|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hF : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/syncram.v,66|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        initiate();
+                 |
+xmvlog: *W,TMTPAR (./lib/syncram.v,203|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
+        checkRAM();
+                 |
+xmvlog: *W,TMTPAR (./lib/syncram.v,208|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
+file: ./lib/sram.v
+        1'h2 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,46|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h3 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h4 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h5 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h6 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h7 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h8 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'h9 : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'ha : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hb : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hc : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hd : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'he : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hf : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hA : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hB : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hC : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hD : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hE : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,64|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        1'hF : hex = 1;
+           |
+xmvlog: *W,INTOVF (./lib/sram.v,65|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
+        initiate();
+                 |
+xmvlog: *W,TMTPAR (./lib/sram.v,202|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
+        checkRAM();
+                 |
+xmvlog: *W,TMTPAR (./lib/sram.v,207|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+  sram_mem_filex646174612f756e7369676e65645f73756d2e646174 s_ifetch(.cs
+                                                                  |
+xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,16|66): instance 'CPU_tb.scp@CPU<module>.cpu_if0_instr_read@ifetch_inst_name168h646174612f756e7369676e65645f73756d2e646174<module>.s_ifetch' of design unit 'sram_mem_filex646174612f756e7369676e65645f73756d2e646174' is unresolved in 'worklib.ifetch_inst_name168h646174612f756e7369676e65645f73756d2e646174:v'.
+       cpu_scm(.clk (clk), .cs (cs), .oe (oe), .we (we_new), .addr
+             |
+xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,62|13): instance 'CPU_tb.scp@CPU<module>.cpu_mem@Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174<module>.cpu_scm' of design unit 'syncram_mem_filex646174612f756e7369676e65645f73756d2e646174' is unresolved in 'worklib.Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174:v'.
+xrun: *E,ELBERR: Error during elaboration (status 1), exiting.
+TOOL:	xrun(64)	18.09-s011: Exiting on Jan 28, 2021 at 23:28:43 CST  (total: 00:00:01)

@@ -1,0 +1,15 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-64bit
+-gui
+-access
+r
+-xmelab_args
+"-warnmax 0 -delay_mode zero -maxdelays"
+./lib/syncram.v
+./lib/sram.v
+./test/CPU_tb.v
+./lib/synthesis/combined_syn.v
+/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
