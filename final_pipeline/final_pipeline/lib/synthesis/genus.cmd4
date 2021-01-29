@@ -1,0 +1,19 @@
+# Cadence Genus(TM) Synthesis Solution, Version 18.14-s037_1, built Mar 27 2019 12:19:21
+
+# Date: Wed Jan 27 23:07:35 2021
+# Host: alfred.ece.northwestern.edu (x86_64 w/Linux 4.18.0-240.8.1.el8_3.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB)
+# OS:   Red Hat Enterprise Linux release 8.3 (Ootpa)
+
+read_hdl ../../alu_32.v ../EX_stage.v ../mux_n.v ../sram.v ../ALUctrl.v ../Extender.v ../mux.v ../alu_msb.v ../forwarding_ex.v ../nor_gate.v ../srl.v alu_unit.v ../full_alu.v ../not_gate_n.v ../syncram.v ../and_6.v ../ID_stage.v ../not_gate.v ../and_gate.v ../ifecth.v ../or_gate_32.v ../Control_signal.v ../or_gate.v ../CPU.v ../IF_stage.v ../PC.v ../WB_stage.v ../readReg.v ../write32.v ../dec_n.v ../Mem_stage.v ../RegisterFiles.v ../writeReg.v ../dffr.v ../sll.v ../xnor_gate.v ../dff.v ../mux_32.v ../slt_sltu.v ../xor_gate.v.v
+set_db library /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+set_db lef_library /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+elaborate
+current_design CPU
+read_sdc /vol/ece303/genus_tutorial/alu_conv.sdc
+syn_generic
+syn_map
+syn_opt
+report timing > timing.rpt
+report_are > area.rpt
+write_hdl > _all_syn.v
+quit
