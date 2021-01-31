@@ -1,5 +1,5 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Jan 30, 2021 at 15:50:21 CST
+TOOL:	xrun(64)	18.09-s011: Started on Jan 30, 2021 at 21:07:56 CST
 xrun
 	-64bit
 	-gui
@@ -7,154 +7,13 @@ xrun
 	-xmelab_args "-warnmax 0 -delay_mode zero -maxdelays"
 	./test/CPU_tb.v
 	./lib/synthesis/combined_syn.v
-	./lib/alu_32.v
-	./lib/EX_stage.v
-	./lib/ALUctrl.v
-	./lib/Extender.v
-	./lib/alu_msb.v
-	./lib/forwarding_ex.v
-	./lib/srl.v
-	./lib/alu_unit.v
-	./lib/full_alu.v
-	./lib/and_6.v
-	./lib/ID_stage.v
-	./lib/ifecth.v
-	./lib/Control_signal.v
-	./lib/IF_stage.v
-	./lib/PC.v
-	./lib/WB_stage.v
-	./lib/readReg.v
-	./lib/write32.v
-	./lib/Mem_stage.v
-	./lib/RegisterFiles.v
-	./lib/writeReg.v
-	./lib/sll.v
-	./lib/slt_sltu.v
-	./lib/mux_n.v
-	./lib/nor_gate.v
-	./lib/not_gate_n.v
-	./lib/not_gate.v
-	./lib/and_gate.v
-	./lib/or_gate_32.v
-	./lib/or_gate.v
-	./lib/dec_n.v
-	./lib/dffr.v
-	./lib/xnor_gate.v
-	./lib/dff.v
-	./lib/mux_32.v
-	./lib/xor_gate.v
-	./lib/mux.v
 	/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
-file: ./lib/alu_32.v
-	module worklib.alu_32:v
+file: ./lib/synthesis/combined_syn.v
+	module worklib.ifetch_inst_name168h646174612f756e7369676e65645f73756d2e646174:v
 		errors: 0, warnings: 0
-file: ./lib/EX_stage.v
-	module worklib.EX_stage:v
+	module worklib.Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174:v
 		errors: 0, warnings: 0
-file: ./lib/ALUctrl.v
-	module worklib.ALUctrl:v
-		errors: 0, warnings: 0
-file: ./lib/Extender.v
-	module worklib.Signextend:v
-		errors: 0, warnings: 0
-file: ./lib/alu_msb.v
-	module worklib.alu_msb:v
-		errors: 0, warnings: 0
-file: ./lib/forwarding_ex.v
-	module worklib.forwarding_ex:v
-		errors: 0, warnings: 0
-file: ./lib/srl.v
-	module worklib.srl:v
-		errors: 0, warnings: 0
-file: ./lib/alu_unit.v
-	module worklib.alu_unit:v
-		errors: 0, warnings: 0
-file: ./lib/full_alu.v
-	module worklib.alu:v
-		errors: 0, warnings: 0
-file: ./lib/and_6.v
-	module worklib.and_6:v
-		errors: 0, warnings: 0
-file: ./lib/ID_stage.v
-	module worklib.ID_stage:v
-		errors: 0, warnings: 0
-file: ./lib/ifecth.v
-	module worklib.ifetch:v
-		errors: 0, warnings: 0
-file: ./lib/Control_signal.v
-	module worklib.Control:v
-		errors: 0, warnings: 0
-file: ./lib/IF_stage.v
-	module worklib.IF_stage:v
-		errors: 0, warnings: 0
-file: ./lib/PC.v
-	module worklib.PC:v
-		errors: 0, warnings: 0
-file: ./lib/WB_stage.v
-	module worklib.WB_stage:v
-		errors: 0, warnings: 0
-file: ./lib/readReg.v
-	module worklib.readReg:v
-		errors: 0, warnings: 0
-file: ./lib/write32.v
-	module worklib.write32:v
-		errors: 0, warnings: 0
-file: ./lib/Mem_stage.v
-	module worklib.Mem_stage:v
-		errors: 0, warnings: 0
-file: ./lib/RegisterFiles.v
-	module worklib.RegisterFiles:v
-		errors: 0, warnings: 0
-file: ./lib/writeReg.v
-	module worklib.writeReg:v
-		errors: 0, warnings: 0
-file: ./lib/sll.v
-	module worklib.sll:v
-		errors: 0, warnings: 0
-file: ./lib/slt_sltu.v
-	module worklib.slt_sltu:v
-		errors: 0, warnings: 0
-file: ./lib/mux_n.v
-	module worklib.mux_n:v
-		errors: 0, warnings: 0
-file: ./lib/nor_gate.v
-	module worklib.nor_gate:v
-		errors: 0, warnings: 0
-file: ./lib/not_gate_n.v
-	module worklib.not_gate_n:v
-		errors: 0, warnings: 0
-file: ./lib/not_gate.v
-	module worklib.not_gate:v
-		errors: 0, warnings: 0
-file: ./lib/and_gate.v
-	module worklib.and_gate:v
-		errors: 0, warnings: 0
-file: ./lib/or_gate_32.v
-	module worklib.or_gate_32:v
-		errors: 0, warnings: 0
-file: ./lib/or_gate.v
-	module worklib.or_gate:v
-		errors: 0, warnings: 0
-file: ./lib/dec_n.v
-	module worklib.dec_n:v
-		errors: 0, warnings: 0
-file: ./lib/dffr.v
-	module worklib.dffr:v
-		errors: 0, warnings: 0
-file: ./lib/xnor_gate.v
-	module worklib.xnor_gate:v
-		errors: 0, warnings: 0
-file: ./lib/dff.v
-	module worklib.dff:v
-		errors: 0, warnings: 0
-file: ./lib/mux_32.v
-	module worklib.mux_32:v
-		errors: 0, warnings: 0
-file: ./lib/xor_gate.v
-	module worklib.xor_gate:v
-		errors: 0, warnings: 0
-file: ./lib/mux.v
-	module worklib.mux:v
+	module worklib.CPU:v
 		errors: 0, warnings: 0
 file: /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
 	module worklib.AND2_X1:v
@@ -495,4 +354,4 @@ xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,16|66): instance 'CPU_tb.scp@C
              |
 xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,62|13): instance 'CPU_tb.scp@CPU<module>.cpu_mem@Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174<module>.cpu_scm' of design unit 'syncram_mem_filex646174612f756e7369676e65645f73756d2e646174' is unresolved in 'worklib.Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174:v'.
 xrun: *E,ELBERR: Error during elaboration (status 1), exiting.
-TOOL:	xrun(64)	18.09-s011: Exiting on Jan 30, 2021 at 15:50:22 CST  (total: 00:00:01)
+TOOL:	xrun(64)	18.09-s011: Exiting on Jan 30, 2021 at 21:07:57 CST  (total: 00:00:01)

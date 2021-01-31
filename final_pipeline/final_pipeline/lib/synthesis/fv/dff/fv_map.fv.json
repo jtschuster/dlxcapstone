@@ -16,7 +16,7 @@
 "hdl_interface_separator":"_",
 "hdl_keep_first_module_definition":"false",
 "hdl_latch_keep_feedback":"false",
-"hdl_max_loop_limit":"1024",
+"hdl_max_loop_limit":"8192",
 "hdl_parameter_naming_style":"_%s%d",
 "hdl_preserve_unused_flop":"false",
 "hdl_preserve_unused_latch":"false",
@@ -186,14 +186,14 @@
 "type":"instance"},
 
 {"index": "1", 
- "date": "Wed Jan 27 23:01:35 CST 2021",
- "seconds": 1611810095.572353,
+ "date": "Sat Jan 30 21:01:07 CST 2021",
+ "seconds": 1612062067.601516,
  "netlist": "fv/dff/fv_map.v.gz", 
  "design_name": "dff", 
- "synth_workdir": "/home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis", 
+ "synth_workdir": "/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis", 
  "synthesis_command":"",
  "current_label": "fv_map", 
  "previous_label": "rtl", 
- "write_verif_file_runtime": 0.21712499999999998 
+ "write_verif_file_runtime": 0.150026 
  }
 ]

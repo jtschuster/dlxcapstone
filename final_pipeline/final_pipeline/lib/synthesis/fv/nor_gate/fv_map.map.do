@@ -1,10 +1,10 @@
 
 //input ports
-add mapped point x x
-add mapped point y y
+add mapped point no_value x
+add mapped point no_value y
 
 //output ports
-add mapped point z z
+add mapped point no_value z
 
 //inout ports
 

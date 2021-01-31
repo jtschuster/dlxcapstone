@@ -1,10 +1,10 @@
 
 //input ports
-add mapped point clk clk
-add mapped point d d
+add mapped point no_value clk
+add mapped point no_value d
 
 //output ports
-add mapped point q q
+add mapped point no_value q
 
 //inout ports
 
@@ -12,8 +12,6 @@ add mapped point q q
 
 
 //Sequential Pins
-add mapped point q/q q_reg/Q 
-add mapped point q/q q_reg/QN 
 
 
 
