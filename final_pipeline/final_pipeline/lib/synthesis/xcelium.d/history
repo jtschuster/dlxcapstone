@@ -9,3 +9,4 @@ s4::(28Jan2021:19:04:10):( xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -
 s5::(28Jan2021:19:04:34):( xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" ./combined_syn.v /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v )
 s6::(28Jan2021:19:05:06):( xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" ./combined_syn.v /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v )
 s7::(28Jan2021:19:57:52):( xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" ./combined_syn.v /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v )
+s8::(30Jan2021:17:17:32):( xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" CPU_syn.v ../../test/CPU_tb.v /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v )

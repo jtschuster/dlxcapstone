@@ -1,6 +1,7 @@
+1612048274 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/not_gate.v
-1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/xor_gate.v
 1568236065 /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/xor_gate.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/dffr.v
 1611853312 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis/all_syn.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/not_gate_n.v
@@ -9,10 +10,11 @@
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/dec_n.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/sram.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/xnor_gate.v
-1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_32.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux_n.v
+1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_32.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/and_gate.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/nor_gate.v
+1611884439 /home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/syncram.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/dff.v

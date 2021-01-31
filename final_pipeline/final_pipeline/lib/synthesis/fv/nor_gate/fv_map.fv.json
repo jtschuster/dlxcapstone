@@ -180,14 +180,14 @@
 "type":"design"},
 
 {"index": "1", 
- "date": "Thu Jan 28 17:26:41 CST 2021",
- "seconds": 1611876401.90252,
+ "date": "Sat Jan 30 16:36:21 CST 2021",
+ "seconds": 1612046181.0446348,
  "netlist": "fv/nor_gate/fv_map.v.gz", 
  "design_name": "nor_gate", 
  "synth_workdir": "/home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis", 
  "synthesis_command":"",
  "current_label": "fv_map", 
  "previous_label": "rtl", 
- "write_verif_file_runtime": 0.201625 
+ "write_verif_file_runtime": 0.138461 
  }
 ]

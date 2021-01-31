@@ -1,8 +1,6 @@
 module sram(cs,oe,we,addr,din,dout);
   
-  parameter mem_file = "data/unsigned_sum.dat";
-  //parameter mem_file = "data/bills_branch.dat";
-  //parameter mem_file = "data/sort_corredted_bianch.dat";
+  parameter mem_file;
   input cs;
   input oe;
   input we;
@@ -147,35 +145,6 @@ module sram(cs,oe,we,addr,din,dout);
           end
         end
       endtask
-
-    task writeRAMv;
-        input [31:0] addr;
-        input [31:0] data;
-        
-        begin
-            file = $fopen("sram_wr.txt" , "a");
-            if (file==0) begin
-                $display("ERROR: file not found!");
-                $finish;
-            end
-            $fwrite(file, "Write 0x%08x at 0x%08x\n", $unsigned(data), $unsigned(addr));
-            $fclose(file);
-
-          for (c=0; c<49 ; c=c+1) begin
-            if (mem[c][0] == addr) begin
-              $display ("WRITE Addr FOUND!: %h" , mem[c][0]);
-              mem[c][1] = data;
-              addr_found = 1;
-            end
-          end
-          if (addr_found==0) begin // new addition to RAM
-            mem[ram_size][0] = addr;
-            mem[ram_size][1] = data;
-            ram_size = ram_size+1;
-            addr_found = 1;
-          end
-        end
-    endtask
       
       // read from RAM
       task readRAM;
@@ -212,7 +181,7 @@ module sram(cs,oe,we,addr,din,dout);
       if ((initNeeded==0) && (cs==1)) begin
         if (we==1) begin
           addr_found = 0;
-          writeRAMv(addr , din);
+          writeRAM(addr , din);
         end
         if (oe==1) begin
           readRAM(addr , dbuf);
