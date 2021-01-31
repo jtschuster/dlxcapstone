@@ -1,152 +1,490 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Jan 28, 2021 at 23:28:42 CST
+TOOL:	xrun(64)	18.09-s011: Started on Jan 30, 2021 at 15:50:21 CST
 xrun
 	-64bit
 	-gui
 	-access r
 	-xmelab_args "-warnmax 0 -delay_mode zero -maxdelays"
-	./lib/syncram.v
-	./lib/sram.v
 	./test/CPU_tb.v
 	./lib/synthesis/combined_syn.v
+	./lib/alu_32.v
+	./lib/EX_stage.v
+	./lib/ALUctrl.v
+	./lib/Extender.v
+	./lib/alu_msb.v
+	./lib/forwarding_ex.v
+	./lib/srl.v
+	./lib/alu_unit.v
+	./lib/full_alu.v
+	./lib/and_6.v
+	./lib/ID_stage.v
+	./lib/ifecth.v
+	./lib/Control_signal.v
+	./lib/IF_stage.v
+	./lib/PC.v
+	./lib/WB_stage.v
+	./lib/readReg.v
+	./lib/write32.v
+	./lib/Mem_stage.v
+	./lib/RegisterFiles.v
+	./lib/writeReg.v
+	./lib/sll.v
+	./lib/slt_sltu.v
+	./lib/mux_n.v
+	./lib/nor_gate.v
+	./lib/not_gate_n.v
+	./lib/not_gate.v
+	./lib/and_gate.v
+	./lib/or_gate_32.v
+	./lib/or_gate.v
+	./lib/dec_n.v
+	./lib/dffr.v
+	./lib/xnor_gate.v
+	./lib/dff.v
+	./lib/mux_32.v
+	./lib/xor_gate.v
+	./lib/mux.v
 	/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
-Recompiling... reason: file './lib/synthesis/combined_syn.v' is newer than expected.
-	expected: Thu Jan 28 20:10:46 2021
-	actual:   Thu Jan 28 23:19:55 2021
-file: ./lib/syncram.v
-        1'h2 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h3 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h4 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h5 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h6 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h7 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h8 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h9 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'ha : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hb : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hc : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hd : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'he : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hf : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hA : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hB : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hC : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hD : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,64|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hE : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,65|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hF : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/syncram.v,66|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        initiate();
-                 |
-xmvlog: *W,TMTPAR (./lib/syncram.v,203|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-        checkRAM();
-                 |
-xmvlog: *W,TMTPAR (./lib/syncram.v,208|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-file: ./lib/sram.v
-        1'h2 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,46|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h3 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h4 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h5 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h6 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h7 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h8 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h9 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'ha : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hb : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hc : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hd : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'he : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hf : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hA : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hB : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hC : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hD : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hE : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,64|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hF : hex = 1;
-           |
-xmvlog: *W,INTOVF (./lib/sram.v,65|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        initiate();
-                 |
-xmvlog: *W,TMTPAR (./lib/sram.v,202|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-        checkRAM();
-                 |
-xmvlog: *W,TMTPAR (./lib/sram.v,207|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
+file: ./lib/alu_32.v
+	module worklib.alu_32:v
+		errors: 0, warnings: 0
+file: ./lib/EX_stage.v
+	module worklib.EX_stage:v
+		errors: 0, warnings: 0
+file: ./lib/ALUctrl.v
+	module worklib.ALUctrl:v
+		errors: 0, warnings: 0
+file: ./lib/Extender.v
+	module worklib.Signextend:v
+		errors: 0, warnings: 0
+file: ./lib/alu_msb.v
+	module worklib.alu_msb:v
+		errors: 0, warnings: 0
+file: ./lib/forwarding_ex.v
+	module worklib.forwarding_ex:v
+		errors: 0, warnings: 0
+file: ./lib/srl.v
+	module worklib.srl:v
+		errors: 0, warnings: 0
+file: ./lib/alu_unit.v
+	module worklib.alu_unit:v
+		errors: 0, warnings: 0
+file: ./lib/full_alu.v
+	module worklib.alu:v
+		errors: 0, warnings: 0
+file: ./lib/and_6.v
+	module worklib.and_6:v
+		errors: 0, warnings: 0
+file: ./lib/ID_stage.v
+	module worklib.ID_stage:v
+		errors: 0, warnings: 0
+file: ./lib/ifecth.v
+	module worklib.ifetch:v
+		errors: 0, warnings: 0
+file: ./lib/Control_signal.v
+	module worklib.Control:v
+		errors: 0, warnings: 0
+file: ./lib/IF_stage.v
+	module worklib.IF_stage:v
+		errors: 0, warnings: 0
+file: ./lib/PC.v
+	module worklib.PC:v
+		errors: 0, warnings: 0
+file: ./lib/WB_stage.v
+	module worklib.WB_stage:v
+		errors: 0, warnings: 0
+file: ./lib/readReg.v
+	module worklib.readReg:v
+		errors: 0, warnings: 0
+file: ./lib/write32.v
+	module worklib.write32:v
+		errors: 0, warnings: 0
+file: ./lib/Mem_stage.v
+	module worklib.Mem_stage:v
+		errors: 0, warnings: 0
+file: ./lib/RegisterFiles.v
+	module worklib.RegisterFiles:v
+		errors: 0, warnings: 0
+file: ./lib/writeReg.v
+	module worklib.writeReg:v
+		errors: 0, warnings: 0
+file: ./lib/sll.v
+	module worklib.sll:v
+		errors: 0, warnings: 0
+file: ./lib/slt_sltu.v
+	module worklib.slt_sltu:v
+		errors: 0, warnings: 0
+file: ./lib/mux_n.v
+	module worklib.mux_n:v
+		errors: 0, warnings: 0
+file: ./lib/nor_gate.v
+	module worklib.nor_gate:v
+		errors: 0, warnings: 0
+file: ./lib/not_gate_n.v
+	module worklib.not_gate_n:v
+		errors: 0, warnings: 0
+file: ./lib/not_gate.v
+	module worklib.not_gate:v
+		errors: 0, warnings: 0
+file: ./lib/and_gate.v
+	module worklib.and_gate:v
+		errors: 0, warnings: 0
+file: ./lib/or_gate_32.v
+	module worklib.or_gate_32:v
+		errors: 0, warnings: 0
+file: ./lib/or_gate.v
+	module worklib.or_gate:v
+		errors: 0, warnings: 0
+file: ./lib/dec_n.v
+	module worklib.dec_n:v
+		errors: 0, warnings: 0
+file: ./lib/dffr.v
+	module worklib.dffr:v
+		errors: 0, warnings: 0
+file: ./lib/xnor_gate.v
+	module worklib.xnor_gate:v
+		errors: 0, warnings: 0
+file: ./lib/dff.v
+	module worklib.dff:v
+		errors: 0, warnings: 0
+file: ./lib/mux_32.v
+	module worklib.mux_32:v
+		errors: 0, warnings: 0
+file: ./lib/xor_gate.v
+	module worklib.xor_gate:v
+		errors: 0, warnings: 0
+file: ./lib/mux.v
+	module worklib.mux:v
+		errors: 0, warnings: 0
+file: /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+	module worklib.AND2_X1:v
+		errors: 0, warnings: 0
+	module worklib.AND2_X2:v
+		errors: 0, warnings: 0
+	module worklib.AND2_X4:v
+		errors: 0, warnings: 0
+	module worklib.AND3_X1:v
+		errors: 0, warnings: 0
+	module worklib.AND3_X2:v
+		errors: 0, warnings: 0
+	module worklib.AND3_X4:v
+		errors: 0, warnings: 0
+	module worklib.AND4_X1:v
+		errors: 0, warnings: 0
+	module worklib.AND4_X2:v
+		errors: 0, warnings: 0
+	module worklib.AND4_X4:v
+		errors: 0, warnings: 0
+	module worklib.ANTENNA_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI211_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI211_X2:v
+		errors: 0, warnings: 0
+	module worklib.AOI211_X4:v
+		errors: 0, warnings: 0
+	module worklib.AOI21_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI21_X2:v
+		errors: 0, warnings: 0
+	module worklib.AOI21_X4:v
+		errors: 0, warnings: 0
+	module worklib.AOI221_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI221_X2:v
+		errors: 0, warnings: 0
+	module worklib.AOI221_X4:v
+		errors: 0, warnings: 0
+	module worklib.AOI222_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI222_X2:v
+		errors: 0, warnings: 0
+	module worklib.AOI222_X4:v
+		errors: 0, warnings: 0
+	module worklib.AOI22_X1:v
+		errors: 0, warnings: 0
+	module worklib.AOI22_X2:v
+		errors: 0, warnings: 0
+	module worklib.AOI22_X4:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X1:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X16:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X2:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X32:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X4:v
+		errors: 0, warnings: 0
+	module worklib.BUF_X8:v
+		errors: 0, warnings: 0
+	module worklib.CLKBUF_X1:v
+		errors: 0, warnings: 0
+	module worklib.CLKBUF_X2:v
+		errors: 0, warnings: 0
+	module worklib.CLKBUF_X3:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATETST_X1:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATETST_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATETST_X2:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATETST_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATETST_X4:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATETST_X4:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATETST_X8:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATETST_X8:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATE_X1:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATE_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATE_X2:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATE_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATE_X4:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATE_X4:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_CLKGATE_X8:v
+		errors: 0, warnings: 0
+	module worklib.CLKGATE_X8:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFRS_X1:v
+		errors: 0, warnings: 0
+	module worklib.DFFRS_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFRS_X2:v
+		errors: 0, warnings: 0
+	module worklib.DFFRS_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFR_X1:v
+		errors: 0, warnings: 0
+	module worklib.DFFR_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFR_X2:v
+		errors: 0, warnings: 0
+	module worklib.DFFR_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFS_X1:v
+		errors: 0, warnings: 0
+	module worklib.DFFS_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFFS_X2:v
+		errors: 0, warnings: 0
+	module worklib.DFFS_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFF_X1:v
+		errors: 0, warnings: 0
+	module worklib.DFF_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DFF_X2:v
+		errors: 0, warnings: 0
+	module worklib.DFF_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DLH_X1:v
+		errors: 0, warnings: 0
+	module worklib.DLH_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DLH_X2:v
+		errors: 0, warnings: 0
+	module worklib.DLH_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DLL_X1:v
+		errors: 0, warnings: 0
+	module worklib.DLL_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_DLL_X2:v
+		errors: 0, warnings: 0
+	module worklib.DLL_X2:v
+		errors: 0, warnings: 0
+	module worklib.FA_X1:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X1:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X2:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X4:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X8:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X16:v
+		errors: 0, warnings: 0
+	module worklib.FILLCELL_X32:v
+		errors: 0, warnings: 0
+	module worklib.HA_X1:v
+		errors: 0, warnings: 0
+	module worklib.INV_X1:v
+		errors: 0, warnings: 0
+	module worklib.INV_X16:v
+		errors: 0, warnings: 0
+	module worklib.INV_X2:v
+		errors: 0, warnings: 0
+	module worklib.INV_X32:v
+		errors: 0, warnings: 0
+	module worklib.INV_X4:v
+		errors: 0, warnings: 0
+	module worklib.INV_X8:v
+		errors: 0, warnings: 0
+	module worklib.LOGIC0_X1:v
+		errors: 0, warnings: 0
+	module worklib.LOGIC1_X1:v
+		errors: 0, warnings: 0
+	module worklib.MUX2_X1:v
+		errors: 0, warnings: 0
+	module worklib.MUX2_X2:v
+		errors: 0, warnings: 0
+	module worklib.NAND2_X1:v
+		errors: 0, warnings: 0
+	module worklib.NAND2_X2:v
+		errors: 0, warnings: 0
+	module worklib.NAND2_X4:v
+		errors: 0, warnings: 0
+	module worklib.NAND3_X1:v
+		errors: 0, warnings: 0
+	module worklib.NAND3_X2:v
+		errors: 0, warnings: 0
+	module worklib.NAND3_X4:v
+		errors: 0, warnings: 0
+	module worklib.NAND4_X1:v
+		errors: 0, warnings: 0
+	module worklib.NAND4_X2:v
+		errors: 0, warnings: 0
+	module worklib.NAND4_X4:v
+		errors: 0, warnings: 0
+	module worklib.NOR2_X1:v
+		errors: 0, warnings: 0
+	module worklib.NOR2_X2:v
+		errors: 0, warnings: 0
+	module worklib.NOR2_X4:v
+		errors: 0, warnings: 0
+	module worklib.NOR3_X1:v
+		errors: 0, warnings: 0
+	module worklib.NOR3_X2:v
+		errors: 0, warnings: 0
+	module worklib.NOR3_X4:v
+		errors: 0, warnings: 0
+	module worklib.NOR4_X1:v
+		errors: 0, warnings: 0
+	module worklib.NOR4_X2:v
+		errors: 0, warnings: 0
+	module worklib.NOR4_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI211_X1:v
+		errors: 0, warnings: 0
+	module worklib.OAI211_X2:v
+		errors: 0, warnings: 0
+	module worklib.OAI211_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI21_X1:v
+		errors: 0, warnings: 0
+	module worklib.OAI21_X2:v
+		errors: 0, warnings: 0
+	module worklib.OAI21_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI221_X1:v
+		errors: 0, warnings: 0
+	module worklib.OAI221_X2:v
+		errors: 0, warnings: 0
+	module worklib.OAI221_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI222_X1:v
+		errors: 0, warnings: 0
+	module worklib.OAI222_X2:v
+		errors: 0, warnings: 0
+	module worklib.OAI222_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI22_X1:v
+		errors: 0, warnings: 0
+	module worklib.OAI22_X2:v
+		errors: 0, warnings: 0
+	module worklib.OAI22_X4:v
+		errors: 0, warnings: 0
+	module worklib.OAI33_X1:v
+		errors: 0, warnings: 0
+	module worklib.OR2_X1:v
+		errors: 0, warnings: 0
+	module worklib.OR2_X2:v
+		errors: 0, warnings: 0
+	module worklib.OR2_X4:v
+		errors: 0, warnings: 0
+	module worklib.OR3_X1:v
+		errors: 0, warnings: 0
+	module worklib.OR3_X2:v
+		errors: 0, warnings: 0
+	module worklib.OR3_X4:v
+		errors: 0, warnings: 0
+	module worklib.OR4_X1:v
+		errors: 0, warnings: 0
+	module worklib.OR4_X2:v
+		errors: 0, warnings: 0
+	module worklib.OR4_X4:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFRS_X1:v
+		errors: 0, warnings: 0
+	module worklib.SDFFRS_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFRS_X2:v
+		errors: 0, warnings: 0
+	module worklib.SDFFRS_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFR_X1:v
+		errors: 0, warnings: 0
+	module worklib.SDFFR_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFR_X2:v
+		errors: 0, warnings: 0
+	module worklib.SDFFR_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFS_X1:v
+		errors: 0, warnings: 0
+	module worklib.SDFFS_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFFS_X2:v
+		errors: 0, warnings: 0
+	module worklib.SDFFS_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFF_X1:v
+		errors: 0, warnings: 0
+	module worklib.SDFF_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_SDFF_X2:v
+		errors: 0, warnings: 0
+	module worklib.SDFF_X2:v
+		errors: 0, warnings: 0
+	module worklib.TBUF_X1:v
+		errors: 0, warnings: 0
+	module worklib.TBUF_X16:v
+		errors: 0, warnings: 0
+	module worklib.TBUF_X2:v
+		errors: 0, warnings: 0
+	module worklib.TBUF_X4:v
+		errors: 0, warnings: 0
+	module worklib.TBUF_X8:v
+		errors: 0, warnings: 0
+	module worklib.TINV_X1:v
+		errors: 0, warnings: 0
+	primitive worklib.seq_TLAT_X1:v
+		errors: 0, warnings: 0
+	module worklib.TLAT_X1:v
+		errors: 0, warnings: 0
+	module worklib.XNOR2_X1:v
+		errors: 0, warnings: 0
+	module worklib.XNOR2_X2:v
+		errors: 0, warnings: 0
+	module worklib.XOR2_X1:v
+		errors: 0, warnings: 0
+	module worklib.XOR2_X2:v
+		errors: 0, warnings: 0
+	primitive worklib.ng_xbuf:v
+		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 		Caching library 'worklib' ....... Done
@@ -157,4 +495,4 @@ xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,16|66): instance 'CPU_tb.scp@C
              |
 xmelab: *E,CUVMUR (./lib/synthesis/combined_syn.v,62|13): instance 'CPU_tb.scp@CPU<module>.cpu_mem@Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174<module>.cpu_scm' of design unit 'syncram_mem_filex646174612f756e7369676e65645f73756d2e646174' is unresolved in 'worklib.Mem_stage_mem_file168h646174612f756e7369676e65645f73756d2e646174:v'.
 xrun: *E,ELBERR: Error during elaboration (status 1), exiting.
-TOOL:	xrun(64)	18.09-s011: Exiting on Jan 28, 2021 at 23:28:43 CST  (total: 00:00:01)
+TOOL:	xrun(64)	18.09-s011: Exiting on Jan 30, 2021 at 15:50:22 CST  (total: 00:00:01)

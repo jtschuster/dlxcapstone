@@ -8,5 +8,6 @@
 r
 -xmelab_args
 "-warnmax 0 -delay_mode zero -maxdelays"
-./combined_syn.v
+CPU_syn.v
+../../test/CPU_tb.v
 /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v

@@ -51,7 +51,7 @@ all:
 %: %.v
 	source /vol/ece303/genus_tutorial/cadence.env && \
 	cd $(SYNTH_FOLDER) && \
-	echo "read_hdl ../$(@).v \
+	echo "read_hdl $(PROVIDED_FILES) $(OUR_FILES) \
 	set_db library $(LIB) \
 	set_db lef_library $(LEF_LIB) \
 	elaborate \
@@ -64,6 +64,8 @@ all:
 	report_are > area.rpt \
 	write_hdl > $(@)_syn.v \
 	quit" | genus;
-	cd $(SYNTH_FOLDER) && \
-	echo '`timescale 1ns/10ps\n' `cat $(@)_syn.v` > $(@)_syn.v;
+#	cd $(SYNTH_FOLDER) && \
+#	echo '`timescale 1ns/10ps\n' > timescale.txt && \
+#	cat timescale.txt $(@)_syn.v > $(@)_syn.v;
+
 

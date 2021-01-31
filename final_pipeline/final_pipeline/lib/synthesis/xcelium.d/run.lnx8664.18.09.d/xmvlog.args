@@ -5,7 +5,8 @@
 -XLMODE
 ./xcelium.d/run.lnx8664.18.09.d
 -RUNMODE
-./combined_syn.v
+CPU_syn.v
+../../test/CPU_tb.v
 /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.18.09.d/cdsrun.lib
