@@ -1,6 +1,6 @@
 module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Memread, shamt, opcode, funct, immed, RegDst, ALUSrc, MemtoReg, RegWrite, MemWrite, Branch, Extop,ALUop,Result,alu_input, alu_control);
   
-  parameter file_name="data/unsigned_sum.dat";
+  parameter file_name="../data/unsigned_sum.dat";
   //parameter file_name="data/bills_branch.dat";
   //parameter file_name = "data/sort_corrected_branch.dat";
   input clk;
