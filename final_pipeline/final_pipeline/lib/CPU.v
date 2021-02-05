@@ -29,6 +29,8 @@ module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Mem
   wire [31:0] result_mem;
   wire [31:0] mem_data_ex;
   wire lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
+   wire kill_next_instruction, should_be_killed;
+   
   //wire [4:0] towrite_delay;
   // initialize or nextPC
   mux_32 cpu_mux2 (.sel(initPC),.src0(nextPC), .src1(32'h00400020), .z(regPC));
@@ -48,7 +50,14 @@ module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Mem
   // opcode to control signal;
   Control cpu_c0 (.clk(clk), .Opcode(opcode), .funct(funct), .RegDst(RegDst), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite),
 					.MemWrite(MemWrite), .Branch(Branch), .Extop(Extop), .ALUop(ALUop),.valid(valid));
-					
+   control ctrl (.instr(inst), .rs1(Dout1), .pc_plus_4(nextPC), .should_be_killed(should_be_killed), .RegWr(RegWrite)
+		 .RegDst(), .ExtOp(), .AluSrc(), .AluOp(), .Branch(), .MemWr(), .MemToReg(), jumped_pc(), kill_next_instruction());
+   dff kill (.clk(clk), .d(kill_next_instruction), .q(should_be_killed));
+   
+		 
+
+										
+   
   // choose rd or rt based on RegDst
   mux_n #(.n(5)) cpu_m (.sel(RegDst), .src0(rt), .src1(rd), .z(towrite));
   /*
@@ -61,7 +70,7 @@ module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Mem
   endgenerate
   */
   // RegisterFiles
-  RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .readsel1(rs), .readsel2(rt), .writesel(towrite_mem), .Din(wDin), .Dout1(Dout1), .Dout2(Dout2));
+  RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .rs1_sel(rs), .rs2_sel(rt), .writesel(towrite_mem), .Din(wDin), .rs1_out(Dout1), .rs2_out(Dout2));
   //registers cpu_rfn (.clk(clk), .writeEnable(RegWrite), .readReg1(rs), .readReg2(rt), .writeReg(towrite),.writeData(Din), .readData1(Dout1), .readData2(Dout2));
   // sign extend the immed
   Signextend cpu_se (.Extop(Extop), .Din(immed), .Dout(se_immed));

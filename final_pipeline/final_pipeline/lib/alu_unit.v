@@ -24,6 +24,8 @@ module alu_unit (A, B, Op, Carryout, Carryin, usum);
   wire t_sum3;
   wire t_sum4;
   wire t_sum5;
+   wire t_sub_xor;
+   
   wire B_inv;
   wire B_slt;
   //and
@@ -49,11 +51,12 @@ module alu_unit (A, B, Op, Carryout, Carryin, usum);
   
   
 	//sum
-    and_gate andop (.x(Op[0]), .y(Op[1]), .z(t_add));
-	not_gate andop1 (.x(t_add),.z(t_not));
-	mux muxop0 (.sel(Op[0]), .src0(uand), .src1(uor), .z(t_sum1));
-	mux muxop1 (.sel(Op[1]), .src0(t_sum1), .src1(uadd), .z(t_sum2));
-	mux muxop3 (.sel(Op[2]), .src0(t_sum2), .src1(uadd), .z(usum));
+   and_gate andop (.x(Op[0]), .y(Op[1]), .z(t_add));
+   not_gate andop1 (.x(t_add),.z(t_not));
+   mux muxop0 (.sel(Op[0]), .src0(uand), .src1(uor), .z(t_sum1));
+   mux muxop1 (.sel(Op[1]), .src0(t_sum1), .src1(uadd), .z(t_sum2));
+   mux muxop2 (.sel(Op[1]), .src0(uxor), .src1(uadd), .z(t_sub_xor));
+   mux muxop3 (.sel(Op[2]), .src0(t_sum2), .src1(t_sub_xor), .z(usum));
 	
 	// Carryout
 	or_gate orcarry(.x(Op[1]), .y(Op[2]), .z(t_carry));

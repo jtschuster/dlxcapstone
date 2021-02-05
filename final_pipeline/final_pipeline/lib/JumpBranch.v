@@ -1,11 +1,14 @@
-module JumpBranch(clk, instruction, inputPC, outputPC);
+module JumpBranch(clk, instruction, inputPC, rs1, outputPC, takeBranch);
 
 	input clk;
 	input [31:0] instruction;
 	input [31:0] inputPC;
+        input [31:0] rs1, register31;
+   
 	output [31:0] outputPC;
-
-	//j, jal (sign-extend lowest 26 bits and add to PC+4)
+        output 	      takeBranch;
+   
+	//j, jal (sign-extend lowest 26 bits and add to PC+4):
 	//jr (PC=r1)
 	//beqz, bnez (I-type instructions. Sign extend 16 bt name and add to PC+4)
 
@@ -19,6 +22,7 @@ module JumpBranch(clk, instruction, inputPC, outputPC);
 
 	wire [25:0] name = instruction[25:0];
 
+        // Does this notation work right?
 	wire [31:0] signExtendedName = name <<< 6;
 	wire [31:0] signExtendedImmediate = immi <<< 16;
 
@@ -36,6 +40,7 @@ module JumpBranch(clk, instruction, inputPC, outputPC);
 		//PC = PC + 4 + SignExtend(name);
 		
 		newPC = inputPC + 4 + signExtendedName;
+	        takeBranch = 1;
 	end
 
 
@@ -45,11 +50,13 @@ module JumpBranch(clk, instruction, inputPC, outputPC);
 		register31 = inputPC + 4;
 		newPC = inputPC + 4 + signExtendedName;
 		writeSelect = 1'b1;
+	        takeBranch = 1;
 	end
 
 
 	if (opcode == 6'h12) begin //True for 'jr'
-		newPC = register_rs;
+		newPC = rs1;
+	        takeBranch = 1;
 	end
 
 
@@ -57,6 +64,7 @@ module JumpBranch(clk, instruction, inputPC, outputPC);
 		
 		if (register_rs == 0) begin
 			newPC = inputPC + 4 + signExtendedImmediate;
+		        takeBranch = 1;
 		end
 	
 	end
@@ -66,13 +74,14 @@ module JumpBranch(clk, instruction, inputPC, outputPC);
 
 		if (register_rs != 0) begin
 			newPC = inputPC + 4 + signExtendedImmediate;
+		        takeBranch = 1;
 		end
 
 	end
 
 
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
-	RegisterFiles reg_files(clk, 1'b1, 5'd31, 5'd0, writeSelect, register31, register_rs, null_register_read);
+	//RegisterFiles reg_files(clk, 1'b1, 5'd31, 5'd0, writeSelect, register31, register_rs, null_register_read);
 
 	outputPC = newPC;
 

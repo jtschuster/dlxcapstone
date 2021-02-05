@@ -41,12 +41,14 @@ module alu_msb (A, B, Op, Carryout, Carryin, usum, Overflow, Set);
   wire t_sltu;
   wire t_sltu0;
   wire t_overflow;
+   wire t_sub_xor;
+   
   //and
   and_gate and_1 (.x(A), .y(B), .z(uand));
   //or
   or_gate or_1 (.x(A), .y(B), .z(uor));
   //xor
-  //xor_gate xor_1 (.x(A), .y(B), .z(uxor));
+  xor_gate xor_1 (.x(A), .y(B), .z(uxor));
   //b_inverse
   not_gate not_1 (.x(B), .z(B_inv));
   mux mux_1 (.sel(Op[2]), .src0(B), .src1(B_inv), .z(B_slt));
@@ -69,7 +71,8 @@ module alu_msb (A, B, Op, Carryout, Carryin, usum, Overflow, Set);
 	not_gate andop1 (.x(t_add),.z(t_not));
 	mux muxop0 (.sel(Op[0]), .src0(uand), .src1(uor), .z(t_sum1));
 	mux muxop1 (.sel(Op[1]), .src0(t_sum1), .src1(uadd), .z(t_sum2));
-	mux muxop3 (.sel(Op[2]), .src0(t_sum2), .src1(uadd), .z(usum));
+   	mux muxop2 (.sel(Op[1]), .src0(uxor), .src1(uadd), .z(t_sub_xor));
+	mux muxop3 (.sel(Op[2]), .src0(t_sum2), .src1(t_sub_xor), .z(usum));
 
 	
 	

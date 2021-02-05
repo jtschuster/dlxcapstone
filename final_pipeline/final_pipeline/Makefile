@@ -15,7 +15,7 @@ RAM_FILES = ./lib/syncram.v ./lib/sram.v
 # need to supply TB and UNIT args
 sim:
 	source /vol/ece303/genus_tutorial/cadence.env && \
-	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(TB) $(UNIT) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
 
 all:
 	source /vol/ece303/genus_tutorial/cadence.env && \
