@@ -11,11 +11,16 @@ PROVIDED_FILES = ./lib/mux_n.v ./lib/nor_gate.v ./lib/not_gate_n.v ./lib/not_gat
 
 # Genus doesn't seem to like synthesizing these, so I think we just add them in when we simulate?
 RAM_FILES = ./lib/syncram.v ./lib/sram.v
+DUMMY_RAM_FILES = ./lib/sram_dummy.v
 
 # need to supply TB and UNIT args
 sim:
 	source /vol/ece303/genus_tutorial/cadence.env && \
 	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+sim_dummy:
+	source /vol/ece303/genus_tutorial/cadence.env && \
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+
 
 all:
 	source /vol/ece303/genus_tutorial/cadence.env && \
