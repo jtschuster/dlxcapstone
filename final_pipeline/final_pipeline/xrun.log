@@ -1,118 +1,49 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Feb 06, 2021 at 13:58:22 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 06, 2021 at 16:22:05 CST
 xrun
 	-64bit
 	-gui
 	-access r
 	-xmelab_args "-warnmax 0 -delay_mode zero -maxdelays"
-	./lib/mux_n.v
-	./lib/nor_gate.v
-	./lib/not_gate_n.v
-	./lib/not_gate.v
-	./lib/and_gate.v
-	./lib/or_gate_32.v
-	./lib/or_gate.v
-	./lib/dec_n.v
-	./lib/dffr.v
-	./lib/xnor_gate.v
-	./lib/dff.v
-	./lib/mux_32.v
-	./lib/xor_gate.v
-	./lib/mux.v
-	./lib/alu_32.v
-	./lib/EX_stage.v
-	./lib/ALUctrl.v
-	./lib/Extender.v
-	./lib/alu_msb.v
-	./lib/forwarding_ex.v
-	./lib/srl.v
-	./lib/alu_unit.v
-	./lib/full_alu.v
-	./lib/and_6.v
-	./lib/ID_stage.v
-	./lib/ifecth.v
-	./lib/Control_signal.v
-	./lib/IF_stage.v
 	./lib/PC.v
-	./lib/WB_stage.v
-	./lib/readReg.v
-	./lib/write32.v
-	./lib/Mem_stage.v
-	./lib/RegisterFiles.v
-	./lib/writeReg.v
-	./lib/sll.v
-	./lib/slt_sltu.v
-	./lib/CPU.v
-	./lib/control.v
-	./lib/JumpBranch.v
-	./lib/sram_dummy.v
-Recompiling... reason: file './lib/CPU.v' is newer than expected.
-	expected: Sat Jan 30 21:34:26 2021
-	actual:   Sat Feb  6 13:29:14 2021
-file: ./lib/sram_dummy.v
-	module worklib.sram:v
+	./test/PC_tb.v
+	./lib/dff.v
+Recompiling... reason: file './test/PC_tb.v' is newer than expected.
+	expected: Sat Feb  6 16:16:20 2021
+	actual:   Sat Feb  6 16:21:29 2021
+file: ./test/PC_tb.v
+	module worklib.PC_tb:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
-		Caching library 'worklib' ....... Done
 	Top level design units:
-		nor_gate
-		slt_sltu
-		CPU
-   control ctrl (.instr(inst), .rs1(Dout1), .pc_plus_four(nextPC), .should_be_killed(should_be_killed), .RegWr(RegWrite),
-                                        |
-xmelab: *W,CUVMPW (./lib/CPU.v,54|40): port sizes differ in port connection (32/6).
-		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
-		              |
-xmelab: *W,CUVMPW (./lib/CPU.v,55|16): port sizes differ in port connection (1/5).
-		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
-		                                              |
-xmelab: *W,CUVMPW (./lib/CPU.v,55|48): port sizes differ in port connection (2/1).
-		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
-		                                                             |
-xmelab: *W,CUVMPW (./lib/CPU.v,55|63): port sizes differ in port connection (2/4).
-   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
-                                                                              |
-xmelab: *W,CUVMPW (./lib/control.v,160|78): port sizes differ in port connection (6/32).
-	.r24(r24),.r25(r25),.r26(r26),.r27(r27),.r28(r28),.r29(r29),.r30(r30),.r31(r31),.dataout(Dout1));
-	                                                                                             |
-xmelab: *W,CUVMPW (./lib/RegisterFiles.v,20|94): port sizes differ in port connection (1/32).
-	.r24(r24),.r25(r25),.r26(r26),.r27(r27),.r28(r28),.r29(r29),.r30(r30),.r31(r31),.dataout(Dout2));
-	                                                                                             |
-xmelab: *W,CUVMPW (./lib/RegisterFiles.v,25|94): port sizes differ in port connection (1/32).
+		PC_tb
+		dff
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.JumpBranch:v <0x708944a8>
-			streams:   9, words:  3570
-		worklib.control:v <0x22783074>
-			streams:  10, words:  5189
-		worklib.CPU:v <0x3d4e602f>
-			streams:   2, words:   279
-		worklib.ifetch:v <0x61bb036e>
-			streams:   1, words:   152
-		worklib.sram:v <0x0e19456c>
-			streams:   1, words:  1134
-		worklib.forwarding_ex:v <0x0ecea810>
-			streams:   0, words:     0
+		worklib.PC_tb:v <0x324baa38>
+			streams:  11, words:  3570
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		                Instances  Unique
-		Modules:             4072      42
-		Registers:           2105      36
-		Scalar wires:        3770       -
-		Expanded wires:      1644      67
-		Vectored wires:       259       -
-		Always blocks:       2076       9
-		Initial blocks:         8       8
-		Cont. assignments:     65      54
-		Pseudo assignments:    45      24
-	Writing initial simulation snapshot: worklib.nor_gate:v
+		             Instances  Unique
+		Modules:             3       3
+		Registers:           8       8
+		Scalar wires:        4       -
+		Vectored wires:      3       -
+		Always blocks:       5       5
+		Initial blocks:      2       2
+		Pseudo assignments:  1       1
+	Writing initial simulation snapshot: worklib.PC_tb:v
 
 -------------------------------------
 Relinquished control to SimVision...
 xcelium> 
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
-xcelium> ^C
-xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Feb 06, 2021 at 13:58:53 CST  (total: 00:00:31)
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm PC_tb.Branch PC_tb.BranchPC PC_tb.CurrPC PC_tb.NextPC PC_tb.PC PC_tb.clk PC_tb.stall
+Created probe 1
+xcelium> run
+Simulation interrupted at 9056275 NS + 0
+xcelium> 

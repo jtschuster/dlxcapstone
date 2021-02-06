@@ -19,7 +19,7 @@ sim:
 	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
 sim_dummy:
 	source /vol/ece303/genus_tutorial/cadence.env && \
-	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES)
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES) ./test/CPU_tb.v
 
 
 all:
@@ -40,3 +40,9 @@ all:
 	quit" | genus;
 	echo '`timescale 1ns/10ps\n' > timescale.txt && \
 	cat timescale.txt _CPU_syn.v > CPU_syn.v;
+
+pc:	
+	source /vol/ece303/genus_tutorial/cadence.env && \
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" ./lib/PC.v ./test/PC_tb.v ./lib/dff.v
+
+

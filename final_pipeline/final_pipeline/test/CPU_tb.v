@@ -1,4 +1,4 @@
-`timescale 1ns/10ps
+//`timescale 1ns/10ps
 module CPU_tb;
 	reg clk;
 	reg initPC;
