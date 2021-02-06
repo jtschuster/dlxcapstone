@@ -43,9 +43,9 @@
 ./lib/sll.v
 ./lib/slt_sltu.v
 ./lib/CPU.v
-./lib/syncram.v
-./lib/sram.v
-/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+./lib/control.v
+./lib/JumpBranch.v
+./lib/sram_dummy.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.18.09.d/cdsrun.lib
 -HDLVAR

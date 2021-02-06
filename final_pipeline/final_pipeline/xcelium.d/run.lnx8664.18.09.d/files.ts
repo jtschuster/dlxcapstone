@@ -64,10 +64,10 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ALUctrl.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Extender.v
-1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_msb.v
+1612456368 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_msb.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/srl.v
-1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
+1612456255 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/full_alu.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/and_6.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ID_stage.v
@@ -79,8 +79,11 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/readReg.v
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/write32.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Mem_stage.v
-1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/RegisterFiles.v
+1612512081 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/RegisterFiles.v
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/writeReg.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sll.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
-1612064066 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1612639754 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1612641500 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram_dummy.v
+1612641291 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
+1612641306 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v

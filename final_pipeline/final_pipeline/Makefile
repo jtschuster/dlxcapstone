@@ -5,7 +5,7 @@ SDC = /vol/ece303/genus_tutorial/alu_conv.sdc
 SYNTH_FOLDER = lib/synthesis
 
  # These are just all the files written by us / the 361 group
-OUR_FILES = ./lib/alu_32.v ./lib/EX_stage.v ./lib/ALUctrl.v ./lib/Extender.v  ./lib/alu_msb.v ./lib/forwarding_ex.v ./lib/srl.v ./lib/alu_unit.v ./lib/full_alu.v ./lib/and_6.v ./lib/ID_stage.v ./lib/ifecth.v ./lib/Control_signal.v ./lib/IF_stage.v ./lib/PC.v ./lib/WB_stage.v ./lib/readReg.v ./lib/write32.v ./lib/Mem_stage.v ./lib/RegisterFiles.v ./lib/writeReg.v ./lib/sll.v ./lib/slt_sltu.v ./lib/CPU.v
+OUR_FILES = ./lib/alu_32.v ./lib/EX_stage.v ./lib/ALUctrl.v ./lib/Extender.v  ./lib/alu_msb.v ./lib/forwarding_ex.v ./lib/srl.v ./lib/alu_unit.v ./lib/full_alu.v ./lib/and_6.v ./lib/ID_stage.v ./lib/ifecth.v ./lib/Control_signal.v ./lib/IF_stage.v ./lib/PC.v ./lib/WB_stage.v ./lib/readReg.v ./lib/write32.v ./lib/Mem_stage.v ./lib/RegisterFiles.v ./lib/writeReg.v ./lib/sll.v ./lib/slt_sltu.v ./lib/CPU.v ./lib/control.v ./lib/JumpBranch.v
 # I thought these wouldn't synthesize, so I separated them. These actually do, but I thought we might still want the separate
 PROVIDED_FILES = ./lib/mux_n.v ./lib/nor_gate.v ./lib/not_gate_n.v ./lib/not_gate.v ./lib/and_gate.v ./lib/or_gate_32.v ./lib/or_gate.v ./lib/dec_n.v ./lib/dffr.v ./lib/xnor_gate.v ./lib/dff.v ./lib/mux_32.v ./lib/xor_gate.v ./lib/mux.v
 
@@ -19,7 +19,7 @@ sim:
 	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
 sim_dummy:
 	source /vol/ece303/genus_tutorial/cadence.env && \
-	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES) /vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES)
 
 
 all:

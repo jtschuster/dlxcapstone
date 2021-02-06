@@ -5,7 +5,7 @@ module sram(cs, oe, we, addr, din, dout);
    input we;
    input [31:0] addr;
    input [31:0] din;
-   output reg [31:0] dout;
+   output reg [0:31] dout;
 
    always @ (addr) begin
       case (addr)
@@ -20,3 +20,7 @@ module sram(cs, oe, we, addr, din, dout);
 	end
 	32'h0040002C : begin
 	   dout[0:31] = 32'b000101_00010_00000_1111_1111_1111_0000;
+	end
+      endcase
+   end // always @ (addr)
+endmodule // sram

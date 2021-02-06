@@ -11,22 +11,24 @@ module control(
 	       Branch,
 	       MemWr,
 	       MemToReg,
-	       jumped_pc,
+	       new_pc_if_jump,
 	       kill_next_instruction);
    // Should I also take in the registers so that I can determine the branch that we would take?
 
-   input [0:31] instr;
-   input [31:0] rs1;
-   input [31:0] PcPlusFour;
-   input [31:0] r31;
-   output 	RegWr;
-   output [4:0]	RegDst;
-   output 	ExtOp;
-   output 	AluSrc;
-   output [3:0] AluOp;
-   output 	Branch;
-   output 	MemWr;
-   output 	MemToReg;
+   input [0:31]  instr;
+   input [31:0]  rs1;
+   input [31:0]  pc_plus_four;
+   input 	 should_be_killed;
+   output [31:0] new_pc_if_jump;
+   output 	 RegWr;
+   output [4:0]  RegDst;
+   output 	 ExtOp;
+   output 	 AluSrc;
+   output [3:0]  AluOp;
+   output 	 Branch;
+   output 	 MemWr;
+   output 	 MemToReg;
+   output 	 kill_next_instruction; 	 
    
 
    localparam [3:0] add_alu_op                     = 4'b0011;
@@ -37,7 +39,7 @@ module control(
    localparam [3:0] or_alu_op                      = 4'b0001;
    localparam [3:0] xor_alu_op                     = 4'b0100;
    localparam [3:0] shift_left_alu_op              = 4'b1001;
-   localparam [3:0] shift_right_logical_alu_op     = 4'h1110;
+   localparam [3:0] shift_right_logical_alu_op     = 4'b1110;
    localparam [3:0] shift_right_arithmentic_alu_op = 4'h6;
    localparam [3:0] set_eq_alu_op                  = 4'h6;
    localparam [3:0] set_neq_alu_op                 = 4'h6;
@@ -155,7 +157,7 @@ module control(
 		     ~should_be_killed;
    
    wire 	takeBranch;
-   JumpBranch jumpBranch(.instruction(instr), .inputPc(pc_plus_four), .rs1(rs1) .outputPC(jumped_pc), .takeBranch(takeBranch));
+   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;
    assign kill_next_instr = opcode == lw_op;
    

@@ -1,5 +1,5 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Feb 04, 2021 at 01:01:24 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 06, 2021 at 13:58:22 CST
 xrun
 	-64bit
 	-gui
@@ -43,9 +43,71 @@ xrun
 	./lib/sll.v
 	./lib/slt_sltu.v
 	./lib/CPU.v
-	./lib/syncram.v
-	./lib/sram.v
-	/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+	./lib/control.v
+	./lib/JumpBranch.v
+	./lib/sram_dummy.v
+Recompiling... reason: file './lib/CPU.v' is newer than expected.
+	expected: Sat Jan 30 21:34:26 2021
+	actual:   Sat Feb  6 13:29:14 2021
+file: ./lib/sram_dummy.v
+	module worklib.sram:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		nor_gate
+		slt_sltu
+		CPU
+   control ctrl (.instr(inst), .rs1(Dout1), .pc_plus_four(nextPC), .should_be_killed(should_be_killed), .RegWr(RegWrite),
+                                        |
+xmelab: *W,CUVMPW (./lib/CPU.v,54|40): port sizes differ in port connection (32/6).
+		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
+		              |
+xmelab: *W,CUVMPW (./lib/CPU.v,55|16): port sizes differ in port connection (1/5).
+		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
+		                                              |
+xmelab: *W,CUVMPW (./lib/CPU.v,55|48): port sizes differ in port connection (2/1).
+		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
+		                                                             |
+xmelab: *W,CUVMPW (./lib/CPU.v,55|63): port sizes differ in port connection (2/4).
+   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
+                                                                              |
+xmelab: *W,CUVMPW (./lib/control.v,160|78): port sizes differ in port connection (6/32).
+	.r24(r24),.r25(r25),.r26(r26),.r27(r27),.r28(r28),.r29(r29),.r30(r30),.r31(r31),.dataout(Dout1));
+	                                                                                             |
+xmelab: *W,CUVMPW (./lib/RegisterFiles.v,20|94): port sizes differ in port connection (1/32).
+	.r24(r24),.r25(r25),.r26(r26),.r27(r27),.r28(r28),.r29(r29),.r30(r30),.r31(r31),.dataout(Dout2));
+	                                                                                             |
+xmelab: *W,CUVMPW (./lib/RegisterFiles.v,25|94): port sizes differ in port connection (1/32).
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.JumpBranch:v <0x708944a8>
+			streams:   9, words:  3570
+		worklib.control:v <0x22783074>
+			streams:  10, words:  5189
+		worklib.CPU:v <0x3d4e602f>
+			streams:   2, words:   279
+		worklib.ifetch:v <0x61bb036e>
+			streams:   1, words:   152
+		worklib.sram:v <0x0e19456c>
+			streams:   1, words:  1134
+		worklib.forwarding_ex:v <0x0ecea810>
+			streams:   0, words:     0
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                Instances  Unique
+		Modules:             4072      42
+		Registers:           2105      36
+		Scalar wires:        3770       -
+		Expanded wires:      1644      67
+		Vectored wires:       259       -
+		Always blocks:       2076       9
+		Initial blocks:         8       8
+		Cont. assignments:     65      54
+		Pseudo assignments:    45      24
+	Writing initial simulation snapshot: worklib.nor_gate:v
 
 -------------------------------------
 Relinquished control to SimVision...
@@ -53,4 +115,4 @@ xcelium>
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Feb 04, 2021 at 01:01:38 CST  (total: 00:00:14)
+TOOL:	xrun(64)	18.09-s011: Exiting on Feb 06, 2021 at 13:58:53 CST  (total: 00:00:31)

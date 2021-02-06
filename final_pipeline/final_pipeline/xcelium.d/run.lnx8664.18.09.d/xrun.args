@@ -46,6 +46,6 @@ r
 ./lib/sll.v
 ./lib/slt_sltu.v
 ./lib/CPU.v
-./lib/syncram.v
-./lib/sram.v
-/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+./lib/control.v
+./lib/JumpBranch.v
+./lib/sram_dummy.v

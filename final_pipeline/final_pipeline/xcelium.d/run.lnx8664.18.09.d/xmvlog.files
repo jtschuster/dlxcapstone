@@ -40,6 +40,6 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sll.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/syncram.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
-/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram_dummy.v

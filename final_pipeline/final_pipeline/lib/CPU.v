@@ -30,7 +30,7 @@ module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Mem
   wire [31:0] mem_data_ex;
   wire lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
    wire kill_next_instruction, should_be_killed;
-   
+   wire [31:0] new_pc_if_jump;
   //wire [4:0] towrite_delay;
   // initialize or nextPC
   mux_32 cpu_mux2 (.sel(initPC),.src0(nextPC), .src1(32'h00400020), .z(regPC));
@@ -47,11 +47,13 @@ module CPU(clk, initPC, nextPC, regPC, inst, wDin, Dout1, Dout2, rt, rs, rd, Mem
                    //.MemWrite_id(MemWrite_id), .Extop_id(Extop_id), .ALUop_id(ALUop_id), .RegDst(RegDst), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite),
                    //.MemWrite(MemWrite), .Extop(Extop), .ALUop(ALUop));
   
-  // opcode to control signal;
-  Control cpu_c0 (.clk(clk), .Opcode(opcode), .funct(funct), .RegDst(RegDst), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite),
-					.MemWrite(MemWrite), .Branch(Branch), .Extop(Extop), .ALUop(ALUop),.valid(valid));
-   control ctrl (.instr(inst), .rs1(Dout1), .pc_plus_4(nextPC), .should_be_killed(should_be_killed), .RegWr(RegWrite)
-		 .RegDst(), .ExtOp(), .AluSrc(), .AluOp(), .Branch(), .MemWr(), .MemToReg(), jumped_pc(), kill_next_instruction());
+   // opcode to control signal;
+   Control cpu_c0 (.clk(clk), .Opcode(opcode), .funct(funct), .RegDst(RegDst), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite),
+		   .MemWrite(MemWrite), .Branch(Branch), .Extop(Extop), .ALUop(ALUop),.valid(valid));
+   
+   control ctrl (.instr(inst), .rs1(Dout1), .pc_plus_four(nextPC), .should_be_killed(should_be_killed), .RegWr(RegWrite),
+		 .RegDst(RegDst), .ExtOp(Extop), .AluSrc(ALUSrc), .AluOp(ALUop), .Branch(Branch), .MemWr(MemWrite), 
+		 .MemToReg(MemtoReg), .new_pc_if_jump(new_pc_if_jump), .kill_next_instruction(kill_next_instruction));
    dff kill (.clk(clk), .d(kill_next_instruction), .q(should_be_killed));
    
 		 
