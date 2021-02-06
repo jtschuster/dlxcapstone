@@ -1,5 +1,6 @@
 // PC
 // CurrPC should be the PC that goes into SRAM, not PC+4
+// stall will come from the control in the ID stage, should be able to be connected to "kill_next_instruction"
 module PC (clk, CurrPC, Branch, BranchPC, stall, NextPC);
    input clk, Branch, stall;
    input [31:0] CurrPC, BranchPC;
