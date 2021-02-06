@@ -1,0 +1,342 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2018 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 18.14-s037_1, built Wed Mar 27 10:19:21 PDT 2019
+Options: 
+Date:    Sat Jan 30 20:13:00 2021
+Host:    alfred.ece.northwestern.edu (x86_64 w/Linux 4.18.0-240.8.1.el8_3.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB) (16035364KB)
+OS:      Red Hat Enterprise Linux release 8.3 (Ootpa)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+
+Finished loading tool scripts (19 seconds elapsed).
+
+WARNING: This version of the tool is 675 days old.
+@genus:root: 1> read_hdl ../mux_n.v ../nor_gate.v ../not_gate_n.v ../not_gate.v ../and_gate.v ../or_gate_32.v ../or_gate.v ../dec_n.v ../dffr.v ../xnor_gate.v ../dff.v ../mux_32.v ../xor_gate.v ../mux.v ../syncram.v ../sram.v ../alu_32.v ../EX_stage.v ../ALUctrl.v ../Extender.v  ../alu_msb.v ../forwarding_ex.v ../srl.v ../alu_unit.v ../full_alu.v ../and_6.v ../ID_stage.v ../ifecth.v ../Control_signal.v ../CPU.v ../IF_stage.v ../PC.v ../WB_stage.v ../readReg.v ../write32.v ../Mem_stage.v ../RegisterFiles.v ../writeReg.v ../sll.v ../slt_sltu.v
+  parameter mem_file;
+                    |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : in file '../syncram.v' on line 3, column 21.
+        : Invalid Verilog syntax is parsed, or unsupported Verilog syntax is encountered.
+  integer check_hex = 1;
+                       |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 13, column 24.
+        : The following constructs will be ignored:
+    - initial block
+    - final block
+    - program block
+    - property block
+    - sequence block
+    - covergroup
+    - checker block
+    - gate drive strength
+    - system task enable
+    - reg declaration with initial value
+    - specify block.
+  integer ram_size = 0; // to keep track of elements in the ram
+                      |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 15, column 23.
+  integer c =0; // index for ram writing/reading
+              |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 20, column 15.
+  integer i = 0; // index for hex checking
+               |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 21, column 16.
+  integer initNeeded = 1;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 22, column 25.
+  integer check_sram = 0;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 23, column 25.
+  integer addr_found = 1;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../syncram.v' on line 24, column 25.
+        1'h2 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h2 in file '../syncram.v' on line 45, column 12.
+        : The number of bits specified is larger than the number of declared bits, e.g. 3'b1001.  In this case, the resulting number will be pruned to 3'b001 which may not be the intent of the user.
+        1'h3 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h3 in file '../syncram.v' on line 46, column 12.
+        1'h4 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h4 in file '../syncram.v' on line 47, column 12.
+        1'h5 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h5 in file '../syncram.v' on line 48, column 12.
+        1'h6 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h6 in file '../syncram.v' on line 49, column 12.
+        1'h7 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h7 in file '../syncram.v' on line 50, column 12.
+        1'h8 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h8 in file '../syncram.v' on line 51, column 12.
+        1'h9 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h9 in file '../syncram.v' on line 52, column 12.
+        1'ha : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'ha in file '../syncram.v' on line 53, column 12.
+        1'hb : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hb in file '../syncram.v' on line 54, column 12.
+        1'hc : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hc in file '../syncram.v' on line 55, column 12.
+        1'hd : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hd in file '../syncram.v' on line 56, column 12.
+        1'he : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'he in file '../syncram.v' on line 57, column 12.
+        1'hf : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hf in file '../syncram.v' on line 58, column 12.
+        1'hA : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hA in file '../syncram.v' on line 59, column 12.
+        1'hB : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hB in file '../syncram.v' on line 60, column 12.
+        1'hC : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hC in file '../syncram.v' on line 61, column 12.
+        1'hD : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hD in file '../syncram.v' on line 62, column 12.
+        1'hE : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hE in file '../syncram.v' on line 63, column 12.
+        1'hF : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hF in file '../syncram.v' on line 64, column 12.
+      $finish;
+             |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../syncram.v' on line 69, column 14.
+        file = $fopen(mem_file , "r");
+                      |
+Error   : Reference to undeclared variable. [VLOGPT-20] [read_hdl]
+        : Symbol 'mem_file' in file '../syncram.v' on line 79, column 23.
+        : A variable must be declared before it can be referenced.
+        file = $fopen(mem_file , "r");
+                                    |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fopen' in file '../syncram.v' on line 79, column 37.
+        : The $signed and $unsigned system functions are always supported, and synthesizable SystemVerilog system functions are supported when SystemVerilog parsing is enabled.  No other system functions are supported.
+          $finish;
+                 |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../syncram.v' on line 82, column 18.
+        char = $fgetc(file);
+                          |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgetc' in file '../syncram.v' on line 84, column 27.
+          r = $ungetc(char , file);
+                                 |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$ungetc' in file '../syncram.v' on line 93, column 34.
+          r = $fgets(line , file);
+                                |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgets' in file '../syncram.v' on line 94, column 33.
+          r = $sscanf(line , "%h %s %h" , addr_value , slash , data_value);
+                                                                         |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$sscanf' in file '../syncram.v' on line 96, column 74.
+            $finish;
+                   |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../syncram.v' on line 108, column 20.
+          char = $fgetc(file);
+                            |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgetc' in file '../syncram.v' on line 111, column 29.
+  parameter mem_file;
+                    |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : in file '../sram.v' on line 3, column 21.
+  integer check_hex = 1;
+                       |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 12, column 24.
+  integer ram_size = 0; // to keep track of elements in the ram
+                      |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 14, column 23.
+  integer c =0; // index for ram writing/reading
+              |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 19, column 15.
+  integer i = 0; // index for hex checking
+               |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 20, column 16.
+  integer initNeeded = 1;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 21, column 25.
+  integer check_sram = 0;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 22, column 25.
+  integer addr_found = 1;
+                        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../sram.v' on line 23, column 25.
+        1'h2 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h2 in file '../sram.v' on line 44, column 12.
+        1'h3 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h3 in file '../sram.v' on line 45, column 12.
+        1'h4 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h4 in file '../sram.v' on line 46, column 12.
+        1'h5 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h5 in file '../sram.v' on line 47, column 12.
+        1'h6 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h6 in file '../sram.v' on line 48, column 12.
+        1'h7 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h7 in file '../sram.v' on line 49, column 12.
+        1'h8 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h8 in file '../sram.v' on line 50, column 12.
+        1'h9 : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'h9 in file '../sram.v' on line 51, column 12.
+        1'ha : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'ha in file '../sram.v' on line 52, column 12.
+        1'hb : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hb in file '../sram.v' on line 53, column 12.
+        1'hc : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hc in file '../sram.v' on line 54, column 12.
+        1'hd : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hd in file '../sram.v' on line 55, column 12.
+        1'he : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'he in file '../sram.v' on line 56, column 12.
+        1'hf : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hf in file '../sram.v' on line 57, column 12.
+        1'hA : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hA in file '../sram.v' on line 58, column 12.
+        1'hB : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hB in file '../sram.v' on line 59, column 12.
+        1'hC : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hC in file '../sram.v' on line 60, column 12.
+        1'hD : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hD in file '../sram.v' on line 61, column 12.
+        1'hE : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hE in file '../sram.v' on line 62, column 12.
+        1'hF : hex = 1;
+           |
+Warning : Truncation in sized number. [VLOGPT-16]
+        : 1'hF in file '../sram.v' on line 63, column 12.
+      $finish;
+             |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../sram.v' on line 68, column 14.
+        file = $fopen(mem_file , "r");
+                      |
+Error   : Reference to undeclared variable. [VLOGPT-20] [read_hdl]
+        : Symbol 'mem_file' in file '../sram.v' on line 78, column 23.
+        file = $fopen(mem_file , "r");
+                                    |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fopen' in file '../sram.v' on line 78, column 37.
+          $finish;
+                 |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../sram.v' on line 81, column 18.
+        char = $fgetc(file);
+                          |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgetc' in file '../sram.v' on line 83, column 27.
+          r = $ungetc(char , file);
+                                 |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$ungetc' in file '../sram.v' on line 92, column 34.
+          r = $fgets(line , file);
+                                |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgets' in file '../sram.v' on line 93, column 33.
+          r = $sscanf(line , "%h %s %h" , addr_value , slash , data_value);
+                                                                         |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$sscanf' in file '../sram.v' on line 95, column 74.
+            $finish;
+                   |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Call to system task '$finish' in file '../sram.v' on line 107, column 20.
+          char = $fgetc(file);
+                            |
+Warning : Unsupported system task or function: assuming value 1'b1. [VLOGPT-31]
+        : System function '$fgetc' in file '../sram.v' on line 110, column 29.
+1
+@genus:root: 2> quit
+Normal exit.

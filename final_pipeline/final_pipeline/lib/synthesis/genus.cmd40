@@ -1,0 +1,19 @@
+# Cadence Genus(TM) Synthesis Solution, Version 18.14-s037_1, built Mar 27 2019 12:19:21
+
+# Date: Sat Jan 30 20:39:59 2021
+# Host: alfred.ece.northwestern.edu (x86_64 w/Linux 4.18.0-240.8.1.el8_3.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB)
+# OS:   Red Hat Enterprise Linux release 8.3 (Ootpa)
+
+read_hdl  ./lib/mux_n.v ./lib/nor_gate.v ./lib/not_gate_n.v ./lib/not_gate.v ./lib/and_gate.v ./lib/or_gate_32.v ./lib/or_gate.v ./lib/dec_n.v ./lib/dffr.v ./lib/xnor_gate.v ./lib/dff.v ./lib/mux_32.v ./lib/xor_gate.v ./lib/mux.v  ./lib/alu_32.v ./lib/EX_stage.v ./lib/ALUctrl.v ./lib/Extender.v  ./lib/alu_msb.v ./lib/forwarding_ex.v ./lib/srl.v ./lib/alu_unit.v ./lib/full_alu.v ./lib/and_6.v ./lib/ID_stage.v ./lib/ifecth.v ./lib/Control_signal.v ./lib/IF_stage.v ./lib/PC.v ./lib/WB_stage.v ./lib/readReg.v ./lib/write32.v ./lib/Mem_stage.v ./lib/RegisterFiles.v ./lib/writeReg.v ./lib/sll.v ./lib/slt_sltu.v
+set_db library /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+set_db lef_library /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+elaborate
+current_design CPU
+read_sdc /vol/ece303/genus_tutorial/alu_conv.sdc
+syn_generic
+syn_map
+syn_opt
+report timing > timing.rpt
+report_area > area.rpt
+write_hdl > _CPU_syn.v
+quit

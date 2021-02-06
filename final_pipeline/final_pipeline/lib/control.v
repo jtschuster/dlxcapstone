@@ -1,6 +1,8 @@
 module control(
 	       instr,
 	       rs1,
+	       pc_plus_four,
+	       should_be_killed, // for instructions that follow a lw that should be stalled
 	       RegWr,
 	       RegDst,
 	       ExtOp,
@@ -8,11 +10,15 @@ module control(
 	       AluOp,
 	       Branch,
 	       MemWr,
-	       MemToReg);
+	       MemToReg,
+	       jumped_pc,
+	       kill_next_instruction);
    // Should I also take in the registers so that I can determine the branch that we would take?
 
    input [0:31] instr;
    input [31:0] rs1;
+   input [31:0] PcPlusFour;
+   input [31:0] r31;
    output 	RegWr;
    output [4:0]	RegDst;
    output 	ExtOp;
@@ -29,9 +35,9 @@ module control(
    localparam [3:0] subu_alu_op                    = 4'b0111;
    localparam [3:0] and_alu_op                     = 4'b0000;
    localparam [3:0] or_alu_op                      = 4'b0001;
-   localparam [3:0] xor_alu_op                     = 4'b1011;
+   localparam [3:0] xor_alu_op                     = 4'b0100;
    localparam [3:0] shift_left_alu_op              = 4'b1001;
-   localparam [3:0] shift_right_logical_alu_op     = 4'h6;
+   localparam [3:0] shift_right_logical_alu_op     = 4'h1110;
    localparam [3:0] shift_right_arithmentic_alu_op = 4'h6;
    localparam [3:0] set_eq_alu_op                  = 4'h6;
    localparam [3:0] set_neq_alu_op                 = 4'h6;
@@ -105,7 +111,7 @@ module control(
 			 opcode == 6'h07;  // BFPR
    
    
-   assign RegWr  = r_type;
+   assign RegWr  = r_type & ~should_be_killed;
    assign RegDst = rd;
    // 1 if sign extend, 0 if 0 extend
    assign ExtOp    = opcode == subi_op ||
@@ -140,14 +146,19 @@ module control(
 		     opcode == beqz_op && rs1 == 32'h00000000 ||
 		     opcode == bnez_op && rs1 != 32'h00000000 ;
    
-   assign MemWr    = opcode == sw_op ||
-		     opcode == sb_op
-		     ? 1'b1 : 1'b0;
-   assign MemToReg = opcode == lw_op // also lh and lb 
-		     ? 1'b1 : 1'b0;
-
-
-    
+   assign MemWr    = (opcode == sw_op ||
+		      opcode == sb_op
+		      ? 1'b1 : 1'b0) &
+		     ~should_be_killed;
+   assign MemToReg = (opcode == lw_op // also lh and lb 
+		      ? 1'b1 : 1'b0) &
+		     ~should_be_killed;
+   
+   wire 	takeBranch;
+   JumpBranch jumpBranch(.instruction(instr), .inputPc(pc_plus_four), .rs1(rs1) .outputPC(jumped_pc), .takeBranch(takeBranch));
+   assign Branch = takeBranch & ~should_be_killed;
+   assign kill_next_instr = opcode == lw_op;
+   
 
 endmodule
 	
