@@ -12,7 +12,8 @@ module control(
 	       MemWr,
 	       MemToReg,
 	       new_pc_if_jump,
-	       kill_next_instruction);
+	       kill_next_instruction,
+	       stall);
    // Should I also take in the registers so that I can determine the branch that we would take?
 
    input [0:31]  instr;
@@ -29,7 +30,7 @@ module control(
    output 	 MemWr;
    output 	 MemToReg;
    output 	 kill_next_instruction; 	 
-   
+   output 	 stall;
 
    localparam [3:0] add_alu_op                     = 4'b0011;
    localparam [3:0] addu_alu_op                    = 4'b0010;
@@ -72,6 +73,7 @@ module control(
    localparam [0:5] bnez_op	= 6'h05;
    localparam [0:5] trap_op	= 6'h11;
    localparam [0:5] xor_func    = 6'h26;
+   localparam [0:5] lh_op       = 6'h21;
    
    
    
@@ -155,7 +157,9 @@ module control(
    assign MemToReg = (opcode == lw_op // also lh and lb 
 		      ? 1'b1 : 1'b0) &
 		     ~should_be_killed;
-   
+   assign stall = (opcode == lw_op ||
+		   opcode == lh_op ||
+		   opcode == lb_op);
    wire 	takeBranch;
    JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;

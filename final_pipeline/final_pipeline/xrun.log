@@ -1,49 +1,88 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Feb 06, 2021 at 16:22:05 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 07, 2021 at 15:59:27 CST
 xrun
 	-64bit
 	-gui
 	-access r
 	-xmelab_args "-warnmax 0 -delay_mode zero -maxdelays"
-	./lib/PC.v
-	./test/PC_tb.v
+	./lib/mux_n.v
+	./lib/nor_gate.v
+	./lib/not_gate_n.v
+	./lib/not_gate.v
+	./lib/and_gate.v
+	./lib/or_gate_32.v
+	./lib/or_gate.v
+	./lib/dec_n.v
+	./lib/dffr.v
+	./lib/xnor_gate.v
 	./lib/dff.v
-Recompiling... reason: file './test/PC_tb.v' is newer than expected.
-	expected: Sat Feb  6 16:16:20 2021
-	actual:   Sat Feb  6 16:21:29 2021
-file: ./test/PC_tb.v
-	module worklib.PC_tb:v
+	./lib/mux_32.v
+	./lib/xor_gate.v
+	./lib/mux.v
+	./lib/alu_32.v
+	./lib/EX_stage.v
+	./lib/ALUctrl.v
+	./lib/Extender.v
+	./lib/alu_msb.v
+	./lib/forwarding_ex.v
+	./lib/srl.v
+	./lib/alu_unit.v
+	./lib/full_alu.v
+	./lib/and_6.v
+	./lib/ID_stage.v
+	./lib/ifecth.v
+	./lib/Control_signal.v
+	./lib/IF_stage.v
+	./lib/PC.v
+	./lib/WB_stage.v
+	./lib/readReg.v
+	./lib/write32.v
+	./lib/Mem_stage.v
+	./lib/RegisterFiles.v
+	./lib/writeReg.v
+	./lib/sll.v
+	./lib/slt_sltu.v
+	./lib/CPU.v
+	./lib/control.v
+	./lib/JumpBranch.v
+	./lib/sram_dummy.v
+	./test/CPU_tb.v
+Recompiling... reason: file './lib/CPU.v' is newer than expected.
+	expected: Sat Feb  6 13:29:14 2021
+	actual:   Sun Feb  7 15:56:17 2021
+file: ./lib/RegisterFiles.v
+	module worklib.RegisterFiles:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
 	Top level design units:
-		PC_tb
-		dff
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.PC_tb:v <0x324baa38>
-			streams:  11, words:  3570
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		             Instances  Unique
-		Modules:             3       3
-		Registers:           8       8
-		Scalar wires:        4       -
-		Vectored wires:      3       -
-		Always blocks:       5       5
-		Initial blocks:      2       2
-		Pseudo assignments:  1       1
-	Writing initial simulation snapshot: worklib.PC_tb:v
-
--------------------------------------
-Relinquished control to SimVision...
-xcelium> 
-xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
-xcelium> database -open waves -into waves.shm -default
-Created default SHM database waves
-xcelium> probe -create -shm PC_tb.Branch PC_tb.BranchPC PC_tb.CurrPC PC_tb.NextPC PC_tb.PC PC_tb.clk PC_tb.stall
-Created probe 1
-xcelium> run
-Simulation interrupted at 9056275 NS + 0
-xcelium> 
+		nor_gate
+		dffr
+		ID_stage
+		Control
+		slt_sltu
+		CPU_tb
+   control ctrl (.instr(inst_id), .rs1(rs1_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
+                                            |
+xmelab: *W,CUVMPW (./lib/CPU.v,60|44): port sizes differ in port connection (32/6).
+   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
+                                                                              |
+xmelab: *W,CUVMPW (./lib/control.v,164|78): port sizes differ in port connection (6/32).
+		    .Set(Set), .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_ex), .Branch(should_branch_id), 
+		                                               |
+xmelab: *E,RANOTL (./lib/CPU.v,105|49): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
+		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(towrite), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_ex), 
+		                                                                                                                                            |
+xmelab: *E,RANOTL (./lib/CPU.v,106|142): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
+		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
+		                           |
+xmelab: *E,RANOTL (./lib/CPU.v,107|29): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
+		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
+		                                                     |
+xmelab: *E,RANOTL (./lib/CPU.v,107|55): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
+		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
+		                                                                                                |
+xmelab: *W,CUVMPW (./lib/CPU.v,107|98): port sizes differ in port connection (1/32).
+xrun: *E,ELBERR: Error during elaboration (status 1), exiting.
+TOOL:	xrun(64)	18.09-s011: Exiting on Feb 07, 2021 at 15:59:27 CST  (total: 00:00:00)

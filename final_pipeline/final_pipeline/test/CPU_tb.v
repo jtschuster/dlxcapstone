@@ -18,7 +18,7 @@ module CPU_tb;
     wire [31:0] alu_input;
     wire [3:0] alu_control;
     wire[31:0] pc_lim;
-    CPU scp ( .clk(clk), .initPC(initPC),.nextPC(nextPC), .regPC(regPC),.inst(inst),.wDin(wDin), .Dout1(Dout1), .Dout2(Dout2),.Memread(Memread), .rt(rt), .rs(rs), .rd(rd), .shamt(shamt), .opcode(opcode), .funct(funct), .immed(immed), .RegDst(RegDst), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite), .MemWrite(MemWrite), .Branch(Branch), .Extop(Extop),.ALUop(ALUop), .Result(Result),.alu_input(alu_input),.alu_control(alu_control));
+    CPU scp ( .clk(clk), .initPC(initPC),.nextPC(nextPC), .currentPC_if(regPC), .inst_id(inst), .wDin(wDin), .rs1_id(Dout1), .rs2_id(Dout2), .Memread(Memread), .rt(rt), .rs(rs), .rd(rd), .shamt(shamt), .opcode(opcode), .funct(funct), .immed(immed), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite), .MemWrite(MemWrite), .should_branch_id(Branch), .Extop(Extop),.ALUop(ALUop), .Result(Result),.alu_input(alu_input),.alu_control(alu_control));
     defparam scp.file_name = "data/unsigned_sum.dat";
     assign pc_lim = 32'h00400054;
     //defparam scp.file_name = "data/bills_branch.dat";
