@@ -19,9 +19,8 @@ module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
 
 	wire [25:0] name = instruction[25:0];
 
-        // Does this notation work right?
-	wire [31:0] signExtendedName = name <<< 6;
-	wire [31:0] signExtendedImmediate = immi <<< 16;
+	wire [31:0] signExtendedName = { { 6 { name[25] } } , name[25:0] };
+	wire [31:0] signExtendedImmediate = { { 16 { immi[15] } } , immi[15:0] };
 
 	reg [31:0] register31;
 
@@ -36,45 +35,48 @@ module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
 	if (opcode == 6'h2) begin //True for 'j' 
 		//PC = PC + 4 + SignExtend(name);
 		
-		newPC = inputPC + 4 + signExtendedName;
-	        takeBranch = 1;
+		newPC <= inputPC + 4 + signExtendedName;
+	        takeBranch <= 1;
 	end
 
 	else if (opcode == 6'h3) begin //True for 'jal'
 		//PC = PC + 4 + SignExtend(name);
 		
-		register31 = inputPC + 4;
-		newPC = inputPC + 4 + signExtendedName;
-		writeSelect = 1'b1;
-	        takeBranch = 1;
+		register31 <= inputPC + 4;
+		newPC <= inputPC + 4 + signExtendedName;
+		writeSelect <= 1'b1;
+	        takeBranch <= 1;
 	end
 
    
 	else if (opcode == 6'h12) begin //True for 'jr'
-		newPC = rs1;
-	        takeBranch = 1;
+		newPC <= rs1;
+	        takeBranch <= 1;
 	end
 
 
 	else if (opcode == 6'h4) begin //True for 'beqz'
 		
 		if (rs1 == 0) begin
-			newPC = inputPC + 4 + signExtendedImmediate;
-		        takeBranch = 1;
+			newPC <= inputPC + 4 + signExtendedImmediate;
+		        takeBranch <= 1;
 		end
 	
 	end
 
 
-	else if (opcode == 6'h5) begin //True for 'bnez'
+	else if (opcode == 6'h05) begin //True for 'bnez'
 
 		if (rs1 != 0) begin
-			newPC = inputPC + 4 + signExtendedImmediate;
-		        takeBranch = 1;
+			newPC <= inputPC + 4 + signExtendedImmediate;
+		        takeBranch <= 1;
 		end
 
 	end
-
+	else begin
+	   newPC <= inputPC;
+	   takeBranch <= 0;
+	end
 
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
 	//RegisterFiles reg_files(clk, 1'b1, 5'd31, 5'd0, writeSelect, register31, register_rs, null_register_read);

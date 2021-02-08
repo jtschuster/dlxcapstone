@@ -32,7 +32,6 @@ r
 ./lib/alu_unit.v
 ./lib/full_alu.v
 ./lib/and_6.v
-./lib/ID_stage.v
 ./lib/ifecth.v
 ./lib/Control_signal.v
 ./lib/IF_stage.v

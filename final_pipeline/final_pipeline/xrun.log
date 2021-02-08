@@ -1,5 +1,5 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Feb 07, 2021 at 15:59:27 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 08, 2021 at 01:33:38 CST
 xrun
 	-64bit
 	-gui
@@ -29,7 +29,6 @@ xrun
 	./lib/alu_unit.v
 	./lib/full_alu.v
 	./lib/and_6.v
-	./lib/ID_stage.v
 	./lib/ifecth.v
 	./lib/Control_signal.v
 	./lib/IF_stage.v
@@ -47,42 +46,1401 @@ xrun
 	./lib/JumpBranch.v
 	./lib/sram_dummy.v
 	./test/CPU_tb.v
-Recompiling... reason: file './lib/CPU.v' is newer than expected.
-	expected: Sat Feb  6 13:29:14 2021
-	actual:   Sun Feb  7 15:56:17 2021
-file: ./lib/RegisterFiles.v
-	module worklib.RegisterFiles:v
+Recompiling... reason: file './lib/control.v' is newer than expected.
+	expected: Mon Feb  8 01:21:44 2021
+	actual:   Mon Feb  8 01:33:29 2021
+file: ./lib/control.v
+	module worklib.control:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
+   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
+                 |
+xmelab: *W,CUVWSP (./lib/CPU.v,111|17): 2 output ports were not connected:
+xmelab: (./lib/EX_stage.v,1): immed_ex
+xmelab: (./lib/EX_stage.v,1): opcode_ex
+
+   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
+                 |
+xmelab: *W,CUVWSI (./lib/CPU.v,111|17): 3 input ports were not connected:
+xmelab: (./lib/EX_stage.v,1): immed
+xmelab: (./lib/EX_stage.v,1): opcode
+xmelab: (./lib/EX_stage.v,1): Branch
+
 		Caching library 'worklib' ....... Done
 	Top level design units:
 		nor_gate
 		dffr
-		ID_stage
 		Control
 		slt_sltu
 		CPU_tb
-   control ctrl (.instr(inst_id), .rs1(rs1_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
-                                            |
-xmelab: *W,CUVMPW (./lib/CPU.v,60|44): port sizes differ in port connection (32/6).
-   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
-                                                                              |
-xmelab: *W,CUVMPW (./lib/control.v,164|78): port sizes differ in port connection (6/32).
-		    .Set(Set), .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_ex), .Branch(should_branch_id), 
-		                                               |
-xmelab: *E,RANOTL (./lib/CPU.v,105|49): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
-		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(towrite), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_ex), 
-		                                                                                                                                            |
-xmelab: *E,RANOTL (./lib/CPU.v,106|142): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
-		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
-		                           |
-xmelab: *E,RANOTL (./lib/CPU.v,107|29): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
-		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
-		                                                     |
-xmelab: *E,RANOTL (./lib/CPU.v,107|55): A reg is not a legal lvalue in this context [6.1.2(IEEE)].
-		    .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_ex),
-		                                                                                                |
-xmelab: *W,CUVMPW (./lib/CPU.v,107|98): port sizes differ in port connection (1/32).
-xrun: *E,ELBERR: Error during elaboration (status 1), exiting.
-TOOL:	xrun(64)	18.09-s011: Exiting on Feb 07, 2021 at 15:59:27 CST  (total: 00:00:00)
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.control:v <0x4f109586>
+			streams:   9, words:  4871
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                Instances  Unique
+		Modules:             2355      42
+		Registers:           1598      54
+		Scalar wires:        2161       -
+		Expanded wires:      1371      50
+		Vectored wires:       181       -
+		Always blocks:       1554      12
+		Initial blocks:        10      10
+		Cont. assignments:     36      50
+		Pseudo assignments:    24      23
+	Writing initial simulation snapshot: worklib.nor_gate:v
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm CPU_tb.scp.ctrl.AluOp CPU_tb.scp.ctrl.AluSrc CPU_tb.scp.ctrl.Branch CPU_tb.scp.ctrl.ExtOp CPU_tb.scp.ctrl.MemToReg CPU_tb.scp.ctrl.MemWr CPU_tb.scp.ctrl.RegDst CPU_tb.scp.ctrl.RegWr CPU_tb.scp.ctrl.branch_instr CPU_tb.scp.ctrl.func CPU_tb.scp.ctrl.i_type CPU_tb.scp.ctrl.instr CPU_tb.scp.ctrl.j_type CPU_tb.scp.ctrl.kill_next_instruction CPU_tb.scp.ctrl.new_pc_if_jump CPU_tb.scp.ctrl.opcode CPU_tb.scp.ctrl.pc_plus_four CPU_tb.scp.ctrl.r_type CPU_tb.scp.ctrl.rd CPU_tb.scp.ctrl.rs1 CPU_tb.scp.ctrl.rs1_sel CPU_tb.scp.ctrl.rs2_sel CPU_tb.scp.ctrl.should_be_killed CPU_tb.scp.ctrl.stall CPU_tb.scp.ctrl.takeBranch CPU_tb.scp.ALUSrc CPU_tb.scp.ALUSrc_ex CPU_tb.scp.ALUSrc_id CPU_tb.scp.ALUop CPU_tb.scp.ALUop_ex CPU_tb.scp.ALUop_id CPU_tb.scp.Branch_ex CPU_tb.scp.Branch_stall_forwarding CPU_tb.scp.Branch_taken CPU_tb.scp.Carryout CPU_tb.scp.Extop CPU_tb.scp.Extop_ex CPU_tb.scp.Extop_id CPU_tb.scp.MemWrite CPU_tb.scp.MemWrite_ex CPU_tb.scp.MemWrite_id CPU_tb.scp.MemWrite_mem CPU_tb.scp.Memread CPU_tb.scp.MemtoReg CPU_tb.scp.MemtoReg_ex CPU_tb.scp.MemtoReg_id CPU_tb.scp.MemtoReg_mem CPU_tb.scp.MemtoReg_wb CPU_tb.scp.Overflow CPU_tb.scp.RegDst_ex CPU_tb.scp.RegDst_id CPU_tb.scp.RegWrite CPU_tb.scp.RegWrite_ex CPU_tb.scp.RegWrite_id CPU_tb.scp.RegWrite_mem CPU_tb.scp.RegWrite_wb CPU_tb.scp.Result CPU_tb.scp.Set CPU_tb.scp.Zero CPU_tb.scp.alu_control CPU_tb.scp.alu_input CPU_tb.scp.alu_input_new CPU_tb.scp.clk CPU_tb.scp.currentPC_if CPU_tb.scp.data_wb CPU_tb.scp.funct CPU_tb.scp.funct_if CPU_tb.scp.immed CPU_tb.scp.immed_ex CPU_tb.scp.immed_id CPU_tb.scp.initPC CPU_tb.scp.initPC_delay4 CPU_tb.scp.initPC_delay6 CPU_tb.scp.init_delay CPU_tb.scp.inst_id CPU_tb.scp.kill_next_instruction_id CPU_tb.scp.lw_stall CPU_tb.scp.lw_stall_id CPU_tb.scp.mem_data_ex CPU_tb.scp.mem_data_mem CPU_tb.scp.new_pc_if_jump_id CPU_tb.scp.nextPC CPU_tb.scp.opcode_ex CPU_tb.scp.opcode_if CPU_tb.scp.pcPlusFour_ex CPU_tb.scp.pcPlusFour_id CPU_tb.scp.result_mem CPU_tb.scp.rs1_ex CPU_tb.scp.rs1_id CPU_tb.scp.rs1_sel_ex CPU_tb.scp.rs1_sel_id CPU_tb.scp.rs2_ex CPU_tb.scp.rs2_id CPU_tb.scp.rs2_sel_ex CPU_tb.scp.rs2_sel_id CPU_tb.scp.se_immed CPU_tb.scp.shamt CPU_tb.scp.should_be_killed_id CPU_tb.scp.should_branch_id CPU_tb.scp.stall_id CPU_tb.scp.towrite CPU_tb.scp.towrite_ex CPU_tb.scp.towrite_mem CPU_tb.scp.towrite_wb CPU_tb.scp.valid CPU_tb.scp.wDin
+Created probe 1
+xcelium> run
+Now initializing sram
+Addr is written: 00400020
+Data is written: 00002820
+Addr is written: 00400024
+Data is written: 20071000
+Addr is written: 00400028
+Data is written: 00e73c00
+Addr is written: 0040002c
+Data is written: 00e03020
+Addr is written: 00400030
+Data is written: 20c60028
+Addr is written: 00400034
+Data is written: 8ce40000
+Addr is written: 00400038
+Data is written: 00a42821
+Addr is written: 0040003c
+Data is written: 20e70004
+Addr is written: 00400040
+Data is written: 14e6fffc
+Addr is written: 00400044
+Data is written: ace50000
+Addr is written: 10000000
+Data is written: 0000000f
+Addr is written: 10000004
+Data is written: 000000f0
+Addr is written: 10000008
+Data is written: 00000f00
+Addr is written: 1000000c
+Data is written: 0000f000
+Addr is written: 10000010
+Data is written: 000f0000
+Addr is written: 10000014
+Data is written: 00f00000
+Addr is written: 10000018
+Data is written: 0f000000
+Addr is written: 1000001c
+Data is written: 10000000
+Addr is written: 10000020
+Data is written: 20000000
+Addr is written: 10000024
+Data is written: c0000000
+Addr is written: 10000028
+Data is written: ffffffff
+Addr is checking: 00400020
+Data is checking: 00002820
+Addr is checking: 00400024
+Data is checking: 20071000
+Addr is checking: 00400028
+Data is checking: 00e73c00
+Addr is checking: 0040002c
+Data is checking: 00e03020
+Addr is checking: 00400030
+Data is checking: 20c60028
+Addr is checking: 00400034
+Data is checking: 8ce40000
+Addr is checking: 00400038
+Data is checking: 00a42821
+Addr is checking: 0040003c
+Data is checking: 20e70004
+Addr is checking: 00400040
+Data is checking: 14e6fffc
+Addr is checking: 00400044
+Data is checking: ace50000
+Addr is checking: 10000000
+Data is checking: 0000000f
+Addr is checking: 10000004
+Data is checking: 000000f0
+Addr is checking: 10000008
+Data is checking: 00000f00
+Addr is checking: 1000000c
+Data is checking: 0000f000
+Addr is checking: 10000010
+Data is checking: 000f0000
+Addr is checking: 10000014
+Data is checking: 00f00000
+Addr is checking: 10000018
+Data is checking: 0f000000
+Addr is checking: 1000001c
+Data is checking: 10000000
+Addr is checking: 10000020
+Data is checking: 20000000
+Addr is checking: 10000024
+Data is checking: c0000000
+Addr is checking: 10000028
+Data is checking: ffffffff
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+src is  0 z is          x and i is           0
+src is  0 z is          x and i is           1
+src is  0 z is          x and i is           2
+src is  0 z is          x and i is           3
+src is  0 z is          x and i is           4
+src is  0 z is          x and i is           5
+src is  0 z is          x and i is           6
+src is  0 z is          x and i is           7
+src is  0 z is          x and i is           8
+src is  0 z is          x and i is           9
+src is  0 z is          x and i is          10
+src is  0 z is          x and i is          11
+src is  0 z is          x and i is          12
+src is  0 z is          x and i is          13
+src is  0 z is          x and i is          14
+src is  0 z is          x and i is          15
+src is  0 z is          x and i is          16
+src is  0 z is          x and i is          17
+src is  0 z is          x and i is          18
+src is  0 z is          x and i is          19
+src is  0 z is          x and i is          20
+src is  0 z is          x and i is          21
+src is  0 z is          x and i is          22
+src is  0 z is          x and i is          23
+src is  0 z is          x and i is          24
+src is  0 z is          x and i is          25
+src is  0 z is          x and i is          26
+src is  0 z is          x and i is          27
+src is  0 z is          x and i is          28
+src is  0 z is          x and i is          29
+src is  0 z is          x and i is          30
+src is  0 z is          x and i is          31
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  1 z is          1 and i is           0
+src is  1 z is          1 and i is           1
+src is  1 z is          1 and i is           2
+src is  1 z is          1 and i is           3
+src is  1 z is          1 and i is           4
+src is  1 z is          1 and i is           5
+src is  1 z is          1 and i is           6
+src is  1 z is          1 and i is           7
+src is  1 z is          1 and i is           8
+src is  1 z is          1 and i is           9
+src is  1 z is          1 and i is          10
+src is  1 z is          1 and i is          11
+src is  1 z is          1 and i is          12
+src is  1 z is          1 and i is          13
+src is  1 z is          1 and i is          14
+src is  1 z is          1 and i is          15
+src is  1 z is          1 and i is          16
+src is  1 z is          1 and i is          17
+src is  1 z is          1 and i is          18
+src is  1 z is          1 and i is          19
+src is  1 z is          1 and i is          20
+src is  1 z is          1 and i is          21
+src is  1 z is          1 and i is          22
+src is  1 z is          1 and i is          23
+src is  1 z is          1 and i is          24
+src is  1 z is          1 and i is          25
+src is  1 z is          1 and i is          26
+src is  1 z is          1 and i is          27
+src is  1 z is          1 and i is          28
+src is  1 z is          1 and i is          29
+src is  1 z is          1 and i is          30
+src is  1 z is          1 and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> probe -create -shm CPU_tb.scp.ctrl.jumpBranch.immi CPU_tb.scp.ctrl.jumpBranch.inputPC CPU_tb.scp.ctrl.jumpBranch.instruction CPU_tb.scp.ctrl.jumpBranch.name CPU_tb.scp.ctrl.jumpBranch.newPC CPU_tb.scp.ctrl.jumpBranch.nullRegisterRead CPU_tb.scp.ctrl.jumpBranch.opcode CPU_tb.scp.ctrl.jumpBranch.outputPC CPU_tb.scp.ctrl.jumpBranch.register31 CPU_tb.scp.ctrl.jumpBranch.rs CPU_tb.scp.ctrl.jumpBranch.rs1 CPU_tb.scp.ctrl.jumpBranch.rt CPU_tb.scp.ctrl.jumpBranch.signExtendedImmediate CPU_tb.scp.ctrl.jumpBranch.signExtendedName CPU_tb.scp.ctrl.jumpBranch.takeBranch CPU_tb.scp.ctrl.jumpBranch.writeSelect
+Created probe 2
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> reset
+Loaded snapshot worklib.nor_gate:v
+xcelium> run
+Now initializing sram
+Addr is written: 00400020
+Data is written: 00002820
+Addr is written: 00400024
+Data is written: 20071000
+Addr is written: 00400028
+Data is written: 00e73c00
+Addr is written: 0040002c
+Data is written: 00e03020
+Addr is written: 00400030
+Data is written: 20c60028
+Addr is written: 00400034
+Data is written: 8ce40000
+Addr is written: 00400038
+Data is written: 00a42821
+Addr is written: 0040003c
+Data is written: 20e70004
+Addr is written: 00400040
+Data is written: 14e6fffc
+Addr is written: 00400044
+Data is written: ace50000
+Addr is written: 10000000
+Data is written: 0000000f
+Addr is written: 10000004
+Data is written: 000000f0
+Addr is written: 10000008
+Data is written: 00000f00
+Addr is written: 1000000c
+Data is written: 0000f000
+Addr is written: 10000010
+Data is written: 000f0000
+Addr is written: 10000014
+Data is written: 00f00000
+Addr is written: 10000018
+Data is written: 0f000000
+Addr is written: 1000001c
+Data is written: 10000000
+Addr is written: 10000020
+Data is written: 20000000
+Addr is written: 10000024
+Data is written: c0000000
+Addr is written: 10000028
+Data is written: ffffffff
+Addr is checking: 00400020
+Data is checking: 00002820
+Addr is checking: 00400024
+Data is checking: 20071000
+Addr is checking: 00400028
+Data is checking: 00e73c00
+Addr is checking: 0040002c
+Data is checking: 00e03020
+Addr is checking: 00400030
+Data is checking: 20c60028
+Addr is checking: 00400034
+Data is checking: 8ce40000
+Addr is checking: 00400038
+Data is checking: 00a42821
+Addr is checking: 0040003c
+Data is checking: 20e70004
+Addr is checking: 00400040
+Data is checking: 14e6fffc
+Addr is checking: 00400044
+Data is checking: ace50000
+Addr is checking: 10000000
+Data is checking: 0000000f
+Addr is checking: 10000004
+Data is checking: 000000f0
+Addr is checking: 10000008
+Data is checking: 00000f00
+Addr is checking: 1000000c
+Data is checking: 0000f000
+Addr is checking: 10000010
+Data is checking: 000f0000
+Addr is checking: 10000014
+Data is checking: 00f00000
+Addr is checking: 10000018
+Data is checking: 0f000000
+Addr is checking: 1000001c
+Data is checking: 10000000
+Addr is checking: 10000020
+Data is checking: 20000000
+Addr is checking: 10000024
+Data is checking: c0000000
+Addr is checking: 10000028
+Data is checking: ffffffff
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+src is  0 z is          x and i is           0
+src is  0 z is          x and i is           1
+src is  0 z is          x and i is           2
+src is  0 z is          x and i is           3
+src is  0 z is          x and i is           4
+src is  0 z is          x and i is           5
+src is  0 z is          x and i is           6
+src is  0 z is          x and i is           7
+src is  0 z is          x and i is           8
+src is  0 z is          x and i is           9
+src is  0 z is          x and i is          10
+src is  0 z is          x and i is          11
+src is  0 z is          x and i is          12
+src is  0 z is          x and i is          13
+src is  0 z is          x and i is          14
+src is  0 z is          x and i is          15
+src is  0 z is          x and i is          16
+src is  0 z is          x and i is          17
+src is  0 z is          x and i is          18
+src is  0 z is          x and i is          19
+src is  0 z is          x and i is          20
+src is  0 z is          x and i is          21
+src is  0 z is          x and i is          22
+src is  0 z is          x and i is          23
+src is  0 z is          x and i is          24
+src is  0 z is          x and i is          25
+src is  0 z is          x and i is          26
+src is  0 z is          x and i is          27
+src is  0 z is          x and i is          28
+src is  0 z is          x and i is          29
+src is  0 z is          x and i is          30
+src is  0 z is          x and i is          31
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  1 z is          1 and i is           0
+src is  1 z is          1 and i is           1
+src is  1 z is          1 and i is           2
+src is  1 z is          1 and i is           3
+src is  1 z is          1 and i is           4
+src is  1 z is          1 and i is           5
+src is  1 z is          1 and i is           6
+src is  1 z is          1 and i is           7
+src is  1 z is          1 and i is           8
+src is  1 z is          1 and i is           9
+src is  1 z is          1 and i is          10
+src is  1 z is          1 and i is          11
+src is  1 z is          1 and i is          12
+src is  1 z is          1 and i is          13
+src is  1 z is          1 and i is          14
+src is  1 z is          1 and i is          15
+src is  1 z is          1 and i is          16
+src is  1 z is          1 and i is          17
+src is  1 z is          1 and i is          18
+src is  1 z is          1 and i is          19
+src is  1 z is          1 and i is          20
+src is  1 z is          1 and i is          21
+src is  1 z is          1 and i is          22
+src is  1 z is          1 and i is          23
+src is  1 z is          1 and i is          24
+src is  1 z is          1 and i is          25
+src is  1 z is          1 and i is          26
+src is  1 z is          1 and i is          27
+src is  1 z is          1 and i is          28
+src is  1 z is          1 and i is          29
+src is  1 z is          1 and i is          30
+src is  1 z is          1 and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> reset
+Loaded snapshot worklib.nor_gate:v
+xcelium> run
+Now initializing sram
+Addr is written: 00400020
+Data is written: 00002820
+Addr is written: 00400024
+Data is written: 20071000
+Addr is written: 00400028
+Data is written: 00e73c00
+Addr is written: 0040002c
+Data is written: 00e03020
+Addr is written: 00400030
+Data is written: 20c60028
+Addr is written: 00400034
+Data is written: 8ce40000
+Addr is written: 00400038
+Data is written: 00a42821
+Addr is written: 0040003c
+Data is written: 20e70004
+Addr is written: 00400040
+Data is written: 14e6fffc
+Addr is written: 00400044
+Data is written: ace50000
+Addr is written: 10000000
+Data is written: 0000000f
+Addr is written: 10000004
+Data is written: 000000f0
+Addr is written: 10000008
+Data is written: 00000f00
+Addr is written: 1000000c
+Data is written: 0000f000
+Addr is written: 10000010
+Data is written: 000f0000
+Addr is written: 10000014
+Data is written: 00f00000
+Addr is written: 10000018
+Data is written: 0f000000
+Addr is written: 1000001c
+Data is written: 10000000
+Addr is written: 10000020
+Data is written: 20000000
+Addr is written: 10000024
+Data is written: c0000000
+Addr is written: 10000028
+Data is written: ffffffff
+Addr is checking: 00400020
+Data is checking: 00002820
+Addr is checking: 00400024
+Data is checking: 20071000
+Addr is checking: 00400028
+Data is checking: 00e73c00
+Addr is checking: 0040002c
+Data is checking: 00e03020
+Addr is checking: 00400030
+Data is checking: 20c60028
+Addr is checking: 00400034
+Data is checking: 8ce40000
+Addr is checking: 00400038
+Data is checking: 00a42821
+Addr is checking: 0040003c
+Data is checking: 20e70004
+Addr is checking: 00400040
+Data is checking: 14e6fffc
+Addr is checking: 00400044
+Data is checking: ace50000
+Addr is checking: 10000000
+Data is checking: 0000000f
+Addr is checking: 10000004
+Data is checking: 000000f0
+Addr is checking: 10000008
+Data is checking: 00000f00
+Addr is checking: 1000000c
+Data is checking: 0000f000
+Addr is checking: 10000010
+Data is checking: 000f0000
+Addr is checking: 10000014
+Data is checking: 00f00000
+Addr is checking: 10000018
+Data is checking: 0f000000
+Addr is checking: 1000001c
+Data is checking: 10000000
+Addr is checking: 10000020
+Data is checking: 20000000
+Addr is checking: 10000024
+Data is checking: c0000000
+Addr is checking: 10000028
+Data is checking: ffffffff
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+src is  0 z is          x and i is           0
+src is  0 z is          x and i is           1
+src is  0 z is          x and i is           2
+src is  0 z is          x and i is           3
+src is  0 z is          x and i is           4
+src is  0 z is          x and i is           5
+src is  0 z is          x and i is           6
+src is  0 z is          x and i is           7
+src is  0 z is          x and i is           8
+src is  0 z is          x and i is           9
+src is  0 z is          x and i is          10
+src is  0 z is          x and i is          11
+src is  0 z is          x and i is          12
+src is  0 z is          x and i is          13
+src is  0 z is          x and i is          14
+src is  0 z is          x and i is          15
+src is  0 z is          x and i is          16
+src is  0 z is          x and i is          17
+src is  0 z is          x and i is          18
+src is  0 z is          x and i is          19
+src is  0 z is          x and i is          20
+src is  0 z is          x and i is          21
+src is  0 z is          x and i is          22
+src is  0 z is          x and i is          23
+src is  0 z is          x and i is          24
+src is  0 z is          x and i is          25
+src is  0 z is          x and i is          26
+src is  0 z is          x and i is          27
+src is  0 z is          x and i is          28
+src is  0 z is          x and i is          29
+src is  0 z is          x and i is          30
+src is  0 z is          x and i is          31
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  1 z is          1 and i is           0
+src is  1 z is          1 and i is           1
+src is  1 z is          1 and i is           2
+src is  1 z is          1 and i is           3
+src is  1 z is          1 and i is           4
+src is  1 z is          1 and i is           5
+src is  1 z is          1 and i is           6
+src is  1 z is          1 and i is           7
+src is  1 z is          1 and i is           8
+src is  1 z is          1 and i is           9
+src is  1 z is          1 and i is          10
+src is  1 z is          1 and i is          11
+src is  1 z is          1 and i is          12
+src is  1 z is          1 and i is          13
+src is  1 z is          1 and i is          14
+src is  1 z is          1 and i is          15
+src is  1 z is          1 and i is          16
+src is  1 z is          1 and i is          17
+src is  1 z is          1 and i is          18
+src is  1 z is          1 and i is          19
+src is  1 z is          1 and i is          20
+src is  1 z is          1 and i is          21
+src is  1 z is          1 and i is          22
+src is  1 z is          1 and i is          23
+src is  1 z is          1 and i is          24
+src is  1 z is          1 and i is          25
+src is  1 z is          1 and i is          26
+src is  1 z is          1 and i is          27
+src is  1 z is          1 and i is          28
+src is  1 z is          1 and i is          29
+src is  1 z is          1 and i is          30
+src is  1 z is          1 and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+src is  1 z is          x and i is           0
+src is  1 z is          x and i is           1
+src is  1 z is          x and i is           2
+src is  1 z is          x and i is           3
+src is  1 z is          x and i is           4
+src is  1 z is          x and i is           5
+src is  1 z is          x and i is           6
+src is  1 z is          x and i is           7
+src is  1 z is          x and i is           8
+src is  1 z is          x and i is           9
+src is  1 z is          x and i is          10
+src is  1 z is          x and i is          11
+src is  1 z is          x and i is          12
+src is  1 z is          x and i is          13
+src is  1 z is          x and i is          14
+src is  1 z is          x and i is          15
+src is  1 z is          x and i is          16
+src is  1 z is          x and i is          17
+src is  1 z is          x and i is          18
+src is  1 z is          x and i is          19
+src is  1 z is          x and i is          20
+src is  1 z is          x and i is          21
+src is  1 z is          x and i is          22
+src is  1 z is          x and i is          23
+src is  1 z is          x and i is          24
+src is  1 z is          x and i is          25
+src is  1 z is          x and i is          26
+src is  1 z is          x and i is          27
+src is  1 z is          x and i is          28
+src is  1 z is          x and i is          29
+src is  1 z is          x and i is          30
+src is  1 z is          x and i is          31
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+src is  2 z is          2 and i is           0
+src is  2 z is          2 and i is           1
+src is  2 z is          2 and i is           2
+src is  2 z is          2 and i is           3
+src is  2 z is          2 and i is           4
+src is  2 z is          2 and i is           5
+src is  2 z is          2 and i is           6
+src is  2 z is          2 and i is           7
+src is  2 z is          2 and i is           8
+src is  2 z is          2 and i is           9
+src is  2 z is          2 and i is          10
+src is  2 z is          2 and i is          11
+src is  2 z is          2 and i is          12
+src is  2 z is          2 and i is          13
+src is  2 z is          2 and i is          14
+src is  2 z is          2 and i is          15
+src is  2 z is          2 and i is          16
+src is  2 z is          2 and i is          17
+src is  2 z is          2 and i is          18
+src is  2 z is          2 and i is          19
+src is  2 z is          2 and i is          20
+src is  2 z is          2 and i is          21
+src is  2 z is          2 and i is          22
+src is  2 z is          2 and i is          23
+src is  2 z is          2 and i is          24
+src is  2 z is          2 and i is          25
+src is  2 z is          2 and i is          26
+src is  2 z is          2 and i is          27
+src is  2 z is          2 and i is          28
+src is  2 z is          2 and i is          29
+src is  2 z is          2 and i is          30
+src is  2 z is          2 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+src is  0 z is          4 and i is           0
+src is  0 z is          4 and i is           1
+src is  0 z is          4 and i is           2
+src is  0 z is          4 and i is           3
+src is  0 z is          4 and i is           4
+src is  0 z is          4 and i is           5
+src is  0 z is          4 and i is           6
+src is  0 z is          4 and i is           7
+src is  0 z is          4 and i is           8
+src is  0 z is          4 and i is           9
+src is  0 z is          4 and i is          10
+src is  0 z is          4 and i is          11
+src is  0 z is          4 and i is          12
+src is  0 z is          4 and i is          13
+src is  0 z is          4 and i is          14
+src is  0 z is          4 and i is          15
+src is  0 z is          4 and i is          16
+src is  0 z is          4 and i is          17
+src is  0 z is          4 and i is          18
+src is  0 z is          4 and i is          19
+src is  0 z is          4 and i is          20
+src is  0 z is          4 and i is          21
+src is  0 z is          4 and i is          22
+src is  0 z is          4 and i is          23
+src is  0 z is          4 and i is          24
+src is  0 z is          4 and i is          25
+src is  0 z is          4 and i is          26
+src is  0 z is          4 and i is          27
+src is  0 z is          4 and i is          28
+src is  0 z is          4 and i is          29
+src is  0 z is          4 and i is          30
+src is  0 z is          4 and i is          31
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+Writing to dout:          x
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	18.09-s011: Exiting on Feb 08, 2021 at 01:49:12 CST  (total: 00:15:34)

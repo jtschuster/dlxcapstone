@@ -1,17 +1,17 @@
-module ID_stage (clk, opcode,opcode_if, rs, rt, rd, shamt, funct, funct_if,instr_if, immi, lw_stall,lw_stall_id);//RegDst_id, ALUSrc_id, MemtoReg_id, RegWrite_id,
+module ID_stage (clk, opcode, rs1, rs2, rd, func);//RegDst_id, ALUSrc_id, MemtoReg_id, RegWrite_id,
                  //MemWrite_id, Extop_id, ALUop_id, RegDst, ALUSrc, MemtoReg, RegWrite,
                  //MemWrite, Extop, ALUop);
   input clk;
-  input [31:0] instr_if;
+  input [31:0] instr_id;
   //input RegDst_id, MemtoReg_id, RegWrite_id, MemWrite_id, Extop_id;
   //output RegDst, MemtoReg, RegWrite, MemWrite, Extop;
   //input [1:0] ALUSrc_id;
   //input [1:0] ALUop_id;
   //output [1:0] ALUSrc;
   //output [1:0] ALUop;
-  output [5:0] opcode,opcode_if;
-  output [4:0] rs;
-  output [4:0] rt;
+  output [5:0] opcode;
+  output [4:0] rs1;
+  output [4:0] rs2;
   output [4:0] rd;
   output [4:0] shamt;
   output [5:0] funct, funct_if; 

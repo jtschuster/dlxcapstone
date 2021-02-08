@@ -1,24 +1,26 @@
-module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt, rs, rd, Memread, shamt, opcode, funct, immed, ALUSrc, MemtoReg, RegWrite, MemWrite, should_branch_id, Extop,ALUop,Result,alu_input, alu_control);
+module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Memread, shamt, funct, immed, ALUSrc, MemtoReg, RegWrite, MemWrite, should_branch_id, Extop,ALUop,Result,alu_input, alu_control);
    // Wires and Registers are (or should be) suffixed with the stage they origininate from, or the receiving stage of the interstage registers (where it's used) 
-   
+   //   If a component also acts as the inter stage register, the outputs are considered to be in the next stage.
    parameter file_name="../data/unsigned_sum.dat";
    //parameter file_name="data/bills_branch.dat";
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
    input initPC;
-   output [31:0] nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Memread;
-   output [4:0]  rt, rs, rd, shamt;
-   output [5:0]  opcode, funct;
+   output [31:0] nextPC, currentPC_if, wDin, rs1_id, rs2_id, Memread;
+   output [0:31] inst_id;
+   output [4:0]  shamt;
+   output [5:0]  funct;
    wire [5:0] 	 opcode_if, funct_if, opcode_ex;
-   output [15:0] immed;
-   reg [15:0] 	 immed_ex;
+   output [0:15] immed;
+   reg [0:15] 	 immed_ex;
+   wire [0:15] 	 immed_id;
    output wire 	 MemtoReg, RegWrite, MemWrite, should_branch_id, Extop;
-   wire 	 MemtoReg_id, RegWrite_id, MemWrite_id, Extop_id;
+   wire 	 MemtoReg_id, MemtoReg_wb, RegWrite_id, MemWrite_id, Extop_id;
    output wire [1:0] ALUSrc;
    output wire [1:0] ALUop;
    wire 	     ALUSrc_id;
    wire [3:0] 	     ALUop_id;
-   wire [4:0] 	     towrite, towrite_ex, towrite_mem;
+   wire [4:0] 	     towrite, towrite_ex, towrite_mem, towrite_wb;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
    wire [31:0] 	      alu_input_new;
@@ -28,7 +30,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt,
    wire 	      Carryout, Overflow, Zero, Set;
    output wire [31:0] Result;
    wire [31:0] 	      result_mem;
-   wire [31:0] 	      mem_data_ex;
+   wire [31:0] 	      mem_data_ex, data_wb, mem_data_mem;
    wire 	      lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
    wire 	      kill_next_instruction_id, should_be_killed_id, stall_id;
    wire [31:0] 	      new_pc_if_jump_id;
@@ -41,7 +43,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt,
    end
    
    // instruction fetch
-   //  Updates instr_if at negedge of clock. I think that means inst is considered after the IF/ID register
+   //  Updates instr_if at negedge of clock. That means inst is considered after the IF/ID register, so I suffixed the output with _id.
    IF_stage cpu_if0 (.clk(clk), .PC(currentPC_if), .instr_if(inst_id));
    defparam cpu_if0.inst_name = file_name;
    
@@ -49,22 +51,20 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt,
    // Honestly I don't think we need this at all anymore
    // ID_stage cpu_id (.clk(clk), .opcode(opcode), .opcode_if(opcode_if), .rs(rs), .rt(rt), .rd(rd), .shamt(shamt), .funct(funct), 
    //                  .funct_if(funct_if), .instr_if(inst_id), .immi(immed), .lw_stall(lw_stall), .lw_stall_id(lw_stall_id));
-   wire [4:0] rs1_sel_id, rs2_sel_id;
+   wire [0:4] rs1_sel_id, rs2_sel_id;
    wire [4:0] RegDst_id;
    assign rs1_sel_id = inst_id[6:10];
-   assign rs2_sel_id = inst_id[11:15];
-   assign immed_id = inst_id[16:32];
-   
+   assign immed_id = inst_id[16:31];
    
    // Control Signal
    // Combinational logic right now
-   control ctrl (.instr(inst_id), .rs1(rs1_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
+   control ctrl (.instr(inst_id), .rs1(rs1_id), .rs2_sel(rs2_sel_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id));
    dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
    // RegisterFiles
    // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(towrite_mem), .Din(wDin), .rs1_out(rs1_id), .rs2_out(rs2_id));
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(towrite_wb), .Din(data_wb), .rs1_out(r1_id), .rs2_out(r2_id));
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [3:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
@@ -90,7 +90,10 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt,
   
    // sign extend the immed
    // Combinational
-   Signextend cpu_se (.Extop(Extop), .Din(immed_ex), .Dout(se_immed));
+   // assign se_immed = Extop_ex == 1 ?
+		     //	{ {16 { immed_ex[1] } }, immed_ex[0:15] } :
+		     // { {16 { 1'b0        } }, immed_ex[0:15] };
+   Signextend cpu_se (.Extop(Extop_ex), .Din(immed_ex), .Dout(se_immed));
    
    // Mux rs2 or immediate to get B for ALU
    // Looks like we don't worry about shamt in DLX, it's only either rs1 or the immediate as possibilites for the input
@@ -104,21 +107,23 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, rt,
    //   initPC-delays
    // Looks like the *_ex signals are actually the outputs of the stage that are meant to be passed on. Above this I followed the opposite convention, _ex means it's used in EX stage
    //   TODO: Update this to reflect the conventions used above
-   //   TODO: Update to remove the signals we don't need (valid, branch, delay, lw_stall, etc)
+   //   TODO: Update to remove the signals we don't need (valid, branch, delay, lw_stall, immed, immed_ex, etc)
    EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
-		    .Set(Set), .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
-		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(towrite), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_ex), 
-		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(towrite_ex), .mem_data(Dout2), .mem_data_ex(mem_data_mem),
+		    .Set(Set), // .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
+		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_mem), 
+		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(towrite_mem), 
+		    .mem_data(rs2_ex), .mem_data_ex(mem_data_mem), // rs2 is technically rd in i type (sw) aka the stored value
                     .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(towrite_mem), .result_mem(wDin), .valid(valid),
                     .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding  
    
    //data memory
-   Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_ex),.addr(Result),.din(mem_data_ex),.dout(Memread), .result_mem(result_mem), 
-                      .MemtoReg_ex(MemtoReg_ex), .RegWrite_ex(RegWrite_ex),.MemtoReg_mem(MemtoReg_mem), .RegWrite_mem(RegWrite_mem),
-                      .towrite_ex(towrite_ex),.towrite_mem(towrite_mem), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding));
+   Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(Result),.din(mem_data_mem),.dout(Memread), .result_mem(result_mem), 
+                      .MemtoReg_ex(MemtoReg_mem), .RegWrite_ex(RegWrite_mem),.MemtoReg_mem(MemtoReg_wb), .RegWrite_mem(RegWrite_wb),
+                      .towrite_ex(towrite_mem),.towrite_mem(towrite_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding));
    defparam cpu_mem.mem_file = file_name;
    // write back
-   WB_stage cpu_wb (.MemtoReg(MemtoReg_mem), .Result(result_mem), .Memread(Memread), .wDin(wDin));
+   // Literally Just a mux to determine which data gets written back
+   WB_stage cpu_wb (.MemtoReg(MemtoReg_mem), .Result(result_mem), .Memread(Memread), .wDin(data_wb));
 endmodule
 
   

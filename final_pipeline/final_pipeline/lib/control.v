@@ -11,6 +11,7 @@ module control(
 	       Branch,
 	       MemWr,
 	       MemToReg,
+	       rs2_sel,
 	       new_pc_if_jump,
 	       kill_next_instruction,
 	       stall);
@@ -22,7 +23,7 @@ module control(
    input 	 should_be_killed;
    output [31:0] new_pc_if_jump;
    output 	 RegWr;
-   output [4:0]  RegDst;
+   output [4:0]  RegDst, rs2_sel;
    output 	 ExtOp;
    output 	 AluSrc;
    output [3:0]  AluOp;
@@ -79,30 +80,30 @@ module control(
    
    wire 	r_type;
    wire [0:5] 	opcode;
-   wire [0:5] 	rd;
-   wire [0:5] 	rs1;
-   wire [0:5] 	rs2;
+   wire [0:4] 	rd;
+   wire [0:4] 	rs1_sel;
+   wire [0:4] 	rs2_sel;
    wire [0:5] 	func;
-   wire [15:0] 	immediate;
-   
    wire 	i_type;
-   wire [15:0]	imm; 	
-
    wire 	j_type;
-   wire [26:0] 	offset;
 
    wire 	branch_instr;
 
 
-
+   assign i_type = ~r_type && ~j_type; // Maybe should make this actually account for all i_types rather than all not r_type or j_type
    assign opcode = instr[0:5];
-   assign rd = instr[6:10];
-   assign rs1 = instr[11:15];
-   assign rs2 = instr[16:20];
+   assign rd = i_type 
+	       ? 
+	       instr[11:15] 
+	       : 
+	       instr[16:20];
+   
+   assign rs1_sel= instr[6:10];
+   assign rs2_sel = instr[11:15];
    assign func = instr[27:31];
    
    
-   assign r_type = !(opcode == 6'h00) && (~(func == nop_func)) | 
+   assign r_type = (opcode == 6'h00) && (~(func == nop_func)) | 
 		   (opcode == 6'h01); // MULT, MULTU, and a bunch of FP instructions
    // Only for the always jumps, doesn't include branches
    assign j_type = opcode == 6'h02 || // J
@@ -145,11 +146,7 @@ module control(
 		       ? subu_alu_op : 4'h0
 		       |
 		       opcode == 6'h0;
-   
-   assign Branch   = j_type |
-		     opcode == beqz_op && rs1 == 32'h00000000 ||
-		     opcode == bnez_op && rs1 != 32'h00000000 ;
-   
+      
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
 		      ? 1'b1 : 1'b0) &
@@ -163,7 +160,7 @@ module control(
    wire 	takeBranch;
    JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;
-   assign kill_next_instr = opcode == lw_op;
+   assign kill_next_instruction = opcode === lw_op;
    
 
 endmodule

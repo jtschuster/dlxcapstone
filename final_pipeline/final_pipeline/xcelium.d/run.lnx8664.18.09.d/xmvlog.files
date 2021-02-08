@@ -26,7 +26,6 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/full_alu.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/and_6.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ID_stage.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ifecth.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Control_signal.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/IF_stage.v
