@@ -20,7 +20,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    output wire [1:0] ALUop;
    wire 	     ALUSrc_id;
    wire [3:0] 	     ALUop_id;
-   wire [4:0] 	     towrite, towrite_ex, towrite_mem, towrite_wb;
+   wire [4:0] 	     towrite, RegDst_ex, RegDst_mem, RegDst_wb;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
    wire [31:0] 	      alu_input_new;
@@ -62,9 +62,14 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id));
    dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
+
+   // TODO: make sure rs1 contains the correct forwarded value for the branch control
+   // assign rs1_id = (rs1_sel_id === RegDst_ex)  && (RegWrite_ex)  ? Result_ex :
+   //		   (rs1_sel_id === RegDst_mem) && (RegWrite_mem) ? (MemtoReg_mem ? 
+								    
    // RegisterFiles
    // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(towrite_wb), .Din(data_wb), .rs1_out(r1_id), .rs2_out(r2_id));
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_mem), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id), .rs2_out(rs2_id));
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [3:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
@@ -111,15 +116,15 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
 		    .Set(Set), // .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
 		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_mem), 
-		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(towrite_mem), 
+		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(RegDst_mem), 
 		    .mem_data(rs2_ex), .mem_data_ex(mem_data_mem), // rs2 is technically rd in i type (sw) aka the stored value
-                    .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(towrite_mem), .result_mem(wDin), .valid(valid),
+                    .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(RegDst_mem), .result_mem(wDin), .valid(valid),
                     .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding  
    
    //data memory
    Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(Result),.din(mem_data_mem),.dout(Memread), .result_mem(result_mem), 
                       .MemtoReg_ex(MemtoReg_mem), .RegWrite_ex(RegWrite_mem),.MemtoReg_mem(MemtoReg_wb), .RegWrite_mem(RegWrite_wb),
-                      .towrite_ex(towrite_mem),.towrite_mem(towrite_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding));
+                      .towrite_ex(RegDst_mem),.towrite_mem(RegDst_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding));
    defparam cpu_mem.mem_file = file_name;
    // write back
    // Literally Just a mux to determine which data gets written back
