@@ -120,10 +120,10 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    //   TODO: Update this to reflect the conventions used above
    //   TODO: Update to remove the signals we don't need (valid, branch, delay, lw_stall, immed, immed_ex, etc)
    //   TODO: Confirm which each of these inputs are for. is mem_data the data to be placed in memory in the next stage, or the data from the memory from the MEM stage?
-   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
+   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op_ex(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result(Result), 
 		    .Set(Set), // .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
-		    .MemtoReg(MemtoReg_ex), .RegWrite(RegWrite_ex),.MemWrite(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_ex(MemtoReg_mem), 
-		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(RegDst_mem), 
+		    .MemtoReg_ex(MemtoReg_ex), .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_mem(MemtoReg_mem), 
+		    .RegWrite_mem(RegWrite_mem),.MemWrite_mem(MemWrite_mem), .towrite_ex(RegDst_mem), 
 		    .mem_data(rs2_ex), .mem_data_ex(mem_store_data_mem), // rs2 is technically rd in i type (sw) aka the stored value
                     .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(RegDst_mem), .result_mem(result_wb), .valid(valid),
                     .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding  
