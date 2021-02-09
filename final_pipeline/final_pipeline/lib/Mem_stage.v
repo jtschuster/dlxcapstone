@@ -1,4 +1,4 @@
-module Mem_stage (clk,cs,oe,we,addr,din,dout,result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding);
+module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding);
   
   parameter mem_file = "../data/unsigned_sum.dat";
   //parameter mem_file = "../data/bills_branch.dat";
@@ -11,7 +11,7 @@ module Mem_stage (clk,cs,oe,we,addr,din,dout,result_mem, MemtoReg_ex, RegWrite_e
   input [4:0] towrite_ex;
   input [31:0] addr;
   input [31:0] din;
-  output [31:0] dout;
+  output [31:0] dout, dout_mem;
   output [31:0] result_mem;
   output MemtoReg_mem, RegWrite_mem, Branch_stall_forwarding;
   output [4:0] towrite_mem;
@@ -29,6 +29,8 @@ module Mem_stage (clk,cs,oe,we,addr,din,dout,result_mem, MemtoReg_ex, RegWrite_e
 	end
   endgenerate
 
+   assign dout_mem = dout_tmp;
+   
   generate 
   genvar i;
   for (i=0; i< 32; i = i + 1)
