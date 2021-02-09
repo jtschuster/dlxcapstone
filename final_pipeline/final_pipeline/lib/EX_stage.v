@@ -1,4 +1,4 @@
-module EX_stage (clk, A, B, Op, Carryout, Overflow, Zero, Result,result_mem, Set, immed, immed_ex,opcode,opcode_ex, Branch, 
+module EX_stage (clk, A, B, Op, Carryout, Overflow, Zero, Result, result_mem, Set, immed, immed_ex,opcode,opcode_ex, Branch, 
                  MemtoReg, RegWrite, MemWrite, Branch_ex,MemtoReg_ex, RegWrite_ex, MemWrite_ex,towrite,towrite_ex,towrite_mem, 
                  mem_data, mem_data_ex,rs,rt,ALUSrc,lw_stall_id,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid);
   input clk, lw_stall_id;
@@ -48,8 +48,7 @@ module EX_stage (clk, A, B, Op, Carryout, Overflow, Zero, Result,result_mem, Set
   dff reg_Overflow (.clk(clk), .d(Overflow_tmp), .q(Overflow));
   dff reg_Zero (.clk(clk), .d(Zero_tmp), .q(Zero));
   dff reg_Set (.clk(clk), .d(Set_tmp), .q(Set));
-  //control signal fetch
-  dff reg_MemWrite (.clk(clk), .d(MemWrite), .q(MemWrite_ex));
+  //control signal fetch  dff reg_MemWrite (.clk(clk), .d(MemWrite), .q(MemWrite_ex));
   dff reg_MemtoReg (.clk(clk), .d(MemtoReg), .q(MemtoReg_ex));
   dff reg_RegWrite (.clk(clk), .d(RegWrite), .q(RegWrite_ex));
   dff reg_Branch (.clk(clk), .d(Branch), .q(Branch_ex));

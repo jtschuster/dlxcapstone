@@ -61,7 +61,7 @@
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/xor_gate.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_32.v
-1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
+1612888719 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ALUctrl.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Extender.v
 1612456368 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_msb.v

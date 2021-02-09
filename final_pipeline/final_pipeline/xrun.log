@@ -1,5 +1,5 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Feb 08, 2021 at 23:18:23 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 09, 2021 at 10:38:53 CST
 xrun
 	-64bit
 	-gui
@@ -46,11 +46,11 @@ xrun
 	./lib/JumpBranch.v
 	./lib/sram_dummy.v
 	./test/CPU_tb.v
-Recompiling... reason: file './lib/CPU.v' is newer than expected.
-	expected: Mon Feb  8 01:26:02 2021
-	actual:   Mon Feb  8 23:18:22 2021
-file: ./lib/CPU.v
-	module worklib.CPU:v
+Recompiling... reason: file './lib/EX_stage.v' is newer than expected.
+	expected: Sat Jan 30 19:32:10 2021
+	actual:   Tue Feb  9 10:38:39 2021
+file: ./lib/EX_stage.v
+	module worklib.EX_stage:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
@@ -84,37 +84,21 @@ xmelab: *W,CUVMPW (./lib/CPU.v,134|170): port sizes differ in port connection (1
                                                             |
 xmelab: *W,CUVMPW (./lib/CPU.v,140|60): port sizes differ in port connection (1/32).
 	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.JumpBranch:v <0x1c44a1bd>
-			streams:  13, words:  3976
-		worklib.CPU_tb:v <0x1db71b1a>
-			streams:   3, words:  2135
-		worklib.CPU:v <0x5742ceb8>
-			streams:  13, words:  4819
-		worklib.Mem_stage:v <0x46539047>
-			streams:   1, words:   168
-		worklib.forwarding_ex:v <0x21e4744b>
-			streams:   0, words:     0
 	Building instance specific data structures.
+		    .RegWrite_ex(RegWrite_mem),.MemWrite_ex(MemWrite_mem), .towrite_ex(RegDst_mem), 
+		                                                       |
+xmelab: *W,CSINFI (./lib/CPU.v,126|57): implicit wire has no fanin (CPU_tb.scp.MemWrite_mem).
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                Instances  Unique
-		Modules:             2355      42
+		Modules:             2354      42
 		Resolved nets:          0       1
-		Registers:           1598      54
-		Scalar wires:        2161       -
+		Registers:           1597      54
+		Scalar wires:        2160       -
 		Expanded wires:      1371      50
 		Vectored wires:       184       -
-		Always blocks:       1554      12
+		Always blocks:       1553      12
 		Initial blocks:        10      10
 		Cont. assignments:     38      52
 		Pseudo assignments:    25      24
 	Writing initial simulation snapshot: worklib.nor_gate:v
-
--------------------------------------
-Relinquished control to SimVision...
-xcelium> 
-xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
-xcelium> ^C
-xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Feb 08, 2021 at 23:18:32 CST  (total: 00:00:09)
