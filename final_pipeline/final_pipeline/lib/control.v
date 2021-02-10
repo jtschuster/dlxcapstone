@@ -58,17 +58,19 @@ module control(
    localparam [0:5] subu_func   = 6'h19;   
    localparam [0:5] subui_op	= 6'h0b;
    localparam [0:5] subi_op     = 6'h0a;
-   localparam [0:5] sw_op	= 6'h2b;
-   localparam [0:5] jal_op	= 6'h03;
    localparam [0:5] lhi_op	= 6'h0f;
    localparam [0:5] j_op	= 6'h02;
+   localparam [0:5] jal_op	= 6'h03;
+   localparam [0:5] jr_op	= 6'h0c;
+   localparam [0:5] jalr_op     = 6'h13;
    localparam [0:5] nop_func	= 6'h15;
    localparam [0:5] lw_op	= 6'h23;
    localparam [0:5] slt_func	= 6'h28;
    localparam [0:5] beqz_op	= 6'h04;
-   localparam [0:5] jr_op	= 6'h0c;
    localparam [0:5] lb_op	= 6'h20;
    localparam [0:5] sb_op	= 6'h28;
+   localparam [0:5] sh_op       = 6'h29;
+   localparam [0:5] sw_op	= 6'h2b;
    localparam [0:5] lbu_op	= 6'h24;
    localparam [0:5] sgt_func	= 6'h2b;
    localparam [0:5] bnez_op	= 6'h05;
@@ -116,7 +118,14 @@ module control(
 			 opcode == 6'h07;  // BFPR
    
    
-   assign RegWr  = r_type & ~should_be_killed;
+   assign RegWr  = (r_type || (i_type && ~(opcode == beqz_op ||
+					   opcode == bnez_op ||
+					   opcode == jr_op ||
+					   opcode == jalr_op ||
+					   opcode == sw_op ||
+					   opcode == sh_op ||
+					   opcode == sb_op))) 
+		    & ~should_be_killed;
    assign RegDst = rd;
    // 1 if sign extend, 0 if 0 extend
    assign ExtOp    = opcode == subi_op ||

@@ -1,10 +1,10 @@
-module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result,result_mem, Set, immed, immed_ex,opcode,opcode_ex, Branch, 
+module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result_ex, Result_mem, Set, immed, immed_ex,opcode,opcode_ex, Branch, 
                  MemtoReg_ex, RegWrite_ex, MemWrite_ex, Branch_ex,MemtoReg_mem, RegWrite_mem, MemWrite_mem,towrite,towrite_ex,towrite_mem, 
                  mem_data, mem_data_ex,rs,rt,ALUSrc,lw_stall_id,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid);
   input clk, lw_stall_id;
   input [31:0] A;
   input [31:0] B;
-  input [31:0] mem_data, result_mem;
+  input [31:0] mem_data;
   input [15:0] immed;
   output [15:0] immed_ex;
   input [5:0] opcode;
@@ -19,28 +19,28 @@ module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result,result_mem, 
   output  Carryout;
   output  Overflow;
   output  Zero;
-  output [31:0] Result;
+  output [31:0] Result_mem, Result_ex;
   output Set,valid;
   output [31:0] mem_data_ex;
   wire  Carryout_tmp;
   wire  Overflow_tmp;
   wire [5:0] opcode_mem,NotOp_ex,NotOp_mem;
   wire  Zero_tmp;
-  wire [31:0] Result_tmp,opA,opB;
+  wire [31:0] Result_ex,opA,opB;
   wire Set_tmp, lw_stall_ex, lw_stall_delay,sw_ex,sw_mem,sw_ex_new,sw_mem_new,sw_mem_new2;  
 
-  forwarding_ex forwarding_ex (.clk(clk),.rs(rs),.rt(rt), .ALUSrc(ALUSrc), .towrite_ex(towrite_ex), .towrite_mem(towrite_mem), 
-                               .result(Result), .result_mem(result_mem), .A(A), .B(B), .opA(opA), .opB(opB),.lw_stall_ex(lw_stall_delay),
-                               .Branch_stall_forwarding(Branch_stall_forwarding), .sw_ex(sw_ex_new), .sw_mem(sw_mem_new2),.Branch_ex(Branch_ex));
+ // forwarding_ex forwarding_ex (.clk(clk),.rs(rs),.rt(rt), .ALUSrc(ALUSrc), .towrite_ex(towrite_ex), .towrite_mem(towrite_mem), 
+   //                            .result(Result_mem), .result_mem(result_mem), .A(A), .B(B), .opA(opA), .opB(opB),.lw_stall_ex(lw_stall_delay),
+     //                          .Branch_stall_forwarding(Branch_stall_forwarding), .sw_ex(sw_ex_new), .sw_mem(sw_mem_new2),.Branch_ex(Branch_ex));
 
 
 
-  alu cpu_alu (.A(opA), .B(opB), .Op(Op_ex), .Carryout(Carryout_tmp), .Overflow(Overflow_tmp), .Zero(Zero_tmp), .Result(Result_tmp), .Set(Set_tmp));
+  alu cpu_alu (.A(opA), .B(opB), .Op(Op_ex), .Carryout(Carryout_tmp), .Overflow(Overflow_tmp), .Zero(Zero_tmp), .Result(Result_ex), .Set(Set_tmp));
   generate 
   genvar index;
   for (index=0; index < 32; index = index + 1)
 	begin
-        dff reg32_Ex (.clk(clk), .d(Result_tmp[index]), .q(Result[index]));
+        dff reg32_Ex (.clk(clk), .d(Result_ex[index]), .q(Result_mem[index]));
         dff reg32_mem_data (.clk(clk), .d(mem_data[index]), .q(mem_data_ex[index]));
 	end
   endgenerate
@@ -84,7 +84,7 @@ module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result,result_mem, 
 wire invZero, valid_beyond, valid_bgtz, valid_zero;
 //whether the output is valid
 not_gate not_pc0 (.x(Zero_tmp),.z(invZero));
-xnor_gate xnor_pc0 (.x(Result_tmp[31]),.y(Overflow_tmp),.z(valid_beyond));
+xnor_gate xnor_pc0 (.x(Result_ex[31]),.y(Overflow_tmp),.z(valid_beyond));
 and_gate and_bgtz (.x(valid_beyond), .y(invZero), .z(valid_bgtz));
 
 // generate final valid signal for branch;

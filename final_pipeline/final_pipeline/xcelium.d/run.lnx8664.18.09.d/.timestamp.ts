@@ -39,7 +39,7 @@
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/sram.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/and_6.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/sll.v
-1612847902 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1612978759 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_32.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/or_gate.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/xnor_gate.v
@@ -57,11 +57,11 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/dff.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/nor_gate.v
 1612456255 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
-1612769609 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
+1612977807 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/EX_stage.v
 1611884439 /home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
-1612888719 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
+1612978827 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux.v
 1612767427 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1612057493 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
