@@ -108,8 +108,12 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    
    // Mux rs2 or immediate to get B for ALU
    // Looks like we don't worry about shamt in DLX, it's only either rs1 or the immediate as possibilites for the input
-   mux_32 cpu_mux0 (.sel(ALUSrc[0]), .src0(rs2_ex), .src1(se_immed), .z(alu_input_new));
-   mux_32 cpu_mux4 (.sel(ALUSrc[1]), .src0(alu_input_new), .src1({27'b0, shamt}), .z(alu_input));
+   //mux_32 cpu_mux0 (.sel(ALUSrc[0]), .src0(rs2_ex), .src1(se_immed), .z(alu_input_new));
+   //mux_32 cpu_mux4 (.sel(ALUSrc[1]), .src0(alu_input_new), .src1({27'b0, shamt}), .z(alu_input));
+   mux_32 cpu_mux0 (.sel(ALUSrc_ex), .src0(se_immed), .src1(rs2_ex), .z(alu_input));
+
+      
+
    // ALU control signal. Don't think we need this anymore
    ALUctrl cpu_A (.ALUop(ALUop), .funct(funct), .Control(alu_control));
    // Execution
