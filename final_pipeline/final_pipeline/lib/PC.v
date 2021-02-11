@@ -7,7 +7,7 @@ module PC (clk, CurrPC, Branch, BranchPC, stall, NextPC);
    output [31:0] NextPC;
    reg [31:0] 	 nextPc;
    initial begin
-      nextPc = 32'h00400020;
+      nextPc = 32'h00000000;
    end
    assign NextPC = nextPc;
    always @(negedge clk) begin
