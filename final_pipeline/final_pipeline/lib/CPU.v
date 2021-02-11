@@ -33,13 +33,13 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    wire [31:0] 	      data_wb, mem_store_data_mem;
    wire 	      lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
    wire 	      kill_next_instruction_id, should_be_killed_id, stall_id;
-   wire [31:0] 	      new_pc_if_jump_id, rs1_id_preforward;
+   wire [31:0] 	      new_pc_if_jump_id, rs1_id_preforward, rs1_ex, rs2_ex;
    reg [31:0] 	      pcPlusFour_id;
 
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [3:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
-   reg [31:0] pcPlusFour_ex, rs1_ex, rs2_ex;
+   reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
@@ -94,8 +94,8 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
       ALUop_ex <= ALUop_id;
       MemWrite_ex <= MemWrite_id;
       MemtoReg_ex <= MemtoReg_id;
-      rs1_ex <= rs1_id;
-      rs2_ex <= rs2_id;
+      rs1_ex_preforward <= rs1_id;
+      rs2_ex_preforward <= rs2_id;
       // Needed to handle forwarding
       rs1_sel_ex <= rs1_sel_id;
       rs2_sel_ex <= rs2_sel_id;
@@ -118,6 +118,20 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
 
    // ALU control signal. Don't think we need this anymore
    ALUctrl cpu_A (.ALUop(ALUop), .funct(funct), .Control(alu_control));
+
+   // EX Stage Forwarding
+   //   In theory we shouldn't have to worry about getting data from the memory because this would be killed if preceded by a LW, but I left it in
+   //   If we aren't able to meet timing constraints we should look into forwarding to see if we are making our longest signal path go through 2 stages
+   assign rs1_ex = (rs1_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+  		   (rs1_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+		   : rs1_ex_preforward;
+   assign rs2_ex = (rs2_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+  		   (rs2_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+		     : rs2_ex_preforward;
    // Execution
    // I dont think we need:
    //   valid, 
@@ -126,15 +140,16 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    //   TODO: Update this to reflect the conventions used above
    //   TODO: Update to remove the signals we don't need (valid, branch, delay, lw_stall, immed, immed_ex, etc)
    //   TODO: Confirm which each of these inputs are for. is mem_data the data to be placed in memory in the next stage, or the data from the memory from the MEM stage?
-   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input_new), .Op_ex(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result_ex(alu_result_ex), .Result_mem(alu_result_mem), 
+   EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input), .Op_ex(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result_ex(alu_result_ex), .Result_mem(alu_result_mem), 
 		    .Set(Set), // .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
 		    .MemtoReg_ex(MemtoReg_ex), .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_mem(MemtoReg_mem), 
 		    .RegWrite_mem(RegWrite_mem),.MemWrite_mem(MemWrite_mem), .towrite_ex(RegDst_mem), 
 		    .mem_data(rs2_ex), .mem_data_ex(mem_store_data_mem), // rs2 is technically rd in i type (sw) aka the stored value
                     .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(RegDst_mem), .valid(valid),
-                    .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding  
-
+                    .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding
    
+   // Since we forward the data from the memory unit in the EX stage, we don't need to forward again before the MEM Stage. 
+   //  If we change the forwarding to only take initial values right out of iterstage register in order to reduce clock sycle, we will need to forward from wb stage here
 								    
    //data memory
    Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(alu_result_mem),.din(mem_store_data_mem),.dout(Memread), .dout_mem(mem_data_mem), .result_mem(result_wb), 
@@ -143,6 +158,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    defparam cpu_mem.mem_file = file_name;
    // write back
    // Literally Just a mux to determine which data gets written back
+   // combinational, no dffs
    WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .Result(result_wb), .Memread(Memread), .wDin(data_wb));
 endmodule
 

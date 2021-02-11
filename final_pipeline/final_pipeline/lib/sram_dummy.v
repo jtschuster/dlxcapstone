@@ -24,7 +24,7 @@ module sram(cs, oe, we, addr, din, dout);
 	end
 	32'h0040002C : begin
 	   // bnez r2, -16 (first instr)
-	   dout[0:31] = 32'b000101_00010_00000_1111_1111_1111_0000;
+	   dout[0:31] = 32'b000101_00010_00000_1111_1111_1110_1100;
 	end
       endcase
    end // always @ (addr)
