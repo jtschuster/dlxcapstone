@@ -35,7 +35,7 @@ module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result_ex, Result_m
 
 
 
-  alu cpu_alu (.A(opA), .B(opB), .Op(Op_ex), .Carryout(Carryout_tmp), .Overflow(Overflow_tmp), .Zero(Zero_tmp), .Result(Result_ex), .Set(Set_tmp));
+  alu cpu_alu (.A(A), .B(B), .Op(Op_ex), .Carryout(Carryout_tmp), .Overflow(Overflow_tmp), .Zero(Zero_tmp), .Result(Result_ex), .Set(Set_tmp));
   generate 
   genvar index;
   for (index=0; index < 32; index = index + 1)
