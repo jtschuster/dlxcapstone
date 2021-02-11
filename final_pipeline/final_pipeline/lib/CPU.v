@@ -39,7 +39,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [3:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
-   reg [31:0] pcPlusFour_ex, rs1_ex, rs2_ex;
+   reg [31:0] pcPlusFour_ex, rs1_ex, rs2_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
@@ -94,8 +94,8 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
       ALUop_ex <= ALUop_id;
       MemWrite_ex <= MemWrite_id;
       MemtoReg_ex <= MemtoReg_id;
-      rs1_ex <= rs1_id;
-      rs2_ex <= rs2_id;
+      rs1_ex_preforward <= rs1_id;
+      rs2_ex_preforward <= rs2_id;
       // Needed to handle forwarding
       rs1_sel_ex <= rs1_sel_id;
       rs2_sel_ex <= rs2_sel_id;
@@ -118,6 +118,18 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
 
    // ALU control signal. Don't think we need this anymore
    ALUctrl cpu_A (.ALUop(ALUop), .funct(funct), .Control(alu_control));
+
+   //forwarding
+   assign rs1_ex = (rs1_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+  		   (rs1_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+		   : rs1_ex_preforward;
+   assign rs2_ex = (rs2_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+  		   (rs2_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+		     : rs2_ex_preforward;
    // Execution
    // I dont think we need:
    //   valid, 
@@ -143,6 +155,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    defparam cpu_mem.mem_file = file_name;
    // write back
    // Literally Just a mux to determine which data gets written back
+   // combinational, no dffs
    WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .Result(result_wb), .Memread(Memread), .wDin(data_wb));
 endmodule
 
