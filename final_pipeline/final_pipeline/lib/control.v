@@ -165,11 +165,12 @@ module control(
 		     ~should_be_killed;
    assign stall = (opcode == lw_op ||
 		   opcode == lh_op ||
-		   opcode == lb_op);
+		   opcode == lb_op) &
+		  ~should_be_killed;
    wire 	takeBranch;
    JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;
-   assign kill_next_instruction = opcode === lw_op;
+   assign kill_next_instruction = opcode === lw_op && ~should_be_killed;
    
 
 endmodule

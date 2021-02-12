@@ -41,7 +41,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   not_gate not0 (.x(init_delay),.z(invinit_delay));
   or_gate or0 (.x(init_delay),.y(newRegWrite_ex),.z(finalnewRegWrite_ex));
   dff reg_MemtoReg (.clk(clk), .d(MemtoReg_ex), .q(MemtoReg_mem));
-  dff reg_RegWrite (.clk(clk), .d(finalnewRegWrite_ex), .q(RegWrite_mem));
+  dff reg_RegWrite (.clk(clk), .d(RegWrite_ex), .q(RegWrite_mem));
   dff reg_Branch_mem0 (.clk(clk), .d(Branch_ex), .q(Branch_mem));
   dff reg_Branch_mem1 (.clk(clk), .d(Branch_mem), .q(Branch_mem_delay0));
   dff reg_Branch_mem2 (.clk(clk), .d(Branch_mem_delay0), .q(Branch_mem_delay1));

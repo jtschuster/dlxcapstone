@@ -72,9 +72,9 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
                    // forward from the EX stage if the destination of the output is this register
    		   // Note we shouldn't need to worry about a lw in the execution stage 
                    //    (which would not yet have the loaded value at that point) because of the stall and killed instruction
-   assign rs1_id = (rs1_sel_id === RegDst_ex)  && (RegWrite_ex) ? alu_result_ex // 
+   assign rs1_id = (rs1_sel_id == RegDst_ex)  && (RegWrite_ex) ? alu_result_ex // 
 		   : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs1_sel_id === RegDst_mem) && (RegWrite_mem) 
+  		   (rs1_sel_id == RegDst_mem) && (RegWrite_mem) 
 		     ? 
 		   (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 		       : rs1_id_preforward;
@@ -122,14 +122,14 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    // EX Stage Forwarding
    //   In theory we shouldn't have to worry about getting data from the memory because this would be killed if preceded by a LW, but I left it in
    //   If we aren't able to meet timing constraints we should look into forwarding to see if we are making our longest signal path go through 2 stages
-   assign rs1_ex = (rs1_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+   assign rs1_ex = (rs1_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
 		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs1_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+  		   (rs1_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
 		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 		   : rs1_ex_preforward;
-   assign rs2_ex = (rs2_sel_ex === RegDst_wb) && (RegWrite_wb) ? 
+   assign rs2_ex = (rs2_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
 		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs2_sel_ex === RegDst_mem) && (RegWrite_mem) ? 
+  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
 		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 		     : rs2_ex_preforward;
    // Execution
