@@ -8,8 +8,8 @@ module RegisterFiles_tb;
   
   
   
-  RegisterFiles reg_tb (.clk(t_clk), .writenable(t_we), .readsel1(t_rR1), .readsel2(t_rR2),
-		.writesel(t_wR),.Din(t_data), .Dout1(t_dout1), .Dout2(t_dout2));
+  RegisterFiles reg_tb (.clk(t_clk), .writenable(t_we), .rs1_sel(t_rR1), .rs2_sel(t_rR2),
+		.writesel(t_wR),.Din(t_data), .rs1_out(t_dout1), .rs2_out(t_dout2));
   
   initial
     begin

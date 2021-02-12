@@ -50,4 +50,3 @@ r
 ./lib/syncram.v
 ./lib/sram.v
 ./test/CPU_tb.v
-/vol/ece303/genus_tutorial/NangateOpenCellLibrary.v
