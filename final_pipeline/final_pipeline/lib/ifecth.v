@@ -1,7 +1,7 @@
 module ifetch(PC, instruction);
   /*  need to define how to load the name to sram.mem_file
   */
-  parameter inst_name = "data/unsigned_sum.dat";
+  parameter inst_name = "../data/fib.dat";
   //parameter inst_name = "data/bills_branch.dat";
   //parameter inst_name = "data/sort_corrected_branch.dat";
 

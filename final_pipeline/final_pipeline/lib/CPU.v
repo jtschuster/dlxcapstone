@@ -1,7 +1,7 @@
 module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Memread, shamt, funct, immed, ALUSrc, MemtoReg, RegWrite, MemWrite, should_branch_id, Extop,ALUop,Result,alu_input, alu_control);
    // Wires and Registers are (or should be) suffixed with the stage they origininate from, or the receiving stage of the interstage registers (where it's used) 
    //   If a component also acts as the inter stage register, the outputs are considered to be in the next stage.
-   parameter file_name="../data/unsigned_sum.dat";
+   parameter file_name="../data/fib.dat";
    //parameter file_name="data/bills_branch.dat";
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
@@ -149,7 +149,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
                     .lw_stall_id(lw_stall_id),.Branch_stall_forwarding(Branch_stall_forwarding), .initPC_delay4(initPC_delay4),.initPC_delay6(initPC_delay6));//for forwarding
    
    // Since we forward the data from the memory unit in the EX stage, we don't need to forward again before the MEM Stage. 
-   //  If we change the forwarding to only take initial values right out of iterstage register in order to reduce clock sycle, we will need to forward from wb stage here
+   //  If we change the forwarding to only take initial values right out of iterstage register in order to reduce clocksycle, we will need to forward from wb stage here
 								    
    //data memory
    Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(alu_result_mem),.din(mem_store_data_mem),.dout(Memread), .dout_mem(mem_data_mem), .result_mem(result_wb), 

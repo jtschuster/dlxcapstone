@@ -1,6 +1,6 @@
 module syncram(clk,cs,oe,we,addr,din,dout);
   
-  parameter mem_file = "data/unsigned_sum.dat";
+  parameter mem_file = "../data/fib.dat";
   input clk;
   input cs;
   input oe;
