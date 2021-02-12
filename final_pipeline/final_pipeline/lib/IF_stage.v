@@ -1,5 +1,5 @@
 module IF_stage (clk, PC, instr_if);
-  parameter inst_name = "../data/unsigned_sum.dat";
+  parameter inst_name = "../data/fib.dat";
   // parameter inst_name = "../data/bills_branch.dat";
   // parameter inst_name = "../data/sort_corrected_branch.dat";
   input clk;

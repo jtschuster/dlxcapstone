@@ -1,6 +1,6 @@
 module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding);
   
-  parameter mem_file = "../data/unsigned_sum.dat";
+  parameter mem_file = "../data/fib.dat";
   //parameter mem_file = "../data/bills_branch.dat";
   //parameter mem_file = "../data/sort_corrected_branch.dat";
   input clk;
