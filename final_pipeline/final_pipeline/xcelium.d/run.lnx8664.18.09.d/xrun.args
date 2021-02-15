@@ -50,3 +50,4 @@ r
 ./lib/syncram.v
 ./lib/sram.v
 ./test/CPU_tb.v
+-s

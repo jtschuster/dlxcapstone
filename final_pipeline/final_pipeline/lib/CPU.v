@@ -6,8 +6,10 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
    input initPC;
-   output [31:0] nextPC, currentPC_if, wDin, rs1_id, rs2_id, Memread;
-   output [0:31] inst_id;
+   output [31:0] nextPC, currentPC_if, wDin, rs2_id, Memread;
+   output reg [31:0] rs1_id;
+   reg [31:0] 	     rs1_ex, rs2_ex;
+   output [0:31]     inst_id;
    output [4:0]  shamt;
    output [5:0]  funct;
    wire [5:0] 	 opcode_if, funct_if, opcode_ex;
@@ -33,7 +35,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    wire [31:0] 	      data_wb, mem_store_data_mem;
    wire 	      lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
    wire 	      kill_next_instruction_id, should_be_killed_id, stall_id;
-   wire [31:0] 	      new_pc_if_jump_id, rs1_id_preforward, rs1_ex, rs2_ex;
+   wire [31:0] 	      new_pc_if_jump_id, rs1_id_preforward;
    reg [31:0] 	      pcPlusFour_id;
 
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
@@ -72,12 +74,31 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
                    // forward from the EX stage if the destination of the output is this register
    		   // Note we shouldn't need to worry about a lw in the execution stage 
                    //    (which would not yet have the loaded value at that point) because of the stall and killed instruction
-   assign rs1_id = (rs1_sel_id == RegDst_ex)  && (RegWrite_ex) ? alu_result_ex // 
-		   : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs1_sel_id == RegDst_mem) && (RegWrite_mem) 
-		     ? 
-		   (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
-		       : rs1_id_preforward;
+//   assign rs1_id = (rs1_sel_id == RegDst_ex)  && (RegWrite_ex == 1) ? alu_result_ex 
+//		   : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+//  		   (rs1_sel_id == RegDst_mem) && (RegWrite_mem == 1) 
+//		     ? 
+//		   (MemtoReg_mem == 1 ? mem_data_mem : alu_result_mem) 
+//		       : rs1_id_preforward;
+   always @ (rs1_sel_id, RegDst_id, RegDst_ex, RegDst_mem, RegWrite_mem, RegWrite_ex, MemtoReg_mem, alu_result_ex, mem_data_mem, rs1_id_preforward)
+     begin
+	if (rs1_sel_id == RegDst_ex && RegWrite_ex == 1) begin
+	   rs1_id = alu_result_ex;
+	end
+	else if(rs1_sel_id == RegDst_mem && RegWrite_mem == 1) begin
+	   if (MemtoReg_mem == 1) begin
+	      rs1_id = mem_data_mem;
+	   end
+	   else begin
+	      rs1_id = alu_result_mem;
+	   end
+	end
+	
+	else begin
+	   rs1_id = rs1_id_preforward;
+	end
+     end
+   
 								    
    // RegisterFiles
    // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
@@ -122,16 +143,49 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    // EX Stage Forwarding
    //   In theory we shouldn't have to worry about getting data from the memory because this would be killed if preceded by a LW, but I left it in
    //   If we aren't able to meet timing constraints we should look into forwarding to see if we are making our longest signal path go through 2 stages
-   assign rs1_ex = (rs1_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
-		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs1_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
-		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
-		   : rs1_ex_preforward;
-   assign rs2_ex = (rs2_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
-		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
-  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
-		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
-		     : rs2_ex_preforward;
+//   assign rs1_ex = (rs1_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
+//		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+//  		   (rs1_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
+//		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+//		   : rs1_ex_preforward;
+//   assign rs2_ex = (rs2_sel_ex == RegDst_wb) && (RegWrite_wb) ? 
+//		      (data_wb) : // Forward from the MEM stage -- need to determine if it's the alu_result or the value from memory
+//  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
+//		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
+//		     : rs2_ex_preforward;
+   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem) begin
+      if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
+	 if (MemtoReg_mem == 1) begin
+	    rs1_ex = mem_data_mem;
+	 end
+	 else begin
+	    rs1_ex = alu_result_mem;
+	 end
+      end
+      else if (rs1_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
+	 rs1_ex = data_wb;
+      end
+      else begin
+	 rs1_ex = rs1_ex_preforward;
+      end
+      
+      if (rs2_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
+	 if (MemtoReg_mem == 1) begin
+	    rs2_ex = mem_data_mem;
+	 end
+	 else begin
+	    rs2_ex = alu_result_mem;
+	 end
+      end
+      else if (rs2_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
+	 rs2_ex = data_wb;
+      end
+      else begin
+	 rs2_ex = rs2_ex_preforward;
+      end
+      
+   end
+      
    // Execution
    // I dont think we need:
    //   valid, 
