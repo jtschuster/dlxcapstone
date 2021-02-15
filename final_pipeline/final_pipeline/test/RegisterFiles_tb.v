@@ -37,11 +37,14 @@ module RegisterFiles_tb;
       
       #10
       t_clk = 1'b0;
-      t_we = 1'b0;
+      t_we = 1'b1;
       t_rR1 = 5'b00001;
       t_rR2 = 5'b00000;
-      
+       t_wR <= 5'b00000;
       #10
+	t_clk = 1;
+       #10
+	 t_clk = 0;
       $stop;
      
   end
