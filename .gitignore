@@ -1,4 +1,5 @@
 *~
 .DS_Store
 *genus*
-xcelium.d/*
+**/xcelium.d/*
+**/*.diag
