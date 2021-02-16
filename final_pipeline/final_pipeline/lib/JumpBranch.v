@@ -67,7 +67,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 
 	else if (opcode == 6'h05) begin //True for 'bnez'
 
-		if (rs1 != 0) begin
+		if (rs1 != 32'h00) begin
 			newPC <= pc_plus_four + signExtendedImmediate;
 		        takeBranch <= 1;
 		end
