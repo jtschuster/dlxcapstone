@@ -1,6 +1,6 @@
-module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
+module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 	input [31:0] instruction;
-	input [31:0] inputPC;
+	input [31:0] pc_plus_four;
         input [31:0] rs1;
    
 	output reg [31:0] outputPC;
@@ -31,19 +31,19 @@ module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
 	wire [31:0] nullRegisterRead;
 
 
-   always @(instruction, inputPC, rs1, outputPC, takeBranch) begin
+   always @(instruction, pc_plus_four, rs1, outputPC, takeBranch) begin
 	if (opcode == 6'h2) begin //True for 'j' 
 		//PC = PC + 4 + SignExtend(name);
 		
-		newPC <= inputPC + 4 + signExtendedName;
+		newPC <= pc_plus_four + signExtendedName;
 	        takeBranch <= 1;
 	end
 
 	else if (opcode == 6'h3) begin //True for 'jal'
 		//PC = PC + 4 + SignExtend(name);
 		
-		register31 <= inputPC + 4;
-		newPC <= inputPC + 4 + signExtendedName;
+		register31 <= pc_plus_four;
+		newPC <= pc_plus_four + signExtendedName;
 		writeSelect <= 1'b1;
 	        takeBranch <= 1;
 	end
@@ -58,7 +58,7 @@ module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
 	else if (opcode == 6'h4) begin //True for 'beqz'
 		
 		if (rs1 == 0) begin
-			newPC <= inputPC + 4 + signExtendedImmediate;
+			newPC <= pc_plus_four + signExtendedImmediate;
 		        takeBranch <= 1;
 		end
 	
@@ -68,13 +68,13 @@ module JumpBranch(instruction, inputPC, rs1, outputPC, takeBranch);
 	else if (opcode == 6'h05) begin //True for 'bnez'
 
 		if (rs1 != 0) begin
-			newPC <= inputPC + 4 + signExtendedImmediate;
+			newPC <= pc_plus_four + signExtendedImmediate;
 		        takeBranch <= 1;
 		end
 
 	end
 	else begin
-	   newPC <= inputPC;
+	   newPC <= pc_plus_four;
 	   takeBranch <= 0;
 	end
 

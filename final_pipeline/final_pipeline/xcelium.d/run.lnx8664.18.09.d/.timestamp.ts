@@ -29,7 +29,7 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/or_gate_32.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/writeReg.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/or_gate.v
-1613014174 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
+1613496022 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
 1613360202 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/RegisterFiles_tb.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/dffr.v
 1611897595 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/synthesis/combined_syn.v
@@ -58,14 +58,14 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/nor_gate.v
 1613014174 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
 1613103052 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
+1613496084 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
-1613105685 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/EX_stage.v
 1611884439 /home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux.v
-1613015867 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
+1613491960 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
+1613493894 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1612057493 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
-1613105224 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/ifecth.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/CPU.v
 1613107250 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Mem_stage.v

@@ -48,7 +48,7 @@ module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result_ex, Result_m
   dff reg_Overflow (.clk(clk), .d(Overflow_tmp), .q(Overflow));
   dff reg_Zero (.clk(clk), .d(Zero_tmp), .q(Zero));
   dff reg_Set (.clk(clk), .d(Set_tmp), .q(Set));
-  //control signal fetch dff reg_MemWrite (.clk(clk), .d(MemWrite_ex), .q(MemWrite_mem));
+  dff reg_MemWrite (.clk(clk), .d(MemWrite_ex), .q(MemWrite_mem));
   dff reg_MemtoReg (.clk(clk), .d(MemtoReg_ex), .q(MemtoReg_mem));
   dff reg_RegWrite (.clk(clk), .d(RegWrite_ex), .q(RegWrite_mem));
   dff reg_Branch (.clk(clk), .d(Branch), .q(Branch_ex));

@@ -39,7 +39,7 @@ module control(
    localparam [3:0] subu_alu_op                    = 4'b0111;
    localparam [3:0] and_alu_op                     = 4'b0000;
    localparam [3:0] or_alu_op                      = 4'b0001;
-   localparam [3:0] xor_alu_op                     = 4'b0100;
+   localparam [3:0] xor_alu_op                     = 4'b1000;
    localparam [3:0] shift_left_alu_op              = 4'b1001;
    localparam [3:0] shift_right_logical_alu_op     = 4'b1110;
    localparam [3:0] shift_right_arithmentic_alu_op = 4'h6;
@@ -102,7 +102,7 @@ module control(
    
    assign rs1_sel= instr[6:10];
    assign rs2_sel = instr[11:15];
-   assign func = instr[27:31];
+   assign func = instr[26:31];
    
    
    assign r_type = (opcode == 6'h00) && (~(func == nop_func)) | 
@@ -154,7 +154,8 @@ module control(
 		       opcode == subui_op
 		       ? subu_alu_op : 4'h0
 		       |
-		       opcode == 6'h0;
+		       opcode == 6'h00 && func == xor_func 
+		       ? xor_alu_op : 4'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
@@ -168,7 +169,7 @@ module control(
 		   opcode == lb_op) &
 		  ~should_be_killed;
    wire 	takeBranch;
-   JumpBranch jumpBranch (.instruction(instr), .inputPC(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
+   JumpBranch jumpBranch (.instruction(instr), .pc_plus_four(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;
    assign kill_next_instruction = opcode === lw_op && ~should_be_killed;
    
