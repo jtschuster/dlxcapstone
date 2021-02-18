@@ -24,7 +24,6 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    wire 	      Branch_ex;
    wire 	      MemtoReg_mem, RegWrite_mem;
    wire 	      Carryout, Overflow, Zero, Set;
-   output wire [31:0] Result;
    wire [31:0] 	      alu_result_mem, alu_result_ex, result_wb, Result_ex, mem_data_mem;
    wire [31:0] 	      data_wb, mem_store_data_mem;
    wire 	      lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
