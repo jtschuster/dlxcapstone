@@ -1,32 +1,26 @@
-module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Memread, shamt, funct, immed, ALUSrc, MemtoReg, RegWrite, MemWrite, should_branch_id, Extop,ALUop,Result,alu_input, alu_control);
+module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_branch_id, alu_input);
    // Wires and Registers are (or should be) suffixed with the stage they origininate from, or the receiving stage of the interstage registers (where it's used) 
    //   If a component also acts as the inter stage register, the outputs are considered to be in the next stage.
    parameter file_name="../data/fib.dat";
    //parameter file_name="data/bills_branch.dat";
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
-   input initPC;
-   output [31:0] nextPC, currentPC_if, wDin, rs2_id, Memread;
+   output [31:0] currentPC_if, rs2_id, Memread;
    output reg [31:0] rs1_id;
    reg [31:0] 	     rs1_ex, rs2_ex;
    output [0:31]     inst_id;
-   output [4:0]  shamt;
-   output [5:0]  funct;
    wire [5:0] 	 opcode_if, funct_if, opcode_ex;
-   output [0:15] immed;
    reg [0:15] 	 immed_ex;
    wire [0:15] 	 immed_id;
-   output wire 	 MemtoReg, RegWrite, MemWrite, should_branch_id, Extop;
+   output wire 	 should_branch_id;
    wire 	 MemtoReg_id, MemtoReg_wb, RegWrite_id, RegWrite_wb, MemWrite_id, Extop_id;
    output wire 	 ALUSrc;
-   output wire [1:0] ALUop;
    wire 	     ALUSrc_id;
    wire [3:0] 	     ALUop_id;
    wire [4:0] 	     towrite, RegDst_mem, RegDst_wb;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
    wire [31:0] 	      alu_input_new;
-   output wire [3:0]  alu_control;
    wire 	      Branch_ex;
    wire 	      MemtoReg_mem, RegWrite_mem;
    wire 	      Carryout, Overflow, Zero, Set;
@@ -54,10 +48,6 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    IF_stage cpu_if0 (.clk(clk), .PC(currentPC_if), .instr_if(inst_id));
    defparam cpu_if0.inst_name = file_name;
    
-   //instruction decode
-   // Honestly I don't think we need this at all anymore
-   // ID_stage cpu_id (.clk(clk), .opcode(opcode), .opcode_if(opcode_if), .rs(rs), .rt(rt), .rd(rd), .shamt(shamt), .funct(funct), 
-   //                  .funct_if(funct_if), .instr_if(inst_id), .immi(immed), .lw_stall(lw_stall), .lw_stall_id(lw_stall_id));
    wire [0:4] rs1_sel_id, rs2_sel_id;
    wire [4:0] RegDst_id;
    assign rs1_sel_id = inst_id[6:10];
@@ -135,10 +125,6 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    //mux_32 cpu_mux4 (.sel(ALUSrc[1]), .src0(alu_input_new), .src1({27'b0, shamt}), .z(alu_input));
    mux_32 cpu_mux0 (.sel(ALUSrc_ex), .src0(se_immed), .src1(rs2_ex), .z(alu_input));
 
-      
-
-   // ALU control signal. Don't think we need this anymore
-   ALUctrl cpu_A (.ALUop(ALUop), .funct(funct), .Control(alu_control));
 
    // EX Stage Forwarding
    //   In theory we shouldn't have to worry about getting data from the memory because this would be killed if preceded by a LW, but I left it in
