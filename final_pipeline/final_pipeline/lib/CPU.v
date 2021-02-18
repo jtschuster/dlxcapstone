@@ -153,7 +153,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
 //  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
 //		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 //		     : rs2_ex_preforward;
-   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem) begin
+   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem, rs1_ex_preforward, rs2_ex_preforward, data_wb) begin
       if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
 	 if (MemtoReg_mem == 1) begin
 	    rs1_ex = mem_data_mem;

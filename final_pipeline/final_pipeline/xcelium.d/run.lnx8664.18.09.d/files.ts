@@ -83,9 +83,9 @@
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/writeReg.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sll.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
-1613500559 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1613671575 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 1613063426 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram_dummy.v
 1613667716 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
-1613500552 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
+1613670086 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
 1613014176 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/PC_tb.v
 1613360202 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/RegisterFiles_tb.v

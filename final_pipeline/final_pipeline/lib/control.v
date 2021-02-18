@@ -26,29 +26,29 @@ module control(
    output [4:0]  RegDst, rs2_sel;
    output 	 ExtOp;
    output 	 AluSrc;
-   output [3:0]  AluOp;
+   output [4:0]  AluOp;
    output 	 Branch;
    output 	 MemWr;
    output 	 MemToReg;
    output 	 kill_next_instruction; 	 
    output 	 stall;
 
-   localparam [3:0] add_alu_op                     = 4'b0011;
-   localparam [3:0] addu_alu_op                    = 4'b0010;
-   localparam [3:0] sub_alu_op                     = 4'b0111;
-   localparam [3:0] subu_alu_op                    = 4'b0111;
-   localparam [3:0] and_alu_op                     = 4'b0000;
-   localparam [3:0] or_alu_op                      = 4'b0001;
-   localparam [3:0] xor_alu_op                     = 4'b1000;
-   localparam [3:0] shift_left_alu_op              = 4'b1001;
-   localparam [3:0] shift_right_logical_alu_op     = 4'b1110;
-   localparam [3:0] shift_right_arithmentic_alu_op = 4'h6;
-   localparam [3:0] set_eq_alu_op                  = 4'h6;
-   localparam [3:0] set_neq_alu_op                 = 4'h6;
-   localparam [3:0] set_gt_alu_op                  = 4'h6;
-   localparam [3:0] set_lt_alu_op                  = 4'b0101;
-   localparam [3:0] set_geq_alu_op                 = 4'h6;
-   localparam [3:0] set_leq_alu_op                 = 4'h6;
+   localparam [4:0] add_alu_op                     = 4'b0011;
+   localparam [4:0] addu_alu_op                    = 4'b0010;
+   localparam [4:0] sub_alu_op                     = 4'b0111;
+   localparam [4:0] subu_alu_op                    = 4'b0111;
+   localparam [4:0] and_alu_op                     = 4'b0000;
+   localparam [4:0] or_alu_op                      = 4'b0001;
+   localparam [4:0] xor_alu_op                     = 4'b1000;
+   localparam [4:0] shift_left_alu_op              = 4'b1001;
+   localparam [4:0] shift_right_logical_alu_op     = 4'b1110;
+   localparam [4:0] shift_right_arithmentic_alu_op = 4'h6;
+   localparam [4:0] set_eq_alu_op                  = 4'h6;
+   localparam [4:0] set_neq_alu_op                 = 4'h6;
+   localparam [4:0] set_gt_alu_op                  = 4'h6;
+   localparam [4:0] set_lt_alu_op                  = 4'b0101;
+   localparam [4:0] set_geq_alu_op                 = 4'h6;
+   localparam [4:0] set_leq_alu_op                 = 4'h6;
 
    localparam [0:5] add_func	= 6'h20;
    localparam [0:5] addu_func	= 6'h21;
@@ -141,31 +141,31 @@ module control(
    // 1 if reg, 0 if immediate
    assign AluSrc   = r_type;
    
-   assign AluOp[3:0] = opcode == addi_op ||
+   assign AluOp[4:0] = opcode == addi_op ||
 		       opcode == 6'h00 && func == add_func ||
 		       opcode == sw_op ||
 		       opcode == lw_op ||
 		       opcode == lb_op ||
 		       opcode == sb_op
-		       ? add_alu_op : 4'h0
+		       ? add_alu_op : 5'h0
 		       |
 		       opcode == addui_op ||
 		       opcode == 6'h00 && func == addu_func
-		       ? addu_alu_op : 4'h0
+		       ? addu_alu_op : 5'h0
 		       |
 		       opcode == subi_op ||
 		       opcode == 6'h00 && func == sub_func
-		       ? sub_alu_op : 4'h0
+		       ? sub_alu_op : 5'h0
 		       |
 		       opcode == 6'h00 && func == subu_func ||
 		       opcode == subui_op
-		       ? subu_alu_op : 4'h0
+		       ? subu_alu_op : 5'h0
 		       |
 		       opcode == 6'h00 && func == xor_func 
-		       ? xor_alu_op : 4'h0
+		       ? xor_alu_op : 5'h0
 		       | 
 		       opcode == sgei_op 
-		       ? set_geq_alu_op : 4'h0;
+		       ? set_geq_alu_op : 5'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
