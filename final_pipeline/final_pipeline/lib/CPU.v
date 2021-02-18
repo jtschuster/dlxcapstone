@@ -21,7 +21,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    output wire 	 ALUSrc;
    output wire [1:0] ALUop;
    wire 	     ALUSrc_id;
-   wire [3:0] 	     ALUop_id;
+   wire [4:0] 	     ALUop_id;
    wire [4:0] 	     towrite, RegDst_mem, RegDst_wb;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
@@ -39,7 +39,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    reg [31:0] 	      pcPlusFour_id;
 
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
-   reg [3:0] ALUop_ex;
+   reg [4:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
