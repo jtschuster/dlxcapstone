@@ -19,7 +19,7 @@ module CPU_tb;
     wire [3:0] alu_control;
     wire[31:0] pc_lim;
     CPU scp ( .clk(clk), .initPC(initPC),.nextPC(nextPC), .currentPC_if(regPC), .inst_id(inst), .wDin(wDin), .rs1_id(Dout1), .rs2_id(Dout2), .Memread(Memread), .shamt(shamt), .funct(funct), .immed(immed), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite), .MemWrite(MemWrite), .should_branch_id(Branch), .Extop(Extop),.ALUop(ALUop), .Result(Result),.alu_input(alu_input),.alu_control(alu_control));
-    defparam scp.file_name = "data/unsignedsum.dat";
+    defparam scp.file_name = "data/fib.dat";
     assign pc_lim = 32'h00400054;
     //defparam scp.file_name = "data/bills_branch.dat";
     //assign pc_lim = 32'h00400060;
