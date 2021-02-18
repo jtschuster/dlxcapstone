@@ -55,12 +55,16 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 	end
 
 
-	else if (opcode == 6'h4) begin //True for 'beqz'
+	else if (opcode == 6'h4) begin //True for beqz'
 		
 		if (rs1 == 0) begin
 			newPC <= pc_plus_four + signExtendedImmediate;
 		        takeBranch <= 1;
 		end
+		else begin
+		   takeBranch <= 0;
+		end
+	   
 	
 	end
 
@@ -70,6 +74,9 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 		if (rs1 != 32'h00) begin
 			newPC <= pc_plus_four + signExtendedImmediate;
 		        takeBranch <= 1;
+		end
+	   	else begin
+		   takeBranch <= 0;
 		end
 
 	end
