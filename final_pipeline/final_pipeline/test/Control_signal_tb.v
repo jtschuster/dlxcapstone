@@ -21,6 +21,7 @@ module Control_tb;
   #10
   Opcode = 6'b000111;
   #10
+
   $stop;
   end
   

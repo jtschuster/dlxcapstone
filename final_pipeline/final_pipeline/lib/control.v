@@ -77,7 +77,7 @@ module control(
    localparam [0:5] trap_op	= 6'h11;
    localparam [0:5] xor_func    = 6'h26;
    localparam [0:5] lh_op       = 6'h21;
-   
+   localparam [0:5] sgei_op     = 6'h1D;
    
    
    wire 	r_type;
@@ -129,7 +129,14 @@ module control(
    assign RegDst = rd;
    // 1 if sign extend, 0 if 0 extend
    assign ExtOp    = opcode == subi_op ||
-		     opcode == addi_op
+		     opcode == addi_op ||
+		     opcode == sgei_op ||
+		     opcode == lw_op ||
+		     opcode == sw_op ||
+		     opcode == lh_op ||
+		     opcode == sh_op ||
+		     opcode == lb_op ||
+		     opcode == sb_op
 		     ? 1'b1 : 1'b0;
    // 1 if reg, 0 if immediate
    assign AluSrc   = r_type;
@@ -155,7 +162,10 @@ module control(
 		       ? subu_alu_op : 4'h0
 		       |
 		       opcode == 6'h00 && func == xor_func 
-		       ? xor_alu_op : 4'h0;
+		       ? xor_alu_op : 4'h0
+		       | 
+		       opcode == sgei_op 
+		       ? set_geq_alu_op : 4'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
