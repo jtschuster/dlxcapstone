@@ -35,7 +35,7 @@ module control(
 
    localparam [3:0] add_alu_op                     = 4'b0011;
    localparam [3:0] addu_alu_op                    = 4'b0010;
-   localparam [3:0] sub_alu_op                     = 4'b0100;
+   localparam [3:0] sub_alu_op                     = 4'b0111;
    localparam [3:0] subu_alu_op                    = 4'b0111;
    localparam [3:0] and_alu_op                     = 4'b0000;
    localparam [3:0] or_alu_op                      = 4'b0001;
