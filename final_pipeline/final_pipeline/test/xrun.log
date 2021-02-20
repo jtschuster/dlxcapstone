@@ -1,180 +1,50 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Jan 28, 2021 at 19:25:54 CST
+TOOL:	xrun(64)	18.09-s011: Started on Feb 20, 2021 at 16:52:58 CST
 xrun
 	-64bit
 	-gui
 	-access r
-	CPU_tb.v
-	../lib/CPU.v
-	../lib/PC.v
-	../lib/IF_stage.v
-	../lib/ID_stage.v
-	../lib/EX_stage.v
-	../lib/WB_stage.v
-	../lib/Mem_stage.v
-	../lib/alu_32.v
-	../lib/dec_n.v
-	../lib/srl.v
-	../lib/ALUctrl.v
-	../lib/alu_msb.v
-	../lib/Extender.v
-	../lib/alu_unit.v
-	../lib/forwarding_ex.v
-	../lib/readReg.v
-	../lib/write32.v
-	../lib/and_6.v
-	../lib/full_alu.v
-	../lib/RegisterFiles.v
-	../lib/writeReg.v
-	../lib/Control_signal.v
-	../lib/sll.v
-	../lib/ifecth.v
-	../lib/slt_sltu.v
-file: CPU_tb.v
-	module worklib.CPU_tb:v
-		errors: 0, warnings: 0
-file: ../lib/CPU.v
-	module worklib.CPU:v
-		errors: 0, warnings: 0
-file: ../lib/PC.v
-	module worklib.PC:v
-		errors: 0, warnings: 0
-file: ../lib/IF_stage.v
-	module worklib.IF_stage:v
-		errors: 0, warnings: 0
-file: ../lib/ID_stage.v
-	module worklib.ID_stage:v
-		errors: 0, warnings: 0
-file: ../lib/EX_stage.v
-	module worklib.EX_stage:v
-		errors: 0, warnings: 0
-file: ../lib/WB_stage.v
-	module worklib.WB_stage:v
-		errors: 0, warnings: 0
-file: ../lib/Mem_stage.v
-	module worklib.Mem_stage:v
-		errors: 0, warnings: 0
-file: ../lib/alu_32.v
-	module worklib.alu_32:v
-		errors: 0, warnings: 0
-file: ../lib/dec_n.v
-	module worklib.dec_n:v
-		errors: 0, warnings: 0
-file: ../lib/srl.v
-	module worklib.srl:v
-		errors: 0, warnings: 0
-file: ../lib/ALUctrl.v
-	module worklib.ALUctrl:v
-		errors: 0, warnings: 0
-file: ../lib/alu_msb.v
-	module worklib.alu_msb:v
-		errors: 0, warnings: 0
-file: ../lib/Extender.v
-	module worklib.Signextend:v
-		errors: 0, warnings: 0
-file: ../lib/alu_unit.v
-	module worklib.alu_unit:v
-		errors: 0, warnings: 0
-file: ../lib/forwarding_ex.v
-	module worklib.forwarding_ex:v
-		errors: 0, warnings: 0
-file: ../lib/readReg.v
-	module worklib.readReg:v
-		errors: 0, warnings: 0
-file: ../lib/write32.v
-	module worklib.write32:v
-		errors: 0, warnings: 0
-file: ../lib/and_6.v
-	module worklib.and_6:v
-		errors: 0, warnings: 0
-file: ../lib/full_alu.v
+	ALU_32bit_tb.v
+	../lib/alu_behavioral.v
+	-s
+Recompiling... reason: file '../lib/alu_behavioral.v' is newer than expected.
+	expected: Sat Feb 20 16:47:34 2021
+	actual:   Sat Feb 20 16:52:26 2021
+file: ../lib/alu_behavioral.v
 	module worklib.alu:v
-		errors: 0, warnings: 0
-file: ../lib/RegisterFiles.v
-	module worklib.RegisterFiles:v
-		errors: 0, warnings: 0
-file: ../lib/writeReg.v
-	module worklib.writeReg:v
-		errors: 0, warnings: 0
-file: ../lib/Control_signal.v
-	module worklib.Control:v
-		errors: 0, warnings: 0
-file: ../lib/sll.v
-	module worklib.sll:v
-		errors: 0, warnings: 0
-file: ../lib/ifecth.v
-	module worklib.ifetch:v
-		errors: 0, warnings: 0
-file: ../lib/slt_sltu.v
-	module worklib.slt_sltu:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
-		Caching library 'worklib' ....... Done
 	Top level design units:
-		CPU_tb
-		slt_sltu
+		ALU_32bit_tb
+	.Op(ctrl_tb),
+	          |
+xmelab: *W,CUVMPW (./ALU_32bit_tb.v,15|11): port sizes differ in port connection (4/5).
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.slt_sltu:v <0x1cc2a4ef>
-			streams:   1, words:   137
-		worklib.alu_32:v <0x733493c3>
-			streams:   0, words:     0
-		worklib.srl:v <0x609387fb>
-			streams:   5, words:   688
-		worklib.sll:v <0x79144416>
-			streams:   5, words:   632
-		worklib.ALUctrl:v <0x3a6ecaa3>
-			streams:   2, words:   342
-		worklib.Signextend:v <0x33971d20>
-			streams:   1, words:   216
-		worklib.readReg:v <0x365ecf30>
-			streams:   1, words:   152
-		worklib.readReg:v <0x5c814a48>
-			streams:   1, words:   152
-		worklib.dec_n:v <0x6ff55761>
-			streams:   3, words:  2926
-		worklib.Control:v <0x6e2d1eb2>
-			streams:   4, words:   664
-		worklib.CPU_tb:v <0x03fd1539>
-			streams:   3, words:  2323
-		worklib.CPU:v <0x3b7f554f>
-			streams:   2, words:   279
-		worklib.Mem_stage:v <0x1ded5545>
-			streams:   0, words:     0
-		worklib.ifetch:v <0x38a89962>
-			streams:   1, words:   152
-		worklib.sram:v <0x12e19e36>
-			streams:  14, words: 18409
-		worklib.syncram:v <0x0e1733d5>
-			streams:  14, words: 18486
-		worklib.ID_stage:v <0x620851e3>
-			streams:   9, words:  2141
-		worklib.forwarding_ex:v <0x06b4d6b5>
-			streams:   0, words:     0
-		worklib.PC:v <0x66fc74e1>
-			streams:   5, words:   922
+		worklib.alu:v <0x6e315fb4>
+			streams:   7, words:  5017
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		                Instances  Unique
-		Modules:             3970      40
-		Registers:           2032      60
-		Scalar wires:        3650       -
-		Expanded wires:      1597      63
-		Vectored wires:       245       -
-		Always blocks:       1978       8
-		Initial blocks:        15      15
-		Cont. assignments:     49      29
-		Pseudo assignments:    46      26
-	Writing initial simulation snapshot: worklib.CPU_tb:v
-
--------------------------------------
-Relinquished control to SimVision...
+		             Instances  Unique
+		Modules:             2       2
+		Resolved nets:       0       1
+		Registers:           6       6
+		Scalar wires:        6       -
+		Vectored wires:     10       -
+		Always blocks:       2       2
+		Initial blocks:      1       1
+		Cont. assignments:   2       7
+	Writing initial simulation snapshot: worklib.ALU_32bit_tb:v
 xcelium> 
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
-xcelium> ^C
-xcelium> ^C
-xcelium> ^C
-xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Jan 28, 2021 at 19:26:46 CST  (total: 00:00:52)
+xcelium> 
+-------------------------------------
+Relinquished control to SimVision...
+# Restoring simulation environment...
+xcelium> input -quiet .reinvoke.sim
+xcelium> file delete .reinvoke.sim
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> 
