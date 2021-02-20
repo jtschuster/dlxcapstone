@@ -21,7 +21,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    output wire 	 ALUSrc;
    output wire [1:0] ALUop;
    wire 	     ALUSrc_id;
-   wire [3:0] 	     ALUop_id;
+   wire [4:0] 	     ALUop_id;
    wire [4:0] 	     towrite, RegDst_mem, RegDst_wb;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
@@ -39,7 +39,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
    reg [31:0] 	      pcPlusFour_id;
 
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
-   reg [3:0] ALUop_ex;
+   reg [4:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
@@ -153,7 +153,7 @@ module CPU(clk, initPC, nextPC, currentPC_if, inst_id, wDin, rs1_id, rs2_id, Mem
 //  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
 //		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 //		     : rs2_ex_preforward;
-   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem) begin
+   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem, rs1_ex_preforward, rs2_ex_preforward, data_wb) begin
       if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
 	 if (MemtoReg_mem == 1) begin
 	    rs1_ex = mem_data_mem;
