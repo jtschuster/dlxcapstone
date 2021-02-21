@@ -22,7 +22,8 @@ alu alu_inst(
 
 initial begin
 
-	opa_tb = -32'd15; opb_tb = 32'd205; ctrl_tb=5'b00011; //sub 0x03
+	//opa_tb = -32'd15; opb_tb = 32'd205; ctrl_tb=5'b00011; //sub 0x03
+        opa_tb = 32'h5; opb_tb = 32'h4; ctrl_tb=5'b00011;
 	#10
 	opa_tb = 32'd1023; opb_tb = 32'd2; ctrl_tb=5'b00101; //sll 0x06
 	#10

@@ -16,7 +16,6 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_32.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/xor_gate.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_32.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/EX_stage.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ALUctrl.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Extender.v
@@ -24,7 +23,6 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/srl.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/full_alu.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/and_6.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ifecth.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Control_signal.v
@@ -41,6 +39,7 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/syncram.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v

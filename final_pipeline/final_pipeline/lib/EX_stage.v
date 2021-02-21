@@ -9,7 +9,7 @@ module EX_stage (clk, A, B, Op_ex, Carryout, Overflow, Zero, Result_ex, Result_m
   output [15:0] immed_ex;
   input [5:0] opcode;
   output [5:0] opcode_ex;
-  input [3:0] Op_ex;
+  input [4:0] Op_ex;
   input [4:0] towrite, towrite_mem;
   input [4:0] rs, rt;
   input [1:0] ALUSrc;

@@ -19,7 +19,6 @@
 ./lib/mux_32.v
 ./lib/xor_gate.v
 ./lib/mux.v
-./lib/alu_32.v
 ./lib/EX_stage.v
 ./lib/ALUctrl.v
 ./lib/Extender.v
@@ -27,7 +26,6 @@
 ./lib/forwarding_ex.v
 ./lib/srl.v
 ./lib/alu_unit.v
-./lib/full_alu.v
 ./lib/and_6.v
 ./lib/ifecth.v
 ./lib/Control_signal.v
@@ -44,6 +42,7 @@
 ./lib/CPU.v
 ./lib/control.v
 ./lib/JumpBranch.v
+./lib/alu_behavioral.v
 ./lib/syncram.v
 ./lib/sram.v
 ./test/CPU_tb.v
