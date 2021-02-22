@@ -11,6 +11,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   input [4:0] towrite_ex;
   input [31:0] addr;
   input [31:0] din;
+  //input load_byte;
   output [31:0] dout, dout_mem;
   output [31:0] result_mem;
   output MemtoReg_mem, RegWrite_mem, Branch_stall_forwarding;
@@ -20,7 +21,14 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   wire we_new,newRegWrite_ex,finalnewRegWrite_ex;
   syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp));
   defparam cpu_scm.mem_file = mem_file;
-  
+
+  //if (load_byte == 1'b1) begin
+  //   assign dout_tmp = { {24 {1'b0}}, dout_tmp[0:7]};
+  //end
+   
+   
+   
+   
   generate 
   genvar index;
   for (index=0; index < 32; index = index + 1)
