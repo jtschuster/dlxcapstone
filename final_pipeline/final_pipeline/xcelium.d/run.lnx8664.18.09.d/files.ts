@@ -43,7 +43,7 @@
 1612048777 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/syncram.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/syncram.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
-1613878751 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
+1614016585 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/combined_syn.v
 1613014174 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_n.v
@@ -85,9 +85,9 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
 1613685881 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram_dummy.v
-1613879352 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
+1614019309 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1613685741 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
 1613014176 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/PC_tb.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/RegisterFiles_tb.v
-1613878028 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
+1614019864 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
 1613880262 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/ALU_32bit_tb.v

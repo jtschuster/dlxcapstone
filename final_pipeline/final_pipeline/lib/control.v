@@ -48,7 +48,7 @@ module control(
    localparam [4:0] set_gt_alu_op                  = 5'h6;
    localparam [4:0] set_lt_alu_op                  = 5'b01000;
    localparam [4:0] set_ltu_op                     = 5'b00111;
-   localparam [4:0] set_geq_alu_op                 = 5'h01001;
+   localparam [4:0] set_geq_alu_op                 = 5'b01001;
    localparam [4:0] set_leq_alu_op                 = 5'h6;
 
    localparam [0:5] add_func	= 6'h20;

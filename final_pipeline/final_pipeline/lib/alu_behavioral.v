@@ -74,21 +74,25 @@ always @(*) begin
         5'b01000: begin  // slt
             if (sub_result[31]) begin
                 Set         <= 1'b1;
+	        Result      <= 32'b1;
             end
             else begin
                 Set         <= 1'b0;
+	        Result      <= 32'b0;
             end
-            Result      <= sub_result;
+            // Result      <= sub_result;
 	end
 
         5'b01001: begin  // sge
             if (sub_result[31]) begin
                 Set         <= 1'b0;
+	        Result      <= 32'b0;
             end
             else begin
                 Set         <= 1'b1;
+	        Result      <= 32'b1;
             end
-            Result      <= sub_result;
+            // Result      <= sub_result;
 	end
 
         default: begin
