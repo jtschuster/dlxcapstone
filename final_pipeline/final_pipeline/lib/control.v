@@ -182,7 +182,8 @@ module control(
    wire 	takeBranch;
    JumpBranch jumpBranch (.instruction(instr), .pc_plus_four(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
    assign Branch = takeBranch & ~should_be_killed;
-   assign kill_next_instruction = opcode === lw_op && ~should_be_killed;
+   assign kill_next_instruction = opcode === lw_op && ~should_be_killed || 
+				  Branch === 1'b1 && ~should_be_killed;
    
 
 endmodule

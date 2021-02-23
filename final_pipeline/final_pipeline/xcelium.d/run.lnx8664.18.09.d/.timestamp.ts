@@ -44,7 +44,7 @@
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/xnor_gate.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/or_gate.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_32.v
-1613685881 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1614066402 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux_n.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_32.v
 1614019864 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
@@ -60,8 +60,8 @@
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/nor_gate.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/dff.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
+1614066565 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
-1614019309 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1611884439 /home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/EX_stage.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux.v
@@ -70,7 +70,7 @@
 1612057493 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/CPU.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/ifecth.v
-1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Mem_stage.v
+1614024528 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Mem_stage.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/and_6.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/full_alu.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_msb.v
