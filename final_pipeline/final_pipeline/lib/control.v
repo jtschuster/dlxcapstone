@@ -14,25 +14,32 @@ module control(
 	       rs2_sel,
 	       new_pc_if_jump,
 	       kill_next_instruction,
-	       stall);
+	       stall,
+	       lb);
    // Should I also take in the registers so that I can determine the branch that we would take?
 
    input [0:31]  instr;
    input [31:0]  rs1;
    input [31:0]  pc_plus_four;
-   input 	 should_be_killed;
+   input	 should_be_killed;
    output [31:0] new_pc_if_jump;
    output 	 RegWr;
    output [4:0]  RegDst, rs2_sel;
    output 	 ExtOp;
    output 	 AluSrc;
    output [4:0]  AluOp;
-   output 	 Branch;
+   output reg	 Branch;
    output 	 MemWr;
    output 	 MemToReg;
-   output 	 kill_next_instruction; 	 
+   output reg 	 kill_next_instruction; 	 
    output 	 stall;
-
+   output reg [1:0] lb;
+   
+   initial begin // These signals are used within the component and need initial values or we end up with X's
+      kill_next_instruction = 1'b0;
+      Branch = 1'b0;
+   end
+   
    localparam [4:0] add_alu_op                     = 5'b00010;
    localparam [4:0] addu_alu_op                    = 5'b00010;
    localparam [4:0] sub_alu_op                     = 5'b00011;
@@ -50,6 +57,7 @@ module control(
    localparam [4:0] set_ltu_op                     = 5'b00111;
    localparam [4:0] set_geq_alu_op                 = 5'b01001;
    localparam [4:0] set_leq_alu_op                 = 5'h6;
+   localparam [4:0] lhi_alu_op                     = 5'b00000;
 
    localparam [0:5] add_func	= 6'h20;
    localparam [0:5] addu_func	= 6'h21;
@@ -69,15 +77,16 @@ module control(
    localparam [0:5] slt_func	= 6'h28;
    localparam [0:5] beqz_op	= 6'h04;
    localparam [0:5] lb_op	= 6'h20;
+   localparam [0:5] lbu_op      = 6'h24;
    localparam [0:5] sb_op	= 6'h28;
    localparam [0:5] sh_op       = 6'h29;
    localparam [0:5] sw_op	= 6'h2b;
-   localparam [0:5] lbu_op	= 6'h24;
    localparam [0:5] sgt_func	= 6'h2b;
    localparam [0:5] bnez_op	= 6'h05;
    localparam [0:5] trap_op	= 6'h11;
    localparam [0:5] xor_func    = 6'h26;
    localparam [0:5] lh_op       = 6'h21;
+   localparam [0:5] lhu_op      = 6'h25;
    localparam [0:5] sgei_op     = 6'h1D;
    
    
@@ -135,8 +144,10 @@ module control(
 		     opcode == lw_op ||
 		     opcode == sw_op ||
 		     opcode == lh_op ||
+		     opcode == lhu_op ||
 		     opcode == sh_op ||
 		     opcode == lb_op ||
+		     opcode == lbu_op ||
 		     opcode == sb_op
 		     ? 1'b1 : 1'b0;
    // 1 if reg, 0 if immediate
@@ -146,7 +157,8 @@ module control(
 		       opcode == 6'h00 && func == add_func ||
 		       opcode == sw_op ||
 		       opcode == lw_op ||
-		       opcode == lb_op ||
+		       opcode == lb_op || 
+		       opcode == lbu_op ||
 		       opcode == sb_op
 		       ? add_alu_op : 5'h0
 		       |
@@ -166,24 +178,39 @@ module control(
 		       ? xor_alu_op : 5'h0
 		       | 
 		       opcode == sgei_op 
-		       ? set_geq_alu_op : 5'h0;
+		       ? set_geq_alu_op : 5'h0 ||
+		       opcode == lhi_op
+		       ? lhi_alu_op : 5'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
 		      ? 1'b1 : 1'b0) &
 		     ~should_be_killed;
-   assign MemToReg = (opcode == lw_op // also lh and lb 
+   assign MemToReg = (opcode == lw_op || opcode == lb_op || opcode == lbu_op || opcode == lh_op || opcode == lbu_op  
 		      ? 1'b1 : 1'b0) &
 		     ~should_be_killed;
    assign stall = (opcode == lw_op ||
 		   opcode == lh_op ||
-		   opcode == lb_op) &
+		   opcode == lb_op ||
+		   opcode == lbu_op) &
 		  ~should_be_killed;
    wire 	takeBranch;
    JumpBranch jumpBranch (.instruction(instr), .pc_plus_four(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
-   assign Branch = takeBranch & ~should_be_killed;
-   assign kill_next_instruction = opcode === lw_op && ~should_be_killed || 
-				  Branch === 1'b1 && ~should_be_killed;
+//   assign Branch = takeBranch & ~should_be_killed;
+//   assign kill_next_instruction = opcode === lw_op && ~should_be_killed || 
+//				  Branch === 1'b1 && ~should_be_killed ||
+//				  opcode === 6'h00 && func == nop_func && ~should_be_killed;
+   always @(*) begin
+      lb <= {opcode == lbu_op, opcode == lb_op};
+      Branch <= takeBranch & ~should_be_killed;
+      kill_next_instruction <= (opcode == lw_op || 
+				opcode == lh_op || opcode == lhu_op || 
+				opcode == lb_op || opcode == lbu_op) 
+	                       && 
+			       ~should_be_killed 
+			       || 
+			       Branch == 1'b1 && ~should_be_killed;
+   end
    
 
 endmodule

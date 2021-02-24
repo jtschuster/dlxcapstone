@@ -88,6 +88,6 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
 	//RegisterFiles reg_files(clk, 1'b1, 5'd31, 5'd0, writeSelect, register31, register_rs, null_register_read);
 
-	outputPC = newPC;
+	outputPC <= newPC;
       end
 endmodule
