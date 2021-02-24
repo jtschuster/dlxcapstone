@@ -16,22 +16,32 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   output [31:0] result_mem;
   output MemtoReg_mem, RegWrite_mem, Branch_stall_forwarding;
   output [4:0] towrite_mem;
-  wire [31:0] dout_tmp;
+  wire [31:0] dout_tmp1;
   wire Branch_mem, Branch_mem_delay0, Branch_mem_delay1, stall,Branch_ex_new, invinit_delay,stall_new;
   wire we_new,newRegWrite_ex,finalnewRegWrite_ex;
-  syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp));
+  syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp1));
   defparam cpu_scm.mem_file = mem_file;
 
-  if (load_byte == 2'b10) begin
-     assign dout_tmp = { {24 {1'b0}}, dout_tmp[0:7]};
+   reg [31:0] dout_tmp;
+   
+  always @(load_byte) begin
+     if (load_byte == 2'b10) begin
+	dout_tmp <= { {24 {1'b0}}, dout_tmp1[7:0]};
+     end
+     else if (load_byte == 2'b01) begin
+	dout_tmp <= { {24 { dout_tmp1[8] } }, dout_tmp1[7:0]};
+     end
+     else begin
+	dout_tmp <= dout_tmp1;
+    end
+    
   end
-  else if (load_byte == 2'b01) begin
-     assign dout_tmp = { {24 { dout_tmp[8] } }, dout_tmp[0:7]};
-  end
+   
+   //assign dout_tmp = new_dout;
+ 
    
    
-   
-   
+  
   generate 
   genvar index;
   for (index=0; index < 32; index = index + 1)
