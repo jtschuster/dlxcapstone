@@ -94,6 +94,23 @@ always @(*) begin
             end
             // Result      <= sub_result;
 	end
+	
+	5'b01010: begin  // sgt
+            if (A > B) begin
+                Set         <= 1'b1;
+	        Result      <= 32'b1;
+            end
+            else begin
+                Set         <= 1'b0;
+	        Result      <= 32'b0;
+            end
+            // Result      <= A>B;
+	end
+
+	5'b01100: begin  // lhi
+            Result       <= B << 16;
+	    //Should this change Set???
+	end
 
         default: begin
             Result      <= A + B;
