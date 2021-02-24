@@ -207,7 +207,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    //data memory
    Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(alu_result_mem),.din(mem_store_data_mem),.dout(Memread), .dout_mem(mem_data_mem), .result_mem(result_wb), 
                       .MemtoReg_ex(MemtoReg_mem), .RegWrite_ex(RegWrite_mem),.MemtoReg_mem(MemtoReg_wb), .RegWrite_mem(RegWrite_wb),
-                      .towrite_ex(RegDst_mem),.towrite_mem(RegDst_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding));
+                      .towrite_ex(RegDst_mem),.towrite_mem(RegDst_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding),.load_byte(is_lb_mem));
    defparam cpu_mem.mem_file = file_name;
    // write back
    // Literally Just a mux to determine which data gets written back

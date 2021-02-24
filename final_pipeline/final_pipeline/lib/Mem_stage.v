@@ -1,4 +1,4 @@
-module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding);
+module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding, load_byte);
   
   parameter mem_file = "../data/fib.dat";
   //parameter mem_file = "../data/bills_branch.dat";
@@ -11,7 +11,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   input [4:0] towrite_ex;
   input [31:0] addr;
   input [31:0] din;
-  //input load_byte;
+  input [1:0] load_byte;
   output [31:0] dout, dout_mem;
   output [31:0] result_mem;
   output MemtoReg_mem, RegWrite_mem, Branch_stall_forwarding;
@@ -22,9 +22,12 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp));
   defparam cpu_scm.mem_file = mem_file;
 
-  //if (load_byte == 1'b1) begin
-  //   assign dout_tmp = { {24 {1'b0}}, dout_tmp[0:7]};
-  //end
+  if (load_byte == 2'b10) begin
+     assign dout_tmp = { {24 {1'b0}}, dout_tmp[0:7]};
+  end
+  else if (load_byte == 2'b01) begin
+     assign dout_tmp = { {24 { dout_tmp[8] } }, dout_tmp[0:7]};
+  end
    
    
    
