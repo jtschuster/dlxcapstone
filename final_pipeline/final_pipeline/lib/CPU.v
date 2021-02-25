@@ -213,7 +213,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    // write back
    // Literally Just a mux to determine which data gets written back
    // combinational, no dffs
-   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .(register31), .wDin(data_wb));
+   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
 endmodule
 
   
