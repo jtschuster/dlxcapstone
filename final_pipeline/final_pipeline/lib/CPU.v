@@ -14,10 +14,11 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    wire [0:15] 	 immed_id;
    output wire 	 should_branch_id;
    wire 	 MemtoReg_id, MemtoReg_wb, RegWrite_id, RegWrite_wb, MemWrite_id, Extop_id;
+   wire MemtoReg_wb_jal;
    output wire 	 ALUSrc;
    wire 	     ALUSrc_id;
    wire [4:0] 	     ALUop_id;
-   wire [4:0] 	     towrite, RegDst_mem, RegDst_wb;
+   wire [4:0] 	     towrite, RegDst_mem, RegDst_wb, RegDst_wb_jal;
    wire [31:0] 	     se_immed;
    output wire [31:0] alu_input; 
    wire [31:0] 	      alu_input_new;
@@ -101,7 +102,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 								    
    // RegisterFiles
    // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id));
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb_jal), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb_jal), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id));
    
 
    // Basically dffs to act as the ID/EX registers
@@ -214,6 +215,9 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    // Literally Just a mux to determine which data gets written back
    // combinational, no dffs
    WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
+
+   mux cpu_mux_jal (.sel(jal_wr), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
+   mux_32 cpu_mux_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
 endmodule
 
   
