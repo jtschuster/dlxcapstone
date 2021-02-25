@@ -1,4 +1,4 @@
-module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
+module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register31);
 	input [31:0] instruction;
 	input [31:0] pc_plus_four;
         input [31:0] rs1;

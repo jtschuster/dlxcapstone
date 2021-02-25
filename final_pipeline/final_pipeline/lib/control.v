@@ -15,7 +15,10 @@ module control(
 	       new_pc_if_jump,
 	       kill_next_instruction,
 	       stall,
-	       lb);
+	       lb,
+          jal_wr,
+          register31
+          );
    // Should I also take in the registers so that I can determine the branch that we would take?
 
    input [0:31]  instr;
