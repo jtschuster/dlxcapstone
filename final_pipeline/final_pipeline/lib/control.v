@@ -129,7 +129,7 @@ module control(
 		   opcode == 6'h10 || // RFE
 		   opcode == 6'h11;  // TRAP
 
-   assign jal_wr = opcode == 6'h03 // JAL
+   assign jal_wr = opcode == 6'h03; // JAL
 
    assign branch_instr = opcode == 6'h04 || // BEQZ
 		         opcode == 6'h05 || // BNEZ
