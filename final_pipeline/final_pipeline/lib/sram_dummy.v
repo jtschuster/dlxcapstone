@@ -26,6 +26,10 @@ module sram(cs, oe, we, addr, din, dout);
 	   // bnez r2, -16 (first instr)
 	   dout[0:31] = 32'b000101_00010_00000_1111_1111_1111_0000;
 	end
+	32'h0014: begin
+	   // jal 100
+	   dout[0:31] = 32'b000011_00000_00000_0000_0000_1000_0000;
+	end
 	32'h00000080: begin
 	   dout[0:31] = 32'hF0F0F0F0;
 	end

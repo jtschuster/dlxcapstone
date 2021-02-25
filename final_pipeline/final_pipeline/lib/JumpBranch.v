@@ -5,6 +5,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
    
 	output reg [31:0] outputPC;
         output reg 	  takeBranch;
+	output reg [31:0] register31;
    
 	//j, jal (sign-extend lowest 26 bits and add to PC+4):
 	//jr (PC=r1)
@@ -22,7 +23,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch);
 	wire [31:0] signExtendedName = { { 6 { name[25] } } , name[25:0] };
 	wire [31:0] signExtendedImmediate = { { 16 { immi[15] } } , immi[15:0] };
 
-	reg [31:0] register31;
+	//reg [31:0] register31;
 
 
 	reg writeSelect = 1'b0;

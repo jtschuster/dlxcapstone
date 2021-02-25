@@ -38,6 +38,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
+   wire register31;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
    always @(negedge clk) begin
@@ -65,7 +66,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    control ctrl (.instr(inst_id), .rs1(rs1_id), .rs2_sel(rs2_sel_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id), 
-		 .lb(is_lb_id));
+		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31));
 //   dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
 
    // TODO: make sure rs1 contains the correct forwarded value for the branch control

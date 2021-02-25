@@ -34,6 +34,8 @@ module control(
    output reg 	 kill_next_instruction; 	 
    output 	 stall;
    output reg [1:0] lb;
+   output jal_wr;
+   output [31:0] register31;
    
    initial begin // These signals are used within the component and need initial values or we end up with X's
       kill_next_instruction = 1'b0;
@@ -98,6 +100,7 @@ module control(
    wire [0:5] 	func;
    wire 	i_type;
    wire 	j_type;
+   
 
    wire 	branch_instr;
 
@@ -122,6 +125,9 @@ module control(
 		   opcode == 6'h03 || // JAL
 		   opcode == 6'h10 || // RFE
 		   opcode == 6'h11;  // TRAP
+
+   assign jal_wr = opcode == 6'h03 // JAL
+
    assign branch_instr = opcode == 6'h04 || // BEQZ
 		         opcode == 6'h05 || // BNEZ
 			 opcode == 6'h06 || // BFPT
@@ -195,7 +201,7 @@ module control(
 		   opcode == lbu_op) &
 		  ~should_be_killed;
    wire 	takeBranch;
-   JumpBranch jumpBranch (.instruction(instr), .pc_plus_four(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch));
+   JumpBranch jumpBranch (.instruction(instr), .pc_plus_four(pc_plus_four), .rs1(rs1), .outputPC(new_pc_if_jump), .takeBranch(takeBranch), .register31(register31));
 //   assign Branch = takeBranch & ~should_be_killed;
 //   assign kill_next_instruction = opcode === lw_op && ~should_be_killed || 
 //				  Branch === 1'b1 && ~should_be_killed ||
