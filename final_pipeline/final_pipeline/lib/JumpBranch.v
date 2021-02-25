@@ -65,8 +65,9 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 		else begin
 		   takeBranch <= 0;
 		end
+	end
 	else begin
-	  register31 <= 32'b0;
+		register31 <= 32'b0;
 	end
 	   
 	
