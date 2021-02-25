@@ -39,7 +39,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
-   wire register31;
+   wire [31:0]register31;
    wire jal_wr, jal_wr_delay;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
