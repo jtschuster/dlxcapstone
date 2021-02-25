@@ -217,7 +217,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
 
    mux cpu_mux_jal (.sel(jal_wr), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
-   mux_32 cpu_mux_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
+   mux_32 cpu_mux32_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
 endmodule
 
   
