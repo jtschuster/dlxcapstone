@@ -40,6 +40,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
    wire register31;
+   wire jal_wr, jal_wr_delay;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
    always @(negedge clk) begin
@@ -216,8 +217,9 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    // combinational, no dffs
    WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
 
+   dff dff_jal (.clk(clk), .d(jal_wr), .q(jal_wr_delay));
    mux cpu_mux_jal (.sel(jal_wr), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
-   mux_32 cpu_mux32_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
+   mux_32 cpu_mux32_jal (.sel(jal_wr_delay), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
 endmodule
 
   
