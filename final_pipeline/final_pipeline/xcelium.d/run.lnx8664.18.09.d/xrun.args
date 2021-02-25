@@ -46,6 +46,6 @@ r
 ./lib/control.v
 ./lib/JumpBranch.v
 ./lib/alu_behavioral.v
-./lib/sram_dummy.v
+./lib/syncram.v
+./lib/sram.v
 ./test/CPU_tb.v
--s

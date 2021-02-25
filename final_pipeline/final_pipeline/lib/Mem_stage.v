@@ -24,7 +24,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
 
    reg [31:0] dout_tmp;
    
-  always @(load_byte) begin
+  always @(*) begin
      if (load_byte == 2'b10) begin
 	dout_tmp <= { {24 {1'b0}}, dout_tmp1[7:0]};
      end

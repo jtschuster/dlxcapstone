@@ -43,7 +43,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	else if (opcode == 6'h3) begin //True for 'jal'
 		//PC = PC + 4 + SignExtend(name);
 		
-		register31 <= pc_plus_four;
+		register31 <= pc_plus_four + 4;
 		newPC <= pc_plus_four + signExtendedName;
 		writeSelect <= 1'b1;
 	        takeBranch <= 1;

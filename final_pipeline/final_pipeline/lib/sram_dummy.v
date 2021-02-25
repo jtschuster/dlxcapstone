@@ -20,7 +20,7 @@ module sram(cs, oe, we, addr, din, dout);
 	end
 	32'h00C: begin
 	   // subi r2 <= r1 - 0x0A0A
-	   dout[0:31] = 32'b001010_00001_00010_0000_1010_0000_1010;
+	   dout[0:31] = 32'b001010_11111_00010_0000_1010_0000_1010;
 	end
 	/*
 	32'h0010: begin
