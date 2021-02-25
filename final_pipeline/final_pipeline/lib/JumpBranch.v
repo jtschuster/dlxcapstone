@@ -65,14 +65,8 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 		else begin
 		   takeBranch <= 0;
 		end
-	end
-	else begin
-		register31 <= 32'b0;
-	end
-	   
+	end	   
 	
-	end
-
 
 	else if (opcode == 6'h05) begin //True for 'bnez'
 
@@ -88,6 +82,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	else begin
 	   newPC <= pc_plus_four;
 	   takeBranch <= 0;
+	   register31 <= 0；
 	end
 
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
