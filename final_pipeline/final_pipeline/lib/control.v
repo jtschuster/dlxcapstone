@@ -57,12 +57,12 @@ module control(
    localparam [4:0] shift_right_arithmentic_alu_op = 5'h6;
    localparam [4:0] set_eq_alu_op                  = 5'h6;
    localparam [4:0] set_neq_alu_op                 = 5'h6;
-   localparam [4:0] set_gt_alu_op                  = 5'h6;
+   localparam [4:0] set_gt_alu_op                  = 5'b01010;
    localparam [4:0] set_lt_alu_op                  = 5'b01000;
    localparam [4:0] set_ltu_op                     = 5'b00111;
    localparam [4:0] set_geq_alu_op                 = 5'b01001;
    localparam [4:0] set_leq_alu_op                 = 5'h6;
-   localparam [4:0] lhi_alu_op                     = 5'b00000;
+   localparam [4:0] lhi_alu_op                     = 5'b01100;
 
    localparam [0:5] add_func	= 6'h20;
    localparam [0:5] addu_func	= 6'h21;
@@ -189,7 +189,10 @@ module control(
 		       opcode == sgei_op 
 		       ? set_geq_alu_op : 5'h0 ||
 		       opcode == lhi_op
-		       ? lhi_alu_op : 5'h0;
+		       ? lhi_alu_op : 5'h0
+		       |
+		       func == sgt_func
+		       ? set_gt_alu_op : 5'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
