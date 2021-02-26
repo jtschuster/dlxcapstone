@@ -18,11 +18,15 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   output [4:0] towrite_mem;
   wire [31:0] dout_tmp1;
   wire Branch_mem, Branch_mem_delay0, Branch_mem_delay1, stall,Branch_ex_new, invinit_delay,stall_new;
-  wire we_new,newRegWrite_ex,finalnewRegWrite_ex;
+  wire newRegWrite_ex,finalnewRegWrite_ex;
+   reg we_new;
   syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp1));
   defparam cpu_scm.mem_file = mem_file;
 
    reg [31:0] dout_tmp;
+   initial begin
+      we_new = 0;
+   end
    
   always @(*) begin
      if (load_byte == 2'b10) begin
@@ -34,8 +38,15 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
      else begin
 	dout_tmp <= dout_tmp1;
     end
-    
+    if (we == 1) begin
+       we_new <= 1'h1;
+    end
+    else begin
+       we_new <= 1'h0;
+    end
   end
+
+
    
    //assign dout_tmp = new_dout;
  
@@ -69,8 +80,8 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   assign stall = Branch_mem | Branch_mem_delay0 | Branch_mem_delay1;
   and_gate and0 (.x(stall), .y(invinit_delay), .z(stall_new));
   assign Branch_stall_forwarding = stall_new;
-  mux mux_stall0 (.sel(stall), .src0(we), .src1(1'b0), .z(we_new));
-  mux mux_stall1 (.sel(stall), .src0(RegWrite_ex), .src1(1'b0), .z(newRegWrite_ex));
+//  mux mux_stall0 (.sel(stall), .src0(we), .src1(1'b0), .z(we_new));
+//  mux mux_stall1 (.sel(stall), .src0(RegWrite_ex), .src1(1'b0), .z(newRegWrite_ex));
   generate 
   genvar j;
   for (j=0; j < 5; j = j + 1)

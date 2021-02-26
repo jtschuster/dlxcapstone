@@ -20,6 +20,9 @@ sim:
 sim_dummy:
 	source /vol/ece303/genus_tutorial/cadence.env && \
 	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) $(OUR_FILES) $(DUMMY_RAM_FILES) ./test/CPU_tb.v
+ifetch:
+	source /vol/ece303/genus_tutorial/cadence.env && \
+	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" $(PROVIDED_FILES) ./test/sram_tb.v ./lib/ifecth.v $(RAM_FILES)
 
 regfile:
 	source /vol/ece303/genus_tutorial/cadence.env && \

@@ -195,7 +195,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    //   TODO: Confirm which each of these inputs are for. is mem_data the data to be placed in memory in the next stage, or the data from the memory from the MEM stage?
    EX_stage cpu_ex (.clk(clk), .A(rs1_ex), .B(alu_input), .Op_ex(ALUop_ex), .Carryout(Carryout), .Overflow(Overflow), .Zero(Zero), .Result_ex(alu_result_ex), .Result_mem(alu_result_mem), 
 		    .Set(Set), // .immed(immed), .immed_ex(immed_ex), .opcode(opcode), .opcode_ex(opcode_mem), .Branch(should_branch_id), 
-		    .MemtoReg_ex(MemtoReg_ex), .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_mem), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_mem(MemtoReg_mem), 
+		    .MemtoReg_ex(MemtoReg_ex), .RegWrite_ex(RegWrite_ex),.MemWrite_ex(MemWrite_ex), .towrite(RegDst_ex), .Branch_ex(Branch_ex), .MemtoReg_mem(MemtoReg_mem), 
 		    .RegWrite_mem(RegWrite_mem),.MemWrite_mem(MemWrite_mem), .towrite_ex(RegDst_mem), 
 		    .mem_data(rs2_ex), .mem_data_ex(mem_store_data_mem), // rs2 is technically rd in i type (sw) aka the stored value
                     .rs(rs1_sel_ex),.rt(rs2_sel_ex), .ALUSrc(ALUSrc), .towrite_mem(RegDst_mem), .valid(valid),
