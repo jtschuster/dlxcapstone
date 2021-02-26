@@ -4,7 +4,7 @@ module WB_stage (MemtoReg, Result,Memread, wDin);
   //input jal_wr;
   input [31:0] Result;
   input [31:0] Memread;
-  input [31:0] register31;
+  //input [31:0] register31;
   output[31:0] wDin;
 
   //wire [31:0] wDin_tmp;
