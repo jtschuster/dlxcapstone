@@ -82,7 +82,6 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	else begin
 	   newPC <= pc_plus_four;
 	   takeBranch <= 0;
-	   register31 <= 0;
 	end
 
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
