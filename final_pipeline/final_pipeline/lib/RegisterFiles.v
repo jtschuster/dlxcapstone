@@ -1,8 +1,10 @@
-module RegisterFiles(clk, writenable, rs1_sel, rs2_sel, writesel, Din, rs1_out, rs2_out);
+module RegisterFiles(clk, writenable, rs1_sel, rs2_sel, writesel, Din, rs1_out, rs2_out, r31_en, register31);
    input clk;
    input writenable;
    input [4:0] rs1_sel, rs2_sel, writesel;
    input [31:0] Din;
+   input r31_en;
+   input [31:0] register31;
    output reg [31:0] rs1_out, rs2_out;
    reg [31:0] r [31:0];
    integer    i;
@@ -39,6 +41,11 @@ module RegisterFiles(clk, writenable, rs1_sel, rs2_sel, writesel, Din, rs1_out, 
       end
    end
    
+   always @ (posedge clk) begin
+      if (r31_en == 1)begin
+        r[31] <= register31;
+      end
+   end
    
 //   always begin
 //      case (rs1_sel)

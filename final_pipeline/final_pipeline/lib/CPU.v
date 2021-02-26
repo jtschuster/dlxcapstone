@@ -40,7 +40,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [31:0] pcPlusFour_ex, rs2_ex_preforward, rs1_ex_preforward;
    //wire [4:0] towrite_delay;
    wire [31:0]register31;
-   wire jal_wr, jal_wr_delay;
+   wire jal_wr;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
    always @(negedge clk) begin
@@ -103,7 +103,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 								    
    // RegisterFiles
    // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb_jal), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb_jal), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id));
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id), .r31_en(jal_wr), .register31(register31));
    
 
    // Basically dffs to act as the ID/EX registers
@@ -215,14 +215,11 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    // write back
    // Literally Just a mux to determine which data gets written back
    // combinational, no dffs
-      wire jal_wr_ex, jal_wr_mem, jal_wr_wb;
-   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr_wb), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
+   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .Result(result_wb), .Memread(Memread), .wDin(data_wb));
 
-   dff dff_jal (.clk(clk), .d(jal_wr), .q(jal_wr_ex));
-   dff dff_jal2 (.clk(clk), .d(jal_wr_ex), .q(jal_wr_mem));
-   dff dff_jal3 (.clk(clk), .d(jal_wr_mem), .q(jal_wr_wb));
-   mux cpu_mux_jal (.sel(jal_wr_wb), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
-   mux_32 cpu_mux32_jal (.sel(jal_wr_wb), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
+   //dff dff_jal (.clk(clk), .d(jal_wr), .q(jal_wr_delay));
+   //mux cpu_mux_jal (.sel(jal_wr), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
+   //mux_32 cpu_mux32_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
 endmodule
 
   
