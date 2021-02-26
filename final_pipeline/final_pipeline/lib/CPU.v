@@ -84,19 +84,19 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    always @ (rs1_sel_id, RegDst_id, RegDst_ex, RegDst_mem, RegWrite_mem, RegWrite_ex, MemtoReg_mem, alu_result_ex, mem_data_mem, rs1_id_preforward)
      begin
 	if (rs1_sel_id == RegDst_ex && RegWrite_ex == 1) begin
-	   rs1_id = alu_result_ex;
+	   rs1_id <= alu_result_ex;
 	end
 	else if(rs1_sel_id == RegDst_mem && RegWrite_mem == 1) begin
 	   if (MemtoReg_mem == 1) begin
-	      rs1_id = mem_data_mem;
+	      rs1_id <= mem_data_mem;
 	   end
 	   else begin
-	      rs1_id = alu_result_mem;
+	      rs1_id <= alu_result_mem;
 	   end
 	end
 	
 	else begin
-	   rs1_id = rs1_id_preforward;
+	   rs1_id <= rs1_id_preforward;
 	end
      end
    
@@ -155,32 +155,32 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem, rs1_ex_preforward, rs2_ex_preforward, data_wb) begin
       if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
 	 if (MemtoReg_mem == 1) begin
-	    rs1_ex = mem_data_mem;
+	    rs1_ex <= mem_data_mem;
 	 end
 	 else begin
-	    rs1_ex = alu_result_mem;
+	    rs1_ex <= alu_result_mem;
 	 end
       end
       else if (rs1_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
-	 rs1_ex = data_wb;
+	 rs1_ex <= data_wb;
       end
       else begin
-	 rs1_ex = rs1_ex_preforward;
+	 rs1_ex <= rs1_ex_preforward;
       end
       
       if (rs2_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
 	 if (MemtoReg_mem == 1) begin
-	    rs2_ex = mem_data_mem;
+	    rs2_ex <= mem_data_mem;
 	 end
 	 else begin
-	    rs2_ex = alu_result_mem;
+	    rs2_ex <= alu_result_mem;
 	 end
       end
       else if (rs2_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
-	 rs2_ex = data_wb;
+	 rs2_ex <= data_wb;
       end
       else begin
-	 rs2_ex = rs2_ex_preforward;
+	 rs2_ex <= rs2_ex_preforward;
       end
       
    end
@@ -215,11 +215,14 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    // write back
    // Literally Just a mux to determine which data gets written back
    // combinational, no dffs
-   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
+      wire jal_wr_ex, jal_wr_mem, jal_wr_wb;
+   WB_stage cpu_wb (.MemtoReg(MemtoReg_wb), .jal_wr(jal_wr_wb), .Result(result_wb), .Memread(Memread), .register31(register31), .wDin(data_wb));
 
-   //dff dff_jal (.clk(clk), .d(jal_wr), .q(jal_wr_delay));
-   mux cpu_mux_jal (.sel(jal_wr), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
-   mux_32 cpu_mux32_jal (.sel(jal_wr), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
+   dff dff_jal (.clk(clk), .d(jal_wr), .q(jal_wr_ex));
+   dff dff_jal2 (.clk(clk), .d(jal_wr_ex), .q(jal_wr_mem));
+   dff dff_jal3 (.clk(clk), .d(jal_wr_mem), .q(jal_wr_wb));
+   mux cpu_mux_jal (.sel(jal_wr_wb), .src0(RegWrite_wb), .src1(1'b1), .z(RegWrite_wb_jal));
+   mux_32 cpu_mux32_jal (.sel(jal_wr_wb), .src0(RegDst_wb), .src1(5'b11111), .z(RegDst_wb_jal));
 endmodule
 
   

@@ -22,7 +22,6 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 
 	wire [31:0] signExtendedName = { { 6 { name[25] } } , name[25:0] };
 	wire [31:0] signExtendedImmediate = { { 16 { immi[15] } } , immi[15:0] };
-
 	//reg [31:0] register31;
 
 
@@ -82,7 +81,6 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	else begin
 	   newPC <= pc_plus_four;
 	   takeBranch <= 0;
-	   register31 <= 0;
 	end
 
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
