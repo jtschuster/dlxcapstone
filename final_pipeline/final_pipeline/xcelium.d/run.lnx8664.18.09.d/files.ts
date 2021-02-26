@@ -64,7 +64,7 @@
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ifecth.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/Control_signal.v
 1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/IF_stage.v
-1613685735 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/PC.v
+1614325703 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/PC.v
 1614321335 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/WB_stage.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/readReg.v
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/write32.v
@@ -73,7 +73,7 @@
 1612056731 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/writeReg.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sll.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
-1614324277 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
+1614325771 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/CPU.v
 1614269316 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1614271179 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
 1614269316 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v

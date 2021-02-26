@@ -43,6 +43,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    wire jal_wr;
    // initialize or nextPC
    PC pc (.clk(clk), .CurrPC(currentPC_if), .Branch(should_branch_id), .BranchPC(new_pc_if_jump_id), .stall(stall_id), .NextPC(currentPC_if));
+   defparam pc.data_file = file_name;
+
    always @(negedge clk) begin
       pcPlusFour_id <= currentPC_if + 4;
    end
