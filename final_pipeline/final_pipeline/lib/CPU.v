@@ -5,6 +5,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    //parameter file_name="data/bills_branch.dat";
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
+   reg [31:0] cycle_count;
    output [31:0] currentPC_if, rs2_id, Memread;
    output reg [31:0] rs1_id;
    reg [31:0] 	     rs1_ex, rs2_ex;
@@ -34,6 +35,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [31:0] 	      pcPlusFour_id;
    reg [1:0] 	      is_lb_ex, is_lb_mem;
    wire [1:0] 	      is_lb_id;
+   wire 	      is_sb_id;
+   reg 		      is_sb_ex, is_sb_mem;
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [4:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
@@ -47,6 +50,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 
    always @(negedge clk) begin
       pcPlusFour_id <= currentPC_if + 4;
+      cycle_count <= cycle_count + 1;
    end
    
    // instruction fetch
@@ -62,6 +66,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    assign rs1_sel_id = inst_id[6:10];
    assign immed_id = inst_id[16:31];
    initial begin
+      cycle_count = 32'h0;
       should_be_killed_id = 1'b0;
       inst_id = 31'h00_00_00_15; // need to start with NOP so there aren't any X's propogating
    end
@@ -70,7 +75,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    control ctrl (.instr(inst_id), .rs1(rs1_id), .rs2_sel(rs2_sel_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id), 
-		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31));
+		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31), .sb(is_sb_id));
 //   dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
 
    // TODO: make sure rs1 contains the correct forwarded value for the branch control
@@ -125,6 +130,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
       rs2_sel_ex <= rs2_sel_id;
       immed_ex <= immed_id;
       is_lb_ex <= is_lb_id;
+      is_sb_ex <= is_sb_id;
       should_be_killed_id <= kill_next_instruction_id;
    end
   
@@ -205,6 +211,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 
    always @(negedge clk) begin
       is_lb_mem <= is_lb_ex;
+      is_sb_mem <= is_sb_ex;
    end
    // Since we forward the data from the memory unit in the EX stage, we don't need to forward again before the MEM Stage. 
    //  If we change the forwarding to only take initial values right out of iterstage register in order to reduce clocksycle, we will need to forward from wb stage here
@@ -212,7 +219,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    //data memory
    Mem_stage cpu_mem (.clk(clk),.cs(1'b1),.oe(1'b1),.we(MemWrite_mem),.addr(alu_result_mem),.din(mem_store_data_mem),.dout(Memread), .dout_mem(mem_data_mem), .result_mem(result_wb), 
                       .MemtoReg_ex(MemtoReg_mem), .RegWrite_ex(RegWrite_mem),.MemtoReg_mem(MemtoReg_wb), .RegWrite_mem(RegWrite_wb),
-                      .towrite_ex(RegDst_mem),.towrite_mem(RegDst_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),.Branch_stall_forwarding(Branch_stall_forwarding),.load_byte(is_lb_mem));
+                      .towrite_ex(RegDst_mem),.towrite_mem(RegDst_wb), .Branch_ex(Branch_taken),.init_delay(init_delay),
+		      .Branch_stall_forwarding(Branch_stall_forwarding),.load_byte(is_lb_mem), .store_byte_in(is_sb_mem));
    defparam cpu_mem.mem_file = file_name;
    // write back
    // Literally Just a mux to determine which data gets written back

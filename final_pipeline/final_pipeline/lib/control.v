@@ -16,6 +16,7 @@ module control(
 	       kill_next_instruction,
 	       stall,
 	       lb,
+	       sb,
           jal_wr,
           register31
           );
@@ -25,6 +26,7 @@ module control(
    input [31:0]  rs1;
    input [31:0]  pc_plus_four;
    input	 should_be_killed;
+   output reg	 sb; 	 
    output [31:0] new_pc_if_jump;
    output 	 RegWr;
    output [4:0]  RegDst, rs2_sel;
@@ -79,7 +81,7 @@ module control(
    localparam [0:5] jalr_op     = 6'h13;
    localparam [0:5] nop_func	= 6'h15;
    localparam [0:5] lw_op	= 6'h23;
-   localparam [0:5] slt_func	= 6'h28;
+   localparam [0:5] slt_func	= 6'h2A;
    localparam [0:5] beqz_op	= 6'h04;
    localparam [0:5] lb_op	= 6'h20;
    localparam [0:5] lbu_op      = 6'h24;
@@ -191,8 +193,11 @@ module control(
 		       opcode == lhi_op
 		       ? lhi_alu_op : 5'h0
 		       |
-		       func == sgt_func
-		       ? set_gt_alu_op : 5'h0;
+		       opcode == 6'h00 && func == sgt_func
+		       ? set_gt_alu_op : 5'h0
+		       | 
+		       opcode == 6'h00 && func == slt_func
+		       ? set_lt_alu_op : 5'h0;
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
@@ -214,6 +219,7 @@ module control(
 //				  opcode === 6'h00 && func == nop_func && ~should_be_killed;
    always @(*) begin
       lb <= {opcode == lbu_op, opcode == lb_op};
+      sb <= {opcode == sb_op};
       Branch <= takeBranch & ~should_be_killed;
       kill_next_instruction <= (opcode == lw_op || 
 				opcode == lh_op || opcode == lhu_op || 

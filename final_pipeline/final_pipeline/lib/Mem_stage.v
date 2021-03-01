@@ -1,4 +1,4 @@
-module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding, load_byte);
+module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex, RegWrite_ex,towrite_ex,MemtoReg_mem, RegWrite_mem,towrite_mem,Branch_ex,init_delay,Branch_stall_forwarding, load_byte, store_byte_in);
   
   parameter mem_file = "../data/fib.dat";
   //parameter mem_file = "../data/bills_branch.dat";
@@ -12,6 +12,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   input [31:0] addr;
   input [31:0] din;
   input [1:0] load_byte;
+   input      store_byte_in;
   output [31:0] dout, dout_mem;
   output [31:0] result_mem;
   output MemtoReg_mem, RegWrite_mem, Branch_stall_forwarding;
@@ -19,13 +20,15 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   wire [31:0] dout_tmp1;
   wire Branch_mem, Branch_mem_delay0, Branch_mem_delay1, stall,Branch_ex_new, invinit_delay,stall_new;
   wire newRegWrite_ex,finalnewRegWrite_ex;
-   reg we_new;
-  syncram cpu_scm (.clk(clk),.cs(cs),.oe(oe),.we(we_new),.addr(addr),.din(din),.dout(dout_tmp1));
+   reg we_new, store_byte;
+   reg [31:0] byte_written, d_write, addr_mod_four;
+  sram cpu_scm (.cs(cs), .oe(oe), .we(we_new), .addr(addr), .din(d_write), .dout(dout_tmp1));
   defparam cpu_scm.mem_file = mem_file;
 
    reg [31:0] dout_tmp;
    initial begin
       we_new = 0;
+      store_byte = 0;
    end
    
   always @(*) begin
@@ -33,24 +36,43 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
 	dout_tmp <= { {24 {1'b0}}, dout_tmp1[7:0]};
      end
      else if (load_byte == 2'b01) begin
-	dout_tmp <= { {24 { dout_tmp1[8] } }, dout_tmp1[7:0]};
+	dout_tmp <= { {24 { dout_tmp1[7] } }, dout_tmp1[7:0]};
      end
      else begin
 	dout_tmp <= dout_tmp1;
-    end
-    if (we == 1) begin
-       we_new <= 1'h1;
-    end
-    else begin
-       we_new <= 1'h0;
-    end
+     end
+     if (we != 1) begin
+	we_new <= 1'h0;
+     end
+     addr_mod_four = (addr & 32'h3);
+     byte_written <= (dout_tmp1 & 
+		      (32'hFFFFFFFF ^ (8'hFF << (8 * addr_mod_four)))) |
+		     (dout_tmp1[7:0] << (8 * addr_mod_four));
+     
   end
 
-
-   
-   //assign dout_tmp = new_dout;
+   always @(negedge clk) begin
+      //assign dout_tmp = new_dout;
  
+
+   end
+   always @(posedge clk) begin
+      // set we here
+      if (store_byte_in == 1'h1) begin
+	 d_write = byte_written;
+      end
+      else begin
+	 d_write = din;
+      end
+      if (we == 1'h1) begin
+	 we_new <= 1'h1;
+      end
+      else begin
+	we_new <= 1'h0;
+      end
+   end
    
+      
    
   
   generate 

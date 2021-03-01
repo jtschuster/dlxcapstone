@@ -32,7 +32,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 
 
    always @(instruction, pc_plus_four, rs1, outputPC, takeBranch) begin
-	if (opcode == 6'h2) begin //True for 'j' 
+	if (opcode == 6'h02) begin //True for 'j' 
 		//PC = PC + 4 + SignExtend(name);
 		
 		newPC <= pc_plus_four + signExtendedName;
