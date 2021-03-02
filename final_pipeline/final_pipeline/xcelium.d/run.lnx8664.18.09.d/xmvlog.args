@@ -43,7 +43,8 @@
 ./lib/control.v
 ./lib/JumpBranch.v
 ./lib/alu_behavioral.v
-./lib/sram_dummy.v
+./lib/syncram.v
+./lib/sram.v
 ./test/CPU_tb.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.18.09.d/cdsrun.lib

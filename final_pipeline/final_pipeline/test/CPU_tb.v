@@ -15,7 +15,7 @@ module CPU_tb;
     wire [31:0] alu_input;
     wire[31:0] pc_lim;
     CPU scp ( .clk(clk), .currentPC_if(regPC), .inst_id(inst), .rs1_id(Dout1), .rs2_id(Dout2), .Memread(Memread), .ALUSrc(ALUSrc), .should_branch_id(Branch),.alu_input(alu_input));
-    defparam scp.file_name = "data/unsignedsum.dat";
+    defparam scp.file_name = "data/quicksort.dat";
     assign pc_lim = 32'h00400054;
     //defparam scp.file_name = "data/bills_branch.dat";
     //assign pc_lim = 32'h00400060;
@@ -29,7 +29,7 @@ module CPU_tb;
         #10
 		clk = 1'b0;
 		#10
-		for(i = 0; (i < 5000) && (regPC < pc_lim); i=i+1) begin
+		for(i = 0; (i < 500000) && (regPC < pc_lim); i=i+1) begin
 		clk = 1'b1;
 		#10
 		clk = 1'b0;

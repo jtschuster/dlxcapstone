@@ -228,6 +228,10 @@ module control(
 			       ~should_be_killed 
 			       || 
 			       Branch == 1'b1 && ~should_be_killed;
+      if (opcode == 6'h11) begin //trap
+	 $finish;
+      end
+      
    end
    
 

@@ -22,9 +22,10 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
   wire newRegWrite_ex,finalnewRegWrite_ex;
    reg we_new, store_byte;
    reg [31:0] byte_written, d_write, addr_mod_four;
-  sram cpu_scm (.cs(cs), .oe(oe), .we(we_new), .addr(addr), .din(d_write), .dout(dout_tmp1));
+   reg [31:0] addr_aligned;
+  sram cpu_scm (.cs(cs), .oe(oe), .we(we_new), .addr(addr_aligned), .din(d_write), .dout(dout_tmp1));
   defparam cpu_scm.mem_file = mem_file;
-
+   reg [7:0]  byte_of_interest;
    reg [31:0] dout_tmp;
    initial begin
       we_new = 0;
@@ -32,43 +33,46 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
    end
    
   always @(*) begin
+     addr_mod_four = (addr & 32'h3);
+     byte_of_interest = (dout_tmp1 & (8'hFF << (24 - (8 * addr_mod_four)))) >> (24 - (8 * addr_mod_four));
+     addr_aligned <= addr & 32'hFF_FF_FF_FC; 
+
      if (load_byte == 2'b10) begin
-	dout_tmp <= { {24 {1'b0}}, dout_tmp1[7:0]};
+	dout_tmp <= { {24 {1'b0}}, byte_of_interest};
      end
      else if (load_byte == 2'b01) begin
-	dout_tmp <= { {24 { dout_tmp1[7] } }, dout_tmp1[7:0]};
+	dout_tmp <= { {24 { byte_of_interest[7] } }, byte_of_interest};
      end
      else begin
 	dout_tmp <= dout_tmp1;
      end
      if (we != 1) begin
-	we_new <= 1'h0;
+	we_new = 1'h0;
      end
-     addr_mod_four = (addr & 32'h3);
+     
      byte_written <= (dout_tmp1 & 
-		      (32'hFFFFFFFF ^ (8'hFF << (8 * addr_mod_four)))) |
-		     (dout_tmp1[7:0] << (8 * addr_mod_four));
+		      (32'hFFFFFFFF ^ (8'hFF << (24 - (8 * addr_mod_four))))) |
+		     (din[7:0] << (24 - (8 * addr_mod_four)));
      
   end
 
    always @(negedge clk) begin
       //assign dout_tmp = new_dout;
- 
-
+      we_new = 0;
    end
    always @(posedge clk) begin
       // set we here
       if (store_byte_in == 1'h1) begin
-	 d_write = byte_written;
+	 d_write <= byte_written;
       end
       else begin
-	 d_write = din;
+	 d_write <= din;
       end
       if (we == 1'h1) begin
 	 we_new <= 1'h1;
       end
       else begin
-	we_new <= 1'h0;
+	 we_new = 1'h0;
       end
    end
    

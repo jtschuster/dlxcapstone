@@ -28,7 +28,7 @@ module sram(cs,oe,we,addr,din,dout);
   reg [8*200:1] line; // line buffer
   reg [31:0] dbuf;
   
-  reg [31:0] mem [255:0][1:0]; // memory to hold addr and data.
+  reg [31:0] mem [511:0][1:0]; // memory to hold addr and data.
   
   // task to check whether bits are in hex  
   // don't need it now since fscanf gets hex value only and checks it.
@@ -117,7 +117,7 @@ module sram(cs,oe,we,addr,din,dout);
       // check ram if it is recorded >> for debugging
       task checkRAM;
         begin
-          for (c=0; c<255 ; c=c+1) begin
+          for (c=0; c<511 ; c=c+1) begin
             $display ("Addr is checking: %h" , mem[c][0]);
             $display ("Data is checking: %h" , mem[c][1]);
           end
@@ -130,7 +130,7 @@ module sram(cs,oe,we,addr,din,dout);
         input [31:0] data;
         
         begin
-          for (c=0; c<255 ; c=c+1) begin
+          for (c=0; c<511 ; c=c+1) begin
             if (mem[c][0] == addr) begin
               $display ("WRITE Addr FOUND!: %h" , mem[c][0]);
               mem[c][1] = data;
@@ -151,7 +151,7 @@ module sram(cs,oe,we,addr,din,dout);
         input [31:0] addr;
         output [31:0] data;
         begin
-          for (c=0; c<255 ; c=c+1) begin
+          for (c=0; c<511 ; c=c+1) begin
             if (mem[c][0] == addr) begin
               $display ("READ Addr FOUND!: %h" , mem[c][0]);
               data = mem[c][1];

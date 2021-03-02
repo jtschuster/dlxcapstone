@@ -40,5 +40,6 @@
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/JumpBranch.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
-/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram_dummy.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/syncram.v
+/home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/sram.v
 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
