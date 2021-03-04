@@ -5,3 +5,5 @@
 **/*.diag
 **/xrun*
 **/.bpad/*
+**/waves.shm/*
+**/.simvision/*
