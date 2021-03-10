@@ -36,7 +36,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    reg [1:0] 	      is_lb_ex, is_lb_mem;
    wire [1:0] 	      is_lb_id;
    wire 	      is_sb_id;
-   reg 		      is_sb_ex, is_sb_mem;
+   reg 		      is_sb_ex, is_sb_mem, f_type_id, f_type_ex, f_type_mem, f_type_wb;
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [4:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
@@ -75,7 +75,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    control ctrl (.instr(inst_id), .rs1(rs1_id), .rs2_sel(rs2_sel_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id), 
-		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31), .sb(is_sb_id));
+		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31), .sb(is_sb_id), .f_type(f_type_id));
 //   dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
 
    // TODO: make sure rs1 contains the correct forwarded value for the branch control
@@ -109,9 +109,24 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    
 								    
    // RegisterFiles
-   // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id), .r31_en(jal_wr), .register31(register31));
+   // Looks like it's combinational for the read, so it should be passed in a dff to ex stage?
+   reg RegWrite_gpr, RegWrite_fpr;
+   always @(RegWrite_mem, f_type_wb) begin
+      if (RegWrite_mem == 1'h1) begin
+	 if (f_type_wb == 1'h1) begin
+	    RegWrite_gpr <= 0;
+	    RegWrite_fpr <= 1;
+	 end
+	 else begin
+	    RegWrite_gpr <= 1;
+	    RegWrite_fpr <= 0;
+	 end
+      end
+   end // always @ (RegWrite_mem, f_type_wb)
    
+
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id), .r31_en(jal_wr), .register31(register31));
+   RegisterFiles FP_RF (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id));
 
    // Basically dffs to act as the ID/EX registers
    always @(negedge clk) begin
