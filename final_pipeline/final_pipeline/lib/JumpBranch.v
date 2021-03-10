@@ -31,7 +31,7 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	wire [31:0] nullRegisterRead;
 
 
-   always @(instruction, pc_plus_four, rs1, outputPC, takeBranch) begin
+   always @(instruction, pc_plus_four, rs1, outputPC, takeBranch, register31) begin
 	if (opcode == 6'h02) begin //True for 'j' 
 		//PC = PC + 4 + SignExtend(name);
 		
@@ -86,6 +86,8 @@ module JumpBranch(instruction, pc_plus_four, rs1, outputPC, takeBranch, register
 	//module RegisterFiles(clk, writenable, readsel1, readsel2, writesel, Din, Dout1, Dout2);
 	//RegisterFiles reg_files(clk, 1'b1, 5'd31, 5'd0, writeSelect, register31, register_rs, null_register_read);
 
-	outputPC <= newPC;
-      end
+   end // always @ (instruction, pc_plus_four, rs1, outputPC, takeBranch, register31)
+   always @ (newPC) begin
+      outputPC <= newPC;
+   end
 endmodule

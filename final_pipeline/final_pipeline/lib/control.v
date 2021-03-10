@@ -17,30 +17,34 @@ module control(
 	       stall,
 	       lb,
 	       sb,
-          jal_wr,
-          register31
+               jal_wr,
+               register31,
+	       f_read,
+	       f_write
           );
    // Should I also take in the registers so that I can determine the branch that we would take?
 
-   input [0:31]  instr;
-   input [31:0]  rs1;
-   input [31:0]  pc_plus_four;
-   input	 should_be_killed;
-   output reg	 sb; 	 
-   output [31:0] new_pc_if_jump;
-   output 	 RegWr;
-   output [4:0]  RegDst, rs2_sel;
-   output 	 ExtOp;
-   output 	 AluSrc;
-   output [4:0]  AluOp;
-   output reg	 Branch;
-   output 	 MemWr;
-   output 	 MemToReg;
-   output reg 	 kill_next_instruction; 	 
-   output 	 stall;
+   input [0:31]     instr;
+   input [31:0]     rs1;
+   input [31:0]     pc_plus_four;
+   input 	    should_be_killed;
+   output reg 	    sb; 	 
+   output [31:0]    new_pc_if_jump;
+   output 	    RegWr;
+   output [4:0]     RegDst, rs2_sel;
+   output 	    ExtOp;
+   output 	    AluSrc;
+   output [4:0]     AluOp;
+   output reg 	    Branch;
+   output 	    MemWr;
+   output 	    MemToReg;
+   output reg 	    kill_next_instruction; 	 
+   output 	    stall;
    output reg [1:0] lb;
-   output jal_wr;
-   output [31:0] register31;
+   output 	    jal_wr;
+   output [31:0]    register31;
+   output reg 	    f_read;
+   output reg 	    f_write;	    
    
    initial begin // These signals are used within the component and need initial values or we end up with X's
       kill_next_instruction = 1'b0;
@@ -108,10 +112,10 @@ module control(
    
 
    wire 	branch_instr;
-
+   reg [4:0] 	f_alu_op;
 
    assign i_type = ~r_type && ~j_type; // Maybe should make this actually account for all i_types rather than all not r_type or j_type
-   assign opcode = instr[0:5];
+   assign opcode = instr[0:5] ;
    assign rd = i_type 
 	       ? 
 	       instr[11:15] 
@@ -197,7 +201,8 @@ module control(
 		       ? set_gt_alu_op : 5'h0
 		       | 
 		       opcode == 6'h00 && func == slt_func
-		       ? set_lt_alu_op : 5'h0;
+		       ? set_lt_alu_op : 5'h0 |
+		       f_alu_op; // register set to 0 if not a floating point instruction
       
    assign MemWr    = (opcode == sw_op ||
 		      opcode == sb_op
@@ -231,7 +236,37 @@ module control(
       if (opcode == 6'h11) begin //trap
 	 $finish;
       end
-      
+      if (opcode == 6'h01 && func == 6'h00) begin // ADDF
+	 f_read <= 1;
+	 f_write <= 1;
+	 f_alu_op <= 5'h1F; // update
+      end
+      else if (opcode == 6'h01 && func == 6'h09) begin // CVTF2I
+	 f_read <= 1;
+	 f_write <= 1;
+	 f_alu_op <= 5'h1F; // update
+
+      end
+      else if (opcode == 6'h01 && func == 6'h0C) begin // CVTI2F
+	 f_read <= 1;
+	 f_write <= 1;
+	 f_alu_op <= 5'h1F; // update
+      end
+      else if (opcode == 6'h00 && func == 6'h34) begin // MOVFP2I
+	 f_read <= 1;
+	 f_write <= 0;
+	 f_alu_op <= 5'h1F; // update
+      end
+      else if (opcode == 6'h00 && func == 6'h35) begin // MOVI2FP
+	 f_read <= 0;
+	 f_write <= 1;
+	 f_alu_op <= 5'h1F; // update
+      end
+      else begin
+	 f_read <= 0;
+	 f_write <= 0;
+	 f_alu_op <= 5'h00;
+      end
    end
    
 

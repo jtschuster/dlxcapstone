@@ -6,7 +6,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    //parameter file_name = "data/sort_corrected_branch.dat";
    input clk;
    reg [31:0] cycle_count;
-   output [31:0] currentPC_if, rs2_id, Memread;
+   output [31:0] currentPC_if, Memread;
+   output reg [31:0] rs2_id;
    output reg [31:0] rs1_id;
    reg [31:0] 	     rs1_ex, rs2_ex;
    output reg [0:31]     inst_id;
@@ -31,12 +32,14 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    wire 	      lw_stall, lw_stall_id,Branch_taken,init_delay,Branch_stall_forwarding,initPC_delay4,initPC_delay6,valid;
    wire 	      kill_next_instruction_id, stall_id;
    reg 		      should_be_killed_id; 		      
-   wire [31:0] 	      new_pc_if_jump_id, rs1_id_preforward, inst_id_wire;
+   wire [31:0] 	      new_pc_if_jump_id, inst_id_wire;
+   reg [31:0] 	      rs1_id_preforward;
    reg [31:0] 	      pcPlusFour_id;
    reg [1:0] 	      is_lb_ex, is_lb_mem;
    wire [1:0] 	      is_lb_id;
    wire 	      is_sb_id;
-   reg 		      is_sb_ex, is_sb_mem;
+   reg 		      is_sb_ex, is_sb_mem, f_write_id, f_write_ex, f_write_mem, f_write_wb, f_read_id, f_read_ex;
+   wire 	      f_read_id_w, f_write_id_w;
    reg RegWrite_ex, Extop_ex, ALUSrc_ex, MemWrite_ex, MemtoReg_ex;
    reg [4:0] ALUop_ex;
    reg [4:0] RegDst_ex, rs1_sel_ex, rs2_sel_ex;
@@ -69,13 +72,19 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
       cycle_count = 32'h0;
       should_be_killed_id = 1'b0;
       inst_id = 31'h00_00_00_15; // need to start with NOP so there aren't any X's propogating
+      f_read_ex = 0;
+      f_read_id = 0;
+      f_write_ex = 0;
+      f_write_id = 0;
+      f_write_mem = 0;
+      f_write_wb = 0;
    end
    // Control Signal
    // Combinational logic right now
    control ctrl (.instr(inst_id), .rs1(rs1_id), .rs2_sel(rs2_sel_id), .pc_plus_four(pcPlusFour_id), .should_be_killed(should_be_killed_id), .RegWr(RegWrite_id),
 		 .RegDst(RegDst_id), .ExtOp(Extop_id), .AluSrc(ALUSrc_id), .AluOp(ALUop_id), .Branch(should_branch_id), .MemWr(MemWrite_id), 
 		 .MemToReg(MemtoReg_id), .new_pc_if_jump(new_pc_if_jump_id), .kill_next_instruction(kill_next_instruction_id), .stall(stall_id), 
-		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31), .sb(is_sb_id));
+		 .lb(is_lb_id), .jal_wr(jal_wr), .register31(register31), .sb(is_sb_id), .f_read(f_read_id_w), .f_write(f_write_id_w));
 //   dff kill (.clk(clk), .d(kill_next_instruction_id), .q(should_be_killed_id));
 
    // TODO: make sure rs1 contains the correct forwarded value for the branch control
@@ -88,12 +97,12 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 //		     ? 
 //		   (MemtoReg_mem == 1 ? mem_data_mem : alu_result_mem) 
 //		       : rs1_id_preforward;
-   always @ (rs1_sel_id, RegDst_id, RegDst_ex, RegDst_mem, RegWrite_mem, RegWrite_ex, MemtoReg_mem, alu_result_ex, mem_data_mem, rs1_id_preforward)
+   always @ (rs1_sel_id, RegDst_id, RegDst_ex, RegDst_mem, RegWrite_mem, RegWrite_ex, MemtoReg_mem, alu_result_ex, mem_data_mem, rs1_id_preforward, f_write_id, f_read_id, f_write_ex, f_write_mem)
      begin
-	if (rs1_sel_id == RegDst_ex && RegWrite_ex == 1) begin
+	if (rs1_sel_id == RegDst_ex && RegWrite_ex == 1 && f_read_id == f_write_ex) begin
 	   rs1_id <= alu_result_ex;
 	end
-	else if(rs1_sel_id == RegDst_mem && RegWrite_mem == 1) begin
+	else if(rs1_sel_id == RegDst_mem && RegWrite_mem == 1 && f_read_id == f_write_mem) begin
 	   if (MemtoReg_mem == 1) begin
 	      rs1_id <= mem_data_mem;
 	   end
@@ -101,7 +110,6 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 	      rs1_id <= alu_result_mem;
 	   end
 	end
-	
 	else begin
 	   rs1_id <= rs1_id_preforward;
 	end
@@ -109,9 +117,50 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    
 								    
    // RegisterFiles
-   // Looks like it's combinational for the read, so it should be passed in a dff to ex stage? 
-   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_wb), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_id_preforward), .rs2_out(rs2_id), .r31_en(jal_wr), .register31(register31));
+   // Looks like it's combinational for the read, so it should be passed in a dff to ex stage?
+   reg RegWrite_gpr, RegWrite_fpr;
+   always @(RegWrite_wb, f_write_wb) begin
+      if (RegWrite_wb == 1'h1) begin
+	 if (f_write_wb == 1'h1) begin
+	    RegWrite_gpr <= 0;
+	    RegWrite_fpr <= 1;
+	 end
+	 else begin
+	    RegWrite_gpr <= 1;
+	    RegWrite_fpr <= 0;
+	 end
+      end
+      else begin
+	 RegWrite_gpr <= 0;
+	 RegWrite_fpr <= 0;
+      end // else: !if(RegWrite_mem == 1'h1)
+   end // always @ (RegWrite_mem, f_type_wb)
    
+   reg [31:0] rs1_gpr_id, rs2_gpr_id, rs1_fpr_id, rs2_fpr_id;
+   wire [31:0] rs1_gpr_id_w, rs2_gpr_id_w, rs1_fpr_id_w, rs2_fpr_id_w;
+   always @(rs1_gpr_id_w, rs2_gpr_id_w, rs1_fpr_id_w, rs2_fpr_id_w, f_read_id_w, f_write_id_w) begin
+      rs1_gpr_id <= rs1_gpr_id_w;
+      rs2_gpr_id <= rs2_gpr_id_w;
+      rs1_fpr_id <= rs1_fpr_id_w;
+      rs2_fpr_id <= rs2_fpr_id_w;
+      f_read_id <= f_read_id_w;
+      f_write_id <= f_write_id_w;
+   end
+   
+   always @(rs1_gpr_id, rs2_gpr_id, rs1_fpr_id, rs2_fpr_id, f_read_id, f_write_id) begin
+      if (f_read_id == 1'h1) begin
+	 rs1_id_preforward <= rs1_fpr_id;
+	 rs2_id <= rs2_fpr_id;
+      end
+      else begin
+	 rs1_id_preforward <= rs1_gpr_id;
+	 rs2_id <= rs2_gpr_id;
+      end
+   end
+   
+      
+   RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_gpr), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_gpr_id_w), .rs2_out(rs2_gpr_id_w), .r31_en(jal_wr), .register31(register31));
+   RegisterFiles FP_RF  (.clk(clk), .writenable(RegWrite_fpr), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_fpr_id_w), .rs2_out(rs2_fpr_id_w),.r31_en(1'h0), .register31(register31));
 
    // Basically dffs to act as the ID/EX registers
    always @(negedge clk) begin
@@ -132,6 +181,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
       is_lb_ex <= is_lb_id;
       is_sb_ex <= is_sb_id;
       should_be_killed_id <= kill_next_instruction_id;
+      f_write_ex <= f_write_id;
+      f_read_ex <= f_read_id;
    end
   
    // sign extend the immed
@@ -160,8 +211,9 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 //  		   (rs2_sel_ex == RegDst_mem) && (RegWrite_mem) ? 
 //		      (MemtoReg_mem ? mem_data_mem : alu_result_mem) 
 //		     : rs2_ex_preforward;
-   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem, rs1_ex_preforward, rs2_ex_preforward, data_wb) begin
-      if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
+   always @(rs1_sel_ex, RegDst_wb, RegWrite_wb, RegDst_mem, RegWrite_mem, MemtoReg_mem, mem_data_mem, alu_result_mem, 
+	    rs1_ex_preforward, rs2_ex_preforward, data_wb, f_read_ex, f_write_mem, f_write_wb) begin
+      if (rs1_sel_ex == RegDst_mem && RegWrite_mem == 1 && f_read_ex == f_write_mem) begin
 	 if (MemtoReg_mem == 1) begin
 	    rs1_ex <= mem_data_mem;
 	 end
@@ -169,14 +221,15 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 	    rs1_ex <= alu_result_mem;
 	 end
       end
-      else if (rs1_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
+      else if (rs1_sel_ex == RegDst_wb && RegWrite_wb == 1 && f_read_ex == f_write_wb) begin
 	 rs1_ex <= data_wb;
       end
       else begin
 	 rs1_ex <= rs1_ex_preforward;
       end
       
-      if (rs2_sel_ex == RegDst_mem && RegWrite_mem == 1) begin
+      
+      if (rs2_sel_ex == RegDst_mem && RegWrite_mem == 1 && f_read_ex == f_write_mem) begin
 	 if (MemtoReg_mem == 1) begin
 	    rs2_ex <= mem_data_mem;
 	 end
@@ -184,7 +237,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
 	    rs2_ex <= alu_result_mem;
 	 end
       end
-      else if (rs2_sel_ex == RegDst_wb && RegWrite_wb == 1) begin
+      else if (rs2_sel_ex == RegDst_wb && RegWrite_wb == 1 && f_read_ex == f_write_wb) begin
 	 rs2_ex <= data_wb;
       end
       else begin
@@ -212,6 +265,8 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    always @(negedge clk) begin
       is_lb_mem <= is_lb_ex;
       is_sb_mem <= is_sb_ex;
+      f_write_mem <= f_write_ex;
+      f_write_wb <= f_write_mem;
    end
    // Since we forward the data from the memory unit in the EX stage, we don't need to forward again before the MEM Stage. 
    //  If we change the forwarding to only take initial values right out of iterstage register in order to reduce clocksycle, we will need to forward from wb stage here
