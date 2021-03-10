@@ -160,7 +160,7 @@ module CPU(clk, currentPC_if, inst_id, rs1_id, rs2_id, Memread, ALUSrc, should_b
    
       
    RegisterFiles cpu_rf (.clk(clk), .writenable(RegWrite_gpr), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_gpr_id_w), .rs2_out(rs2_gpr_id_w), .r31_en(jal_wr), .register31(register31));
-   RegisterFiles FP_RF  (.clk(clk), .writenable(RegWrite_fpr), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_fpr_id_w), .rs2_out(rs2_fpr_id_w),.r31_en(1'h0), .register31(register31));
+   RegisterFilesFP FP_RF  (.clk(clk), .writenable(RegWrite_fpr), .rs1_sel(rs1_sel_id), .rs2_sel(rs2_sel_id), .writesel(RegDst_wb), .Din(data_wb), .rs1_out(rs1_fpr_id_w), .rs2_out(rs2_fpr_id_w));
 
    // Basically dffs to act as the ID/EX registers
    always @(negedge clk) begin
