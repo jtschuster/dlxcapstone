@@ -1,0 +1,13 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-64bit
+-gui
+-access
+r
+-xmelab_args
+"-warnmax 0 -delay_mode zero -maxdelays"
+./_CPU_syn.v
+./lib/sram.v
+./test/CPU_tb.v
