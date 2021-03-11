@@ -1,5 +1,5 @@
 module sram(cs, oe, we, addr, din, dout);
-   //parameter mem_file = "../data/unsigned_sum.dat";
+   parameter mem_file = "../data/unsigned_sum.dat";
    input cs;
    input oe;
    input we;
@@ -15,12 +15,12 @@ module sram(cs, oe, we, addr, din, dout);
 	   dout[0:31] = 32'b001000_00000_00001_1010_1010_1010_1010;
 	end
 	32'h004: begin
-	   // lbu r3 <= byte @ 0x80
-	   dout[0:31] = 32'b100100_00000_00011_0000_0000_1000_0000;
+	   // mov I -> FP (r1 ->r1fp)
+	   dout[0:31] = 32'b000000_00001_00000_00001_00000_11_0101;
 	end
 	32'h008: begin
-	   // sb 0x81 <= r3[7:0]
-	   dout[0:31] = 32'b101000_00000_00011_0000_0000_1000_0001;
+	    // mov FP -> I (r1fp ->r1fp3)
+	   dout[0:31] = 32'b000000_00001_00000_00011_00000_11_0100;
 	end
 	/*
 	32'h0010: begin
