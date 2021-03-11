@@ -6,7 +6,6 @@
 ./xcelium.d/run.lnx8664.18.09.d
 -RUNMODE
 ./_CPU_syn.v
-./lib/syncram.v
 ./lib/sram.v
 ./test/CPU_tb.v
 -CDSLIB

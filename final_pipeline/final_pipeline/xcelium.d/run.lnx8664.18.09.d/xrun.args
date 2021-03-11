@@ -9,7 +9,5 @@ r
 -xmelab_args
 "-warnmax 0 -delay_mode zero -maxdelays"
 ./_CPU_syn.v
-./lib/syncram.v
 ./lib/sram.v
 ./test/CPU_tb.v
--s
