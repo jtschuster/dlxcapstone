@@ -54,3 +54,4 @@ pc:
 alu:
 	source /vol/ece303/genus_tutorial/cadence.env && \
 	xrun -64bit -gui -access r -xmelab_args "-warnmax 0 -delay_mode zero -maxdelays" ./lib/alu_behavioral.v ./test/ALU_32bit_tb.v 
+

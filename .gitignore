@@ -4,3 +4,6 @@
 **/xcelium.d/*
 **/*.diag
 **/xrun*
+**/.bpad/*
+**/waves.shm/*
+**/.simvision/*
