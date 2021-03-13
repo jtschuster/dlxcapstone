@@ -13,6 +13,9 @@ reg Zero;
 reg [31:0] Result;
 reg Set;
 
+integer diff;
+reg [22:0] A_shfted_mant;
+
 wire [31:0] sub_result;
 wire [31:0] add_result;
 wire [32:0] tmp;
@@ -110,6 +113,19 @@ always @(*) begin
 	5'b01100: begin  // lhi
             Result       <= B << 16;
 	    //Should this change Set???
+	end
+
+	5'b01111: begin //ADDF
+	    if (A == 0 && B == 0) begin
+		Result = 0;
+	    end
+	    else begin
+		diff = B[30:23] - A[30:23];
+		A_shfted_mant = (32'h800000 >> diff) + (A[22:0] >> diff);
+		Result[31] = 1'b0;
+		Result[30:23] = B[30:23];
+		Result[22:0] = B[22:0] + A_shfted_mant;
+	    end
 	end
 
         default: begin
