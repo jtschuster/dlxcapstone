@@ -51,6 +51,8 @@ initial begin
 	#10
         opa_tb = 32'h41700000; opb_tb = 32'h43700000; ctrl_tb=5'b01111; // Addf 15, 240 
 	#10
-        opa_tb = 32'h41700000; opb_tb = 32'h43700000; ctrl_tb=5'b01111; // Addf 15, 240 
+        opa_tb = 32'd15; opb_tb = 32'h00000000; ctrl_tb=5'b11110; // CVTITF 1
+	#10
+        opa_tb = 32'd15; opb_tb = 32'h00000000; ctrl_tb=5'b11110; // CVTITF 1
 end
 endmodule
