@@ -70,7 +70,7 @@
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/dec_n.v
 1613618245 /home/qcb2982/362/dlxcapstone/final_pipeline/final_pipeline/lib/nor_gate.v
 1613618245 /home/qcb2982/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_unit.v
-1615780293 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/ALU_32bit_tb.v
+1615784736 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/ALU_32bit_tb.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/slt_sltu.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/ALUctrl.v
 1612373762 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/WB_stage.v
@@ -85,7 +85,7 @@
 1614175000 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux_n.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_32.v
-1615780098 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
+1615786373 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/and_gate.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/not_gate.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/xor_gate.v

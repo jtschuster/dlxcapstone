@@ -59,6 +59,8 @@ initial begin
 	#10
         opa_tb = 32'h44800000; ctrl_tb=5'b11111; 
 #10
+opa_tb = 32'h4e7ffffc; opb_tb = 32'h43700000; ctrl_tb = 5'b01111;
+#10
 opa_tb = 32'h0;
 end
 endmodule

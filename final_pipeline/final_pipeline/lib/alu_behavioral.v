@@ -15,8 +15,9 @@ reg Set;
 
 integer diff;
 integer right_shft;
-reg [22:0] A_shfted_mant;
+reg [23:0] A_shfted_mant;
 reg [31:0] mantissa;
+reg [22:0] tmp_mantissa;
 integer count;
 
 wire [31:0] sub_result;
@@ -129,16 +130,26 @@ always @(*) begin
 		diff = B[30:23] - A[30:23];
 		if (diff > 0) begin
 			A_shfted_mant = (32'h800000 >> diff) + (A[22:0] >> diff);
+                        tmp_mantissa = B[22:0] + A_shfted_mant;
+                        if ((A[diff] == 1) && tmp_mantissa[0] == 1) begin
+                            A_shfted_mant = A_shfted_mant + 1;
+                        end
+                        mantissa = B[22:0] + A_shfted_mant;
 			Result[31] <= 1'b0;
-			Result[30:23] <= B[30:23];
-			Result[22:0] <= B[22:0] + A_shfted_mant;
+			Result[30:23] <= B[30:23] + mantissa[23];
+			Result[22:0] <= mantissa;
 		end
 		else if (diff < 0) begin
 			diff = -diff;
 			A_shfted_mant = (32'h800000 >> diff) + (B[22:0] >> diff);
+                        tmp_mantissa = A[22:0] + A_shfted_mant;
+                         if ((B[diff] == 1) && tmp_mantissa[0] == 1) begin
+                             A_shfted_mant = A_shfted_mant + 1;
+                         end
+                        mantissa = A[22:0] + A_shfted_mant;
 			Result[31] <= 1'b0;
-			Result[30:23] <= A[30:23];
-			Result[22:0] <= A[22:0] + A_shfted_mant;
+			Result[30:23] <= A[30:23] + mantissa[23];
+			Result[22:0] <= mantissa;
 		end
 	    end
 	end
