@@ -123,46 +123,51 @@ always @(*) begin
 
 	5'b01111: begin //ADDF
 	    if (A == 0 && B == 0) begin
-		Result = 0;
+		Result <= 0;
 	    end
 	    else begin
 		diff = B[30:23] - A[30:23];
 		if (diff > 0) begin
 			A_shfted_mant = (32'h800000 >> diff) + (A[22:0] >> diff);
-			Result[31] = 1'b0;
-			Result[30:23] = B[30:23];
-			Result[22:0] = B[22:0] + A_shfted_mant;
+			Result[31] <= 1'b0;
+			Result[30:23] <= B[30:23];
+			Result[22:0] <= B[22:0] + A_shfted_mant;
 		end
 		else if (diff < 0) begin
 			diff = -diff;
 			A_shfted_mant = (32'h800000 >> diff) + (B[22:0] >> diff);
-			Result[31] = 1'b0;
-			Result[30:23] = A[30:23];
-			Result[22:0] = A[22:0] + A_shfted_mant;
+			Result[31] <= 1'b0;
+			Result[30:23] <= A[30:23];
+			Result[22:0] <= A[22:0] + A_shfted_mant;
 		end
 	    end
 	end
 
 	5'b11111: begin //CVTF2I
 	    if (A[30:23] < 127) begin
-		Result = 0;
+		Result <= 0;
 	    end
 	    else begin
 		right_shft = 150 - A[30:23];
-		Result = (32'h800000 >> right_shft) + (A[22:00] >> right_shft);
+		Result <= (32'h800000 >> right_shft) + (A[22:00] >> right_shft);
 	    end
 	end
 
 	5'b11110: begin //CVTI2F
 		mantissa = A;
 		count = 0;
-		while (!mantissa[31]) begin
+                if (mantissa != 32'h0000) begin
+		    while (!mantissa[31]) begin
 			mantissa = mantissa << 1;
 			count = count + 1;
-		end
-		Result[31] = 0;
-		Result[30:23] = 158 - count;
-		Result[22:0] = mantissa[30:8];
+		    end
+                    Result[31] <= 0;
+		    Result[30:23] <= 158 - count;
+		    Result[22:0] <= mantissa[30:8];
+                end
+                else begin
+                    Result <= 32'h0;
+                end
 	end
 
         default: begin
