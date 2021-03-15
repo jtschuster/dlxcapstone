@@ -149,7 +149,13 @@ always @(*) begin
 	    end
 	    else begin
 		right_shft = 150 - A[30:23];
-		Result <= (32'h800000 >> right_shft) + (A[22:00] >> right_shft);
+		if (right_shft < 0) begin
+			right_shft = -right_shft;
+			Result <= (32'h800000 << right_shft) + (A[22:00] << right_shft);
+		end 
+		else begin
+			Result <= (32'h800000 >> right_shft) + (A[22:00] >> right_shft);
+		end
 	    end
 	end
 

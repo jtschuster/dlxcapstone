@@ -56,6 +56,8 @@ initial begin
         opa_tb = 32'd15; opb_tb = 32'h00000000; ctrl_tb=5'b11110; // CVTITF 1
         #10
         opa_tb = 32'h4e7fffff; ctrl_tb=5'b11111; 
+	#10
+        opa_tb = 32'h44800000; ctrl_tb=5'b11111; 
 #10
 opa_tb = 32'h0;
 end
