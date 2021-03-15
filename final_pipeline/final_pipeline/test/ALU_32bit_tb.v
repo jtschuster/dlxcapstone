@@ -2,7 +2,7 @@ module ALU_32bit_tb;
 
 reg [31:0] opa_tb;
 reg [31:0] opb_tb;
-reg [3:0] ctrl_tb;
+reg [4:0] ctrl_tb;
 wire [31:0] z_alu_tb;
 wire cout_tb;
 wire overflow_tb;
@@ -49,6 +49,10 @@ initial begin
 	#10
         opa_tb = 32'd13; opb_tb = 32'd7; ctrl_tb=5'b00100; // xor 0x03
 	#10
-        opa_tb = 32'd13; opb_tb = 32'd7; ctrl_tb=5'b00100; // xor 0x03
+        opa_tb = 32'h41700000; opb_tb = 32'h43700000; ctrl_tb=5'b01111; // Addf 15, 240 
+	#10
+        opa_tb = 32'd15; opb_tb = 32'h00000000; ctrl_tb=5'b11110; // CVTITF 1
+	#10
+        opa_tb = 32'd15; opb_tb = 32'h00000000; ctrl_tb=5'b11110; // CVTITF 1
 end
 endmodule
