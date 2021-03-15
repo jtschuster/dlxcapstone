@@ -111,6 +111,9 @@ always @(*) begin
             Result       <= B << 16;
 	    //Should this change Set???
 	end
+        5'b11111: begin // mov
+            Result     <= A;
+        end
 
         default: begin
             Result      <= A + B;

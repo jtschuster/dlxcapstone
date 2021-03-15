@@ -18,7 +18,7 @@ module ifetch(PC, instruction);
   output [15:0] immi;
   */
   sram s_ifetch (.cs(1'b1), .oe(1'b1), .we(1'b0), .addr(PC), .din(32'b0), .dout(instruction));
-  //defparam s_ifetch.mem_file = inst_name;
+  defparam s_ifetch.mem_file = inst_name;
   /*
   assign opcode = instruction[31:26];
   assign rs = instruction[25:21];

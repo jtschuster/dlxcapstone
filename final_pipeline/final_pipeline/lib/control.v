@@ -127,7 +127,7 @@ module control(
    assign func = instr[26:31];
    
    
-   assign r_type = (opcode == 6'h00) && (~(func == nop_func)) | 
+   assign r_type = ((opcode == 6'h00) && (~(func == nop_func))) ||
 		   (opcode == 6'h01); // MULT, MULTU, and a bunch of FP instructions
    // Only for the always jumps, doesn't include branches
    assign j_type = opcode == 6'h02 || // J

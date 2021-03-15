@@ -24,7 +24,7 @@ module Mem_stage (clk,cs,oe,we,addr,din, dout, dout_mem, result_mem, MemtoReg_ex
    reg [31:0] byte_written, d_write, addr_mod_four;
    reg [31:0] addr_aligned;
   sram cpu_scm (.cs(cs), .oe(oe), .we(we_new), .addr(addr_aligned), .din(d_write), .dout(dout_tmp1));
-  //defparam cpu_scm.mem_file = mem_file;
+  defparam cpu_scm.mem_file = mem_file;
    reg [7:0]  byte_of_interest;
    reg [31:0] dout_tmp;
    initial begin
