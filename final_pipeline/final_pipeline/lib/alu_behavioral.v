@@ -117,7 +117,7 @@ always @(*) begin
             Result       <= B << 16;
 	    //Should this change Set???
 	end
-        5'b11111: begin // mov
+        5'b01110: begin // mov
             Result     <= A;
         end
 

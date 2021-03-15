@@ -85,7 +85,7 @@
 1614175000 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/mux_n.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/alu_32.v
-1615604393 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
+1615773930 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/alu_behavioral.v
 1611517449 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/and_gate.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/not_gate.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/xor_gate.v
@@ -106,7 +106,7 @@
 1613618245 /home/qcb2982/362/dlxcapstone/final_pipeline/final_pipeline/lib/and_6.v
 1613618245 /home/qcb2982/362/dlxcapstone/final_pipeline/final_pipeline/lib/ALUctrl.v
 1612373762 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/Control_signal.v
-1615605208 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
+1615773919 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/control.v
 1612056730 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/forwarding_ex.v
 1612373762 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/Extender.v
 1611884439 /home/jts6813/362/project/final_pipeline/final_pipeline/test/CPU_tb.v
@@ -120,7 +120,7 @@
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/sll.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/writeReg.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_32.v
-1615433503 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
+1615773074 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/test/CPU_tb.v
 1612057493 /home/jts6813/362/dlxcapstone/final_pipeline/final_pipeline/lib/synthesis/CPU_syn.v
 1612373763 /home/ctm2245/eecs362/dlxcapstone/final_pipeline/final_pipeline/lib/mux_n.v
 1611517450 /home/jts6813/362/project/final_pipeline/final_pipeline/lib/ifecth.v

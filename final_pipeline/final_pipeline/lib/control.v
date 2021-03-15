@@ -239,28 +239,28 @@ module control(
       if (opcode == 6'h01 && func == 6'h00) begin // ADDF
 	 f_read <= 1;
 	 f_write <= 1;
-	 f_alu_op <= 5'h1F; // update
+	 f_alu_op <= 5'b01111; // update
       end
       else if (opcode == 6'h01 && func == 6'h09) begin // CVTF2I
 	 f_read <= 1;
 	 f_write <= 1;
-	 f_alu_op <= 5'h1F; // update
+	 f_alu_op <= 5'b11111; // update
 
       end
       else if (opcode == 6'h01 && func == 6'h0C) begin // CVTI2F
 	 f_read <= 1;
 	 f_write <= 1;
-	 f_alu_op <= 5'h1F; // update
+	 f_alu_op <= 5'b11110; // update
       end
       else if (opcode == 6'h00 && func == 6'h34) begin // MOVFP2I
 	 f_read <= 1;
 	 f_write <= 0;
-	 f_alu_op <= 5'h1F; // update
+	 f_alu_op <= 5'b01110; // update
       end
       else if (opcode == 6'h00 && func == 6'h35) begin // MOVI2FP
 	 f_read <= 0;
 	 f_write <= 1;
-	 f_alu_op <= 5'h1F; // update
+	 f_alu_op <= 5'b01110; // update
       end
       else begin
 	 f_read <= 0;
